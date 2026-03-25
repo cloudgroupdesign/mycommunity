@@ -16,13 +16,17 @@ export default function HeroMockup() {
         mockupRef.current.getBoundingClientRect().top +
         window.scrollY +
         mockupRef.current.offsetHeight / 2;
-      targetScroll = Math.max(1, mockupOffsetTop - window.innerHeight / 2);
+      // Keep real value — negative means mockup is already visible without scrolling
+      targetScroll = mockupOffsetTop - window.innerHeight / 2;
     };
 
     const update = () => {
       ticking = false;
       if (!mockupRef.current) return;
-      const progress = Math.min(1, Math.max(0, window.scrollY / targetScroll));
+      // If mockup center is already in view (zoomed out) → show flat immediately
+      const progress = targetScroll <= 0
+        ? 1
+        : Math.min(1, Math.max(0, window.scrollY / targetScroll));
       const rotateX = 24 * (1 - progress);
       const scale   = 0.88 + 0.12 * progress;
       mockupRef.current.style.transform =
