@@ -90,7 +90,7 @@ export default function HeroMockup() {
           opacity: 0.16,
           transform: "scale(1.08) translateZ(0) translateY(16px)",
           zIndex: -1,
-          contain: "layout style paint",
+          /* без contain — щоб не обрізало по краях */
         }}
       >
         <div
@@ -108,12 +108,16 @@ export default function HeroMockup() {
       </div>
 
       {/* Gradient border + white card */}
+      {/* translateZ(0) + backface-visibility: hidden фіксують зникання куточків при rotateX */}
       <div
         style={{
           position: "relative",
           borderRadius: 16,
           padding: 2,
           overflow: "hidden",
+          transform: "translateZ(0)",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
         }}
       >
         {/* Spinning gradient border */}
