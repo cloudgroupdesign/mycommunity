@@ -46,11 +46,14 @@ const MASK = "linear-gradient(to right, transparent 0%, black 6%, black 94%, tra
 export default function Integrations() {
   return (
     <section className="py-24 bg-white w-full">
-      {/* Заголовок */}
-      <div className="w-full mx-auto px-6 text-center" style={{ maxWidth: 1080, marginBottom: 56 }}>
+      {/* Заголовок + опис */}
+      <div className="w-full mx-auto px-6 text-center flex flex-col items-center gap-5" style={{ maxWidth: 1080, marginBottom: 56 }}>
         <h2 className="font-semibold text-[54px] leading-[64px] text-[#141414] tracking-tight">
           Підключіться до улюблених сервісів
         </h2>
+        <p className="font-normal text-[18px] leading-[30px] text-[#727272]" style={{ maxWidth: 600 }}>
+          My Community інтегрується з інструментами, які ви вже використовуєте — без зайвих налаштувань
+        </p>
       </div>
 
       {/* Marquee wrapper — max 3024px, centered, clips horizontally */}
@@ -76,6 +79,25 @@ export default function Integrations() {
           </div>
         </div>
 
+      </div>
+
+      {/* Кнопка */}
+      <div className="flex justify-center" style={{ marginTop: 48 }}>
+        <button
+          style={{
+            background: "#141414",
+            color: "#fff",
+            fontSize: 16,
+            fontWeight: 600,
+            lineHeight: "24px",
+            padding: "14px 32px",
+            borderRadius: 12,
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Дивитись всі інтеграції
+        </button>
       </div>
     </section>
   );
