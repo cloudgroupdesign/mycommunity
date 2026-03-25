@@ -108,8 +108,8 @@ export default function Features() {
               {/* Праворуч — текст */}
               <div
                 className="flex flex-col justify-center p-10 lg:p-14"
-                style={{ gap: 32 }}
                 style={{
+                  gap: 24,
                   flex: 1,
                   background: slide.bg,
                   transition: "background 0.35s ease",
