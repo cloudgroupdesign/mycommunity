@@ -6,84 +6,106 @@ export default function HeroMockup() {
   const mockupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const update = () => {
       if (!mockupRef.current) return;
 
       const rect = mockupRef.current.getBoundingClientRect();
-      const viewportCenter = window.innerHeight / 2;
+      const vh = window.innerHeight;
+
+      // progress: 0 = mockup top just entered viewport bottom
+      //           1 = mockup center is at viewport center
       const elementCenter = rect.top + rect.height / 2;
+      const startPoint = vh;           // starts when top hits bottom of screen
+      const endPoint = vh / 2;         // ends when center hits middle of screen
 
-      // 0 = element center at bottom of screen, 1 = element center at viewport center
-      const raw = 1 - elementCenter / (viewportCenter + rect.height * 0.5);
-      const progress = Math.max(0, Math.min(1, raw));
+      const progress = Math.max(
+        0,
+        Math.min(1, (startPoint - elementCenter) / (startPoint - endPoint))
+      );
 
-      const rotateX = -20 * (1 - progress);
-      const scale = 1.08 - 0.08 * progress;
+      const rotateX = -22 * (1 - progress);   // -22deg → 0deg
+      const scale   =  1 + 0.08 * (1 - progress); // 1.08 → 1.0
 
-      mockupRef.current.style.transform = `perspective(1200px) rotateX(${rotateX}deg) scale(${scale})`;
+      mockupRef.current.style.transform = `perspective(1400px) rotateX(${rotateX}deg) scale(${scale})`;
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", update);
   }, []);
 
   return (
-    <div className="relative w-[1080px] flex items-center justify-center">
-      {/* Spinning gradient background glow */}
+    /* Outer: clips overflow + perspective origin */
+    <div className="relative w-[1080px] mx-auto" style={{ perspective: "1400px" }}>
+
+      {/* ── Blurred glow that rotates behind the card ── */}
       <div
-        className="absolute rounded-3xl overflow-hidden"
+        className="absolute pointer-events-none"
         style={{
-          inset: "-40px",
+          inset: "-60px -80px",
           zIndex: 0,
-          filter: "blur(60px)",
-          opacity: 0.55,
+          borderRadius: "40px",
+          overflow: "hidden",
+          filter: "blur(80px)",
+          opacity: 0.5,
         }}
       >
         <div
-          className="absolute inset-0"
           style={{
+            position: "absolute",
+            inset: 0,
             background:
-              "conic-gradient(#29abe2, #f7941d, #e84c3d, #8dc63f, #20a99d, #29abe2)",
+              "conic-gradient(from 0deg, #29abe2, #f7941d, #e84c3d, #8dc63f, #20a99d, #29abe2)",
             animation: "gradientSpin 6s linear infinite",
             transformOrigin: "center center",
           }}
         />
       </div>
 
-      {/* Mockup card */}
+      {/* ── Mockup card ── */}
       <div
         ref={mockupRef}
-        className="relative w-full h-[604px] rounded-2xl overflow-hidden"
         style={{
+          position: "relative",
+          width: "100%",
+          height: "604px",
+          borderRadius: "16px",
           transformOrigin: "center bottom",
           willChange: "transform",
           zIndex: 1,
         }}
       >
-        {/* Spinning gradient border */}
+        {/* Spinning gradient border (2 px) */}
         <div
-          className="absolute rounded-2xl overflow-hidden"
           style={{
+            position: "absolute",
             inset: "-2px",
+            borderRadius: "18px",
+            overflow: "hidden",
             zIndex: 0,
           }}
         >
           <div
-            className="absolute inset-0"
             style={{
+              position: "absolute",
+              inset: 0,
               background:
-                "conic-gradient(#29abe2, #f7941d, #e84c3d, #8dc63f, #20a99d, #29abe2)",
+                "conic-gradient(from 0deg, #29abe2, #f7941d, #e84c3d, #8dc63f, #20a99d, #29abe2)",
               animation: "gradientSpin 6s linear infinite",
               transformOrigin: "center center",
             }}
           />
         </div>
 
-        {/* White inner content */}
+        {/* White inner */}
         <div
-          className="absolute inset-[2px] bg-white rounded-2xl"
-          style={{ zIndex: 1 }}
+          style={{
+            position: "absolute",
+            inset: "2px",
+            backgroundColor: "#ffffff",
+            borderRadius: "15px",
+            zIndex: 1,
+          }}
         />
       </div>
     </div>
