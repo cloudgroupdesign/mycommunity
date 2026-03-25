@@ -113,7 +113,7 @@ export default function HeroMockup() {
         style={{
           position: "relative",
           borderRadius: 16,
-          padding: 2,
+          padding: 3,
           overflow: "hidden",
           transform: "translateZ(0)",
           backfaceVisibility: "hidden",
