@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ChevronDown } from "@geist-ui/icons";
 
 export default function Navbar() {
@@ -5,9 +6,14 @@ export default function Navbar() {
     <header className="border-b border-[#e5e6ea] h-16 flex items-center px-6 w-full sticky top-0 bg-white z-50">
       {/* Left — Logo */}
       <div className="flex flex-1 items-center">
-        <span className="font-semibold text-[20px] text-[#141414] tracking-tight">
-          MY COMMUNITY
-        </span>
+        <Image
+          src="/logo.png"
+          alt="My Community"
+          width={210}
+          height={36}
+          priority
+          className="h-9 w-auto object-contain"
+        />
       </div>
 
       {/* Center — Nav */}
@@ -27,7 +33,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Right — CTA */}
+      {/* Right */}
       <div className="flex flex-1 justify-end">
         <button className="px-4 py-2 text-[14px] font-medium text-[#29abe2] hover:opacity-80 transition-opacity">
           Увійти

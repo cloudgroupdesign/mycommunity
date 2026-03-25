@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   title: "My Community — Єдина система управління бізнесом",
   description:
     "My Community об'єднує продажі, комунікації, задачі, команди, виробництво, фінанси та аналітику в одному зручному просторі.",
+  icons: {
+    icon: "/logo-icon.png",
+    shortcut: "/logo-icon.png",
+    apple: "/logo-icon.png",
+  },
 };
 
 export default function RootLayout({
