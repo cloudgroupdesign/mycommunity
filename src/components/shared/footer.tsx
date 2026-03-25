@@ -41,9 +41,9 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-white w-full">
+    <footer className="bg-white w-full px-6">
       {/* Main */}
-      <div className="w-full mx-auto px-6" style={{ maxWidth: 1080, paddingTop: 48, paddingBottom: 44 }}>
+      <div className="w-full mx-auto" style={{ maxWidth: 1080, paddingTop: 48, paddingBottom: 44 }}>
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-12">
 
           {/* Brand */}
@@ -117,7 +117,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="w-full mx-auto px-6" style={{ maxWidth: 1080 }}>
+      <div className="w-full mx-auto" style={{ maxWidth: 1080 }}>
         <div
           className="flex flex-col sm:flex-row items-center justify-between gap-3"
           style={{ borderTop: "1px solid #e5e6ea", paddingTop: 32, paddingBottom: 56 }}
