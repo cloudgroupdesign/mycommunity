@@ -65,7 +65,7 @@ export default function Integrations() {
 
       {/* Рядок 2 — праворуч */}
       <div
-        className="relative py-2 w-full mt-4"
+        className="relative py-2 w-full"
         style={{ maskImage: MASK, WebkitMaskImage: MASK }}
       >
         <div className="integrations-track-rtl flex">
