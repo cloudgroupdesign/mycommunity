@@ -65,6 +65,30 @@
   animation-play-state: running;
 }
 
+/* Gradient border без overflow:hidden — фікс зникання куточків при rotateX */
+.mockup-gradient-border {
+  position: relative;
+  border-radius: 16px;
+}
+
+.mockup-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 3px;
+  background: conic-gradient(from 0deg, #29ABE2, #F7941D, #E84C3D, #8DC63F, #20A99D, #29ABE2);
+  animation: gradientSpin 5s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
 @media (prefers-reduced-motion: reduce) {
   @keyframes gradientSpin {
     from { transform: rotate3d(0, 0, 1, 0deg); }

@@ -107,41 +107,15 @@ export default function HeroMockup() {
         />
       </div>
 
-      {/* Gradient border + white card */}
-      {/* translateZ(0) + backface-visibility: hidden фіксують зникання куточків при rotateX */}
-      <div
-        style={{
-          position: "relative",
-          borderRadius: 16,
-          padding: 3,
-          overflow: "hidden",
-          transform: "translateZ(0)",
-          backfaceVisibility: "hidden",
-          WebkitBackfaceVisibility: "hidden",
-        }}
-      >
-        {/* Spinning gradient border */}
-        <div
-          aria-hidden
-          style={{
-            position: "absolute",
-            width: "200%",
-            height: "200%",
-            top: "-50%",
-            left: "-50%",
-            background:
-              "conic-gradient(from 0deg, #29ABE2, #F7941D, #E84C3D, #8DC63F, #20A99D, #29ABE2)",
-            animation: "gradientSpin 5s linear infinite",
-          }}
-        />
+      {/* Gradient border через CSS mask — без overflow:hidden, куточки не зникають */}
+      <div className="mockup-gradient-border" style={{ position: "relative" }}>
         {/* Inner content (photo/video placeholder) */}
         <div
           style={{
             position: "relative",
-            borderRadius: 14,
+            borderRadius: 13,
             background: "#F8FAFC",
             height: 588,
-            overflow: "hidden",
           }}
         />
       </div>
