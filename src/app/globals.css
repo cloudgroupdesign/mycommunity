@@ -65,6 +65,19 @@
   animation-play-state: running;
 }
 
+/* Integrations marquee */
+@keyframes marquee {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+.integrations-marquee {
+  animation: marquee 32s linear infinite;
+  will-change: transform;
+}
+.integrations-marquee:hover {
+  animation-play-state: paused;
+}
+
 /* Footer link hover */
 .footer-link { color: #727272; text-decoration: none; transition: color 0.2s; }
 .footer-link:hover { color: #141414; }
