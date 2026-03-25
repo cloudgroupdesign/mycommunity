@@ -28,7 +28,7 @@ export default function Why() {
           </p>
         </div>
 
-        <div className="flex gap-6 items-stretch w-full">
+        <div className="flex gap-4 items-stretch w-full">
           {problems.map((item, i) => (
             <div
               key={i}
