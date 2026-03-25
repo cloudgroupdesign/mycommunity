@@ -56,7 +56,7 @@ export default function Features() {
         </div>
 
         {/* Слайдер + індикатори */}
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center" style={{ gap: 32 }}>
 
           {/* Слайдер */}
           <div className="relative w-full">
@@ -82,7 +82,7 @@ export default function Features() {
             {/* Картка слайду */}
             <div
               className="w-full rounded-2xl overflow-hidden flex flex-col lg:flex-row"
-              style={{ height: 520 }}
+              style={{ height: 464 }}
             >
               {/* Ліворуч — кольорова зона з мокапом */}
               <div
@@ -108,7 +108,8 @@ export default function Features() {
 
               {/* Праворуч — текст */}
               <div
-                className="flex flex-col justify-center gap-5 p-10 lg:p-14"
+                className="flex flex-col justify-center p-10 lg:p-14"
+                style={{ gap: 32 }}
                 style={{
                   flex: 1,
                   background: slide.bg,
@@ -160,14 +161,15 @@ export default function Features() {
                 onClick={() => go(i)}
                 aria-label={`Слайд ${i + 1}`}
                 style={{
-                  height: 8,
-                  width: i === current ? 28 : 8,
+                  height: 10,
+                  width: i === current ? 30 : 10,
                   borderRadius: 999,
-                  background: i === current ? slide.accent : "#d1d5db",
+                  background: i === current ? slide.accent : "#c8cdd6",
                   border: "none",
                   padding: 0,
                   cursor: i === current ? "default" : "pointer",
-                  transition: "width 0.3s ease, background 0.35s ease",
+                  opacity: i === current ? 1 : 0.45,
+                  transition: "width 0.3s ease, background 0.35s ease, opacity 0.35s ease",
                 }}
               />
             ))}
