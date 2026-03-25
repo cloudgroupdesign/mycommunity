@@ -62,17 +62,18 @@ export default function Features() {
           <button
             onClick={() => go(current - 1)}
             aria-label="Попередній"
-            className="absolute flex items-center justify-center rounded-full bg-white border border-[#e5e6ea] shadow-md hover:border-[#141414] transition-colors"
+            className="features-nav-btn absolute flex items-center justify-center rounded-full bg-white shadow-md"
             style={{
-              left: -24,
+              left: -32,
               top: "50%",
               transform: "translateY(-50%)",
-              width: 48,
-              height: 48,
+              width: 64,
+              height: 64,
               zIndex: 10,
+              border: "none",
             }}
           >
-            <ChevronLeft size={20} color="#141414" />
+            <ChevronLeft size={32} color="#141414" strokeWidth={2.5} />
           </button>
 
           {/* Картка слайду */}
@@ -141,17 +142,18 @@ export default function Features() {
           <button
             onClick={() => go(current + 1)}
             aria-label="Наступний"
-            className="absolute flex items-center justify-center rounded-full bg-white border border-[#e5e6ea] shadow-md hover:border-[#141414] transition-colors"
+            className="features-nav-btn absolute flex items-center justify-center rounded-full bg-white shadow-md"
             style={{
-              right: -24,
+              right: -32,
               top: "50%",
               transform: "translateY(-50%)",
-              width: 48,
-              height: 48,
+              width: 64,
+              height: 64,
               zIndex: 10,
+              border: "none",
             }}
           >
-            <ChevronRight size={20} color="#141414" />
+            <ChevronRight size={32} color="#141414" strokeWidth={2.5} />
           </button>
         </div>
 
