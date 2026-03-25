@@ -44,25 +44,25 @@ export default function Footer() {
     <footer className="bg-white w-full">
       {/* Main */}
       <div className="w-full mx-auto px-6" style={{ maxWidth: 1080, paddingTop: 48, paddingBottom: 44 }}>
-        <div className="flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-0">
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-12">
 
           {/* Brand */}
-          <div className="flex-1 min-w-0 flex flex-col gap-6">
+          <div className="flex flex-col gap-5" style={{ maxWidth: 280 }}>
             <Image
               src="/logo.png"
               alt="My Community"
               width={160}
               height={40}
-              className="h-8 w-auto object-contain"
+              className="h-8 w-auto object-contain object-left"
             />
-            <p style={{ fontSize: 14, lineHeight: 1.6, color: "#727272", maxWidth: 260 }}>
+            <p style={{ fontSize: 14, lineHeight: 1.6, color: "#727272" }}>
               Сучасна ERP/CRM платформа для українського бізнесу.
               Автоматизуйте процеси та ростіть ефективніше.
             </p>
           </div>
 
           {/* Nav columns */}
-          <div className="flex gap-16 lg:gap-24 flex-shrink-0">
+          <div className="flex gap-12 lg:gap-16 xl:gap-24 flex-shrink-0">
 
             {/* Навігація */}
             <div>
@@ -98,9 +98,14 @@ export default function Footer() {
               <ul className="flex flex-col gap-3">
                 {socials.map(({ id, name, href, icon }) => (
                   <li key={id}>
-                    <a href={href} className="social-link" data-social={id} style={{ fontSize: 14 }}>
-                      <span>{icon}</span>
-                      <span>{name}</span>
+                    <a
+                      href={href}
+                      className="social-link"
+                      data-social={id}
+                      style={{ fontSize: 14, display: "flex", alignItems: "center", gap: 10 }}
+                    >
+                      <span style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>{icon}</span>
+                      <span style={{ whiteSpace: "nowrap" }}>{name}</span>
                     </a>
                   </li>
                 ))}
@@ -115,7 +120,7 @@ export default function Footer() {
       <div className="w-full mx-auto px-6" style={{ maxWidth: 1080 }}>
         <div
           className="flex flex-col sm:flex-row items-center justify-between gap-3"
-          style={{ borderTop: "1px solid #e5e6ea", paddingTop: 44, paddingBottom: 72 }}
+          style={{ borderTop: "1px solid #e5e6ea", paddingTop: 32, paddingBottom: 56 }}
         >
           <p style={{ fontSize: 12, color: "#727272" }}>
             © {year} My Community. Усі права захищено.
