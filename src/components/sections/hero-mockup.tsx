@@ -107,12 +107,10 @@ export default function HeroMockup() {
         />
       </div>
 
-      {/* Gradient border через CSS mask — без overflow:hidden, куточки не зникають */}
-      <div className="mockup-gradient-border" style={{ position: "relative" }}>
-        {/* Inner content (photo/video placeholder) */}
+      {/* Gradient border: conic-gradient як background + padding 3px — без overflow:hidden */}
+      <div className="mockup-gradient-border">
         <div
           style={{
-            position: "relative",
             borderRadius: 13,
             background: "#F8FAFC",
             height: 588,
