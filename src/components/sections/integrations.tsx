@@ -1,38 +1,47 @@
-const integrations = [
-  {
-    id: "google-calendar",
-    name: "Google Calendar",
-    desc: "Синхронізація зустрічей та подій команди в реальному часі.",
-  },
-  {
-    id: "zoom",
-    name: "Zoom",
-    desc: "Запускайте відеодзвінки прямо з картки клієнта або угоди.",
-  },
-  {
-    id: "amazon",
-    name: "Amazon",
-    desc: "Управляйте замовленнями Amazon Marketplace з єдиного кабінету.",
-  },
-  {
-    id: "nova-poshta",
-    name: "Nova Poshta API",
-    desc: "Автоматичне створення ТТН та відстеження доставки Новою Поштою.",
-  },
-  {
-    id: "rozetka",
-    name: "Rozetka",
-    desc: "Обробляйте замовлення з найбільшого українського маркетплейсу.",
-  },
-  {
-    id: "telegram-bot",
-    name: "Telegram Bot",
-    desc: "Отримуйте сповіщення та відповідайте клієнтам прямо в Telegram.",
-  },
+// One card slot: 370px width + 8px margin each side = 386px
+// One set (6 cards): 6 × 386 = 2316px — used in CSS keyframes
+const ROW_1 = [
+  { id: "google-calendar", name: "Google Calendar", desc: "Синхронізація зустрічей та подій команди в реальному часі." },
+  { id: "zoom",            name: "Zoom",            desc: "Запускайте відеодзвінки прямо з картки клієнта або угоди." },
+  { id: "amazon",          name: "Amazon",          desc: "Управляйте замовленнями Amazon Marketplace з єдиного кабінету." },
+  { id: "nova-poshta",     name: "Nova Poshta API", desc: "Автоматичне створення ТТН та відстеження доставки Новою Поштою." },
+  { id: "rozetka",         name: "Rozetka",         desc: "Обробляйте замовлення з найбільшого українського маркетплейсу." },
+  { id: "telegram-bot",    name: "Telegram Bot",    desc: "Отримуйте сповіщення та відповідайте клієнтам прямо в Telegram." },
 ];
 
-// Duplicated for seamless infinite loop
-const items = [...integrations, ...integrations];
+const ROW_2 = [
+  { id: "ebay",         name: "eBay",         desc: "Синхронізуйте товари та замовлення з міжнародним маркетплейсом." },
+  { id: "google-drive", name: "Google Drive", desc: "Зберігайте та надавайте спільний доступ до документів команди." },
+  { id: "stripe",       name: "Stripe",       desc: "Приймайте онлайн-платежі та керуйте підписками клієнтів." },
+  { id: "prom",         name: "Prom.ua",      desc: "Синхронізуйте каталог товарів та замовлення з Prom.ua." },
+  { id: "viber",        name: "Viber",        desc: "Надсилайте повідомлення та сповіщення клієнтам через Viber." },
+  { id: "google-meet",  name: "Google Meet",  desc: "Проводьте відеозустрічі прямо з платформи без переключення." },
+];
+
+// 8× duplication — covers viewport even at 10% browser zoom
+const track1 = Array(8).fill(ROW_1).flat();
+const track2 = Array(8).fill(ROW_2).flat();
+
+function IntegrationCard({ item }: { item: { id: string; name: string; desc: string } }) {
+  return (
+    <div
+      className="flex-shrink-0 flex items-start gap-4 bg-white border border-[#e5e6ea] rounded-2xl"
+      style={{ width: 370, padding: "22px 28px", margin: "0 8px" }}
+    >
+      {/* Logo placeholder — замінити на <Image> коли будуть фото */}
+      <div
+        className="flex-shrink-0 rounded-xl border border-[#e5e6ea] bg-[#f9fafb] mt-0.5"
+        style={{ width: 48, height: 48 }}
+      />
+      <div className="min-w-0">
+        <p className="font-semibold text-[15px] leading-6 text-[#141414] mb-1">{item.name}</p>
+        <p className="font-normal text-[14px] leading-5 text-[#727272]">{item.desc}</p>
+      </div>
+    </div>
+  );
+}
+
+const MASK = "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)";
 
 export default function Integrations() {
   return (
@@ -44,38 +53,23 @@ export default function Integrations() {
         </h2>
       </div>
 
-      {/* Marquee */}
+      {/* Рядок 1 — ліворуч */}
       <div
-        className="relative py-2"
-        style={{
-          maskImage:
-            "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-        }}
+        className="relative py-2 w-full"
+        style={{ maskImage: MASK, WebkitMaskImage: MASK }}
       >
-        <div className="integrations-marquee flex">
-          {items.map((item, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 flex items-start gap-4 bg-white border border-[#e5e6ea] rounded-2xl mx-2"
-              style={{ width: 370, padding: "22px 28px" }}
-            >
-              {/* Logo placeholder — буде замінено на <Image> */}
-              <div
-                className="flex-shrink-0 rounded-xl border border-[#e5e6ea] bg-[#f9fafb] mt-0.5"
-                style={{ width: 48, height: 48, flexShrink: 0 }}
-              />
-              <div className="min-w-0">
-                <p className="font-semibold text-[15px] leading-6 text-[#141414] mb-1">
-                  {item.name}
-                </p>
-                <p className="font-normal text-[14px] leading-5 text-[#727272]">
-                  {item.desc}
-                </p>
-              </div>
-            </div>
-          ))}
+        <div className="integrations-track flex">
+          {track1.map((item, i) => <IntegrationCard key={i} item={item} />)}
+        </div>
+      </div>
+
+      {/* Рядок 2 — праворуч */}
+      <div
+        className="relative py-2 w-full mt-4"
+        style={{ maskImage: MASK, WebkitMaskImage: MASK }}
+      >
+        <div className="integrations-track-rtl flex">
+          {track2.map((item, i) => <IntegrationCard key={i} item={item} />)}
         </div>
       </div>
     </section>

@@ -65,16 +65,26 @@
   animation-play-state: running;
 }
 
-/* Integrations marquee */
-@keyframes marquee {
-  0%   { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+/* Integrations marquee — px-based so zoom level doesn't break alignment */
+/* One set = 6 cards × (370px width + 16px margin) = 2316px */
+@keyframes marquee-ltr {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-2316px); }
 }
-.integrations-marquee {
-  animation: marquee 32s linear infinite;
+@keyframes marquee-rtl {
+  from { transform: translateX(-2316px); }
+  to   { transform: translateX(0); }
+}
+.integrations-track {
+  animation: marquee-ltr 28s linear infinite;
   will-change: transform;
 }
-.integrations-marquee:hover {
+.integrations-track-rtl {
+  animation: marquee-rtl 28s linear infinite;
+  will-change: transform;
+}
+.integrations-track:hover,
+.integrations-track-rtl:hover {
   animation-play-state: paused;
 }
 
