@@ -65,6 +65,18 @@
   animation-play-state: running;
 }
 
+/* Footer link hover */
+.footer-link { color: #727272; text-decoration: none; transition: color 0.2s; }
+.footer-link:hover { color: #141414; }
+
+/* Social link brand hover colors */
+.social-link { color: #727272; text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 12px; }
+.social-link[data-social="facebook"]:hover  { color: #1877F2; }
+.social-link[data-social="instagram"]:hover { color: #E1306C; }
+.social-link[data-social="youtube"]:hover   { color: #FF0000; }
+.social-link[data-social="linkedin"]:hover  { color: #0A66C2; }
+.social-link[data-social="telegram"]:hover  { color: #0088CC; }
+
 /* Анімований кут для conic-gradient — без overflow:hidden, без псевдоелементів */
 @property --mockup-angle {
   syntax: '<angle>';
