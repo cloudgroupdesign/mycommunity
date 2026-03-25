@@ -55,106 +55,124 @@ export default function Features() {
           </p>
         </div>
 
-        {/* Слайдер */}
-        <div className="relative">
+        {/* Слайдер + індикатори */}
+        <div className="flex flex-col items-center gap-6">
 
-          {/* Ліва стрілка */}
-          <button
-            onClick={() => go(current - 1)}
-            aria-label="Попередній"
-            className="features-nav-btn absolute flex items-center justify-center rounded-full bg-white shadow-md"
-            style={{
-              left: -32,
-              top: "50%",
-              transform: "translateY(-50%)",
-              width: 64,
-              height: 64,
-              zIndex: 10,
-              border: "none",
-            }}
-          >
-            <ChevronLeft size={32} color="#141414" strokeWidth={2.5} />
-          </button>
+          {/* Слайдер */}
+          <div className="relative w-full">
 
-          {/* Картка слайду */}
-          <div
-            className="w-full rounded-2xl overflow-hidden flex flex-col lg:flex-row"
-            style={{ minHeight: 460 }}
-          >
-            {/* Ліворуч — кольорова зона з мокапом */}
-            <div
-              className="flex-shrink-0 flex items-end justify-center"
+            {/* Ліва стрілка */}
+            <button
+              onClick={() => go(current - 1)}
+              aria-label="Попередній"
+              className="features-nav-btn absolute flex items-center justify-center rounded-full bg-white shadow-md"
               style={{
-                flex: "0 0 52%",
-                background: slide.accent,
-                transition: "background 0.35s ease",
-                padding: "40px 40px 0",
+                left: -32,
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: 64,
+                height: 64,
+                zIndex: 10,
+                border: "none",
               }}
             >
-              {/* Мокап-placeholder — замінити на <Image> */}
+              <ChevronLeft size={32} color="#141414" strokeWidth={2.5} />
+            </button>
+
+            {/* Картка слайду */}
+            <div
+              className="w-full rounded-2xl overflow-hidden flex flex-col lg:flex-row"
+              style={{ height: 520 }}
+            >
+              {/* Ліворуч — кольорова зона з мокапом */}
               <div
+                className="flex-shrink-0 flex items-end justify-center"
                 style={{
-                  width: "100%",
-                  height: 320,
-                  background: "rgba(255,255,255,0.15)",
-                  borderRadius: "12px 12px 0 0",
-                  border: "1px solid rgba(255,255,255,0.25)",
+                  flex: "0 0 52%",
+                  background: slide.accent,
+                  transition: "background 0.35s ease",
+                  padding: "40px 40px 0",
                 }}
-              />
+              >
+                {/* Мокап-placeholder — замінити на <Image> */}
+                <div
+                  style={{
+                    width: "100%",
+                    height: 360,
+                    background: "rgba(255,255,255,0.15)",
+                    borderRadius: "12px 12px 0 0",
+                    border: "1px solid rgba(255,255,255,0.25)",
+                  }}
+                />
+              </div>
+
+              {/* Праворуч — текст */}
+              <div
+                className="flex flex-col justify-center gap-5 p-10 lg:p-14"
+                style={{
+                  flex: 1,
+                  background: slide.bg,
+                  transition: "background 0.35s ease",
+                }}
+              >
+                {/* Заголовок */}
+                <h3
+                  className="font-semibold text-[32px] leading-[40px] tracking-tight"
+                  style={{ color: slide.dark }}
+                >
+                  {slide.title}
+                </h3>
+
+                {/* Опис */}
+                <p
+                  className="font-normal text-[18px] leading-[30px]"
+                  style={{ color: slide.dark, opacity: 0.72 }}
+                >
+                  {slide.desc}
+                </p>
+              </div>
             </div>
 
-            {/* Праворуч — текст */}
-            <div
-              className="flex flex-col justify-center gap-6 p-10 lg:p-14"
+            {/* Права стрілка */}
+            <button
+              onClick={() => go(current + 1)}
+              aria-label="Наступний"
+              className="features-nav-btn absolute flex items-center justify-center rounded-full bg-white shadow-md"
               style={{
-                flex: 1,
-                background: slide.bg,
-                transition: "background 0.35s ease",
+                right: -32,
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: 64,
+                height: 64,
+                zIndex: 10,
+                border: "none",
               }}
             >
-              {/* Лічильник */}
-              <p
-                className="font-medium text-[13px] leading-5 tracking-widest uppercase"
-                style={{ color: slide.accent }}
-              >
-                {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
-              </p>
-
-              {/* Заголовок */}
-              <h3
-                className="font-semibold text-[30px] leading-[38px] tracking-tight"
-                style={{ color: slide.dark }}
-              >
-                {slide.title}
-              </h3>
-
-              {/* Опис */}
-              <p
-                className="font-normal text-[16px] leading-7"
-                style={{ color: slide.dark, opacity: 0.72 }}
-              >
-                {slide.desc}
-              </p>
-            </div>
+              <ChevronRight size={32} color="#141414" strokeWidth={2.5} />
+            </button>
           </div>
 
-          {/* Права стрілка */}
-          <button
-            onClick={() => go(current + 1)}
-            aria-label="Наступний"
-            className="features-nav-btn absolute flex items-center justify-center rounded-full bg-white shadow-md"
-            style={{
-              right: -32,
-              top: "50%",
-              transform: "translateY(-50%)",
-              width: 64,
-              height: 64,
-              zIndex: 10,
-              border: "none",
-            }}
-          >
-            <ChevronRight size={32} color="#141414" strokeWidth={2.5} />
-          </button>
+          {/* Індикатори під карткою */}
+          <div className="flex items-center gap-2">
+            {slides.map((s, i) => (
+              <button
+                key={i}
+                onClick={() => go(i)}
+                aria-label={`Слайд ${i + 1}`}
+                style={{
+                  height: 8,
+                  width: i === current ? 28 : 8,
+                  borderRadius: 999,
+                  background: i === current ? slide.accent : "#d1d5db",
+                  border: "none",
+                  padding: 0,
+                  cursor: i === current ? "default" : "pointer",
+                  transition: "width 0.3s ease, background 0.35s ease",
+                }}
+              />
+            ))}
+          </div>
+
         </div>
 
       </div>
