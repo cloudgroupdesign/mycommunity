@@ -22,6 +22,11 @@ const ROW_2 = [
 const track1 = Array(8).fill(ROW_1).flat();
 const track2 = Array(8).fill(ROW_2).flat();
 
+// Білий градієнт-overlay для fade ефекту на краях.
+// НЕ використовуємо mask-image / overflow:hidden на контейнері —
+// вони обрізають box-shadow дочірніх елементів (те саме що було з мокапом).
+const FADE_OVERLAY = "linear-gradient(to right, white 0%, transparent 8%, transparent 92%, white 100%)";
+
 function IntegrationCard({ item }: { item: { id: string; name: string; desc: string } }) {
   return (
     <div
@@ -41,11 +46,11 @@ function IntegrationCard({ item }: { item: { id: string; name: string; desc: str
   );
 }
 
-const MASK = "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)";
-
 export default function Integrations() {
   return (
-    <section className="py-24 bg-white w-full">
+    // overflow-x: clip на секції — клiпає горизонтальний overflow треку,
+    // але НЕ впливає на vertical overflow (тіні карток)
+    <section className="py-24 bg-white w-full" style={{ overflowX: "clip" }}>
       {/* Заголовок + опис */}
       <div className="w-full mx-auto px-6 text-center flex flex-col items-center gap-5" style={{ maxWidth: 1080, marginBottom: 56 }}>
         <h2 className="font-semibold text-[54px] leading-[64px] text-[#141414] tracking-tight">
@@ -56,24 +61,28 @@ export default function Integrations() {
         </p>
       </div>
 
-      {/* Marquee wrapper — max 3024px, centered, clips horizontally */}
-      <div className="mx-auto w-full" style={{ maxWidth: 3024, overflow: "clip", overflowClipMargin: "40px" }}>
+      {/* Marquee wrapper — max 3024px, centered.
+          НЕ має overflow — тіні карток вільно виходять вертикально.
+          Горизонтальний клiп — через overflow-x:clip на секції.
+          Fade ефект — білий gradient overlay (absolute, pointer-events:none). */}
+      <div className="relative mx-auto w-full" style={{ maxWidth: 3024 }}>
+
+        {/* Білий fade overlay — поверх карток, тільки по краях, не обрізає тіні */}
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: FADE_OVERLAY, zIndex: 10 }}
+        />
 
         {/* Рядок 1 — ліворуч */}
-        <div
-          className="relative py-2 w-full"
-          style={{ maskImage: MASK, WebkitMaskImage: MASK }}
-        >
+        <div className="relative py-2 w-full">
           <div className="integrations-track flex">
             {track1.map((item, i) => <IntegrationCard key={i} item={item} />)}
           </div>
         </div>
 
         {/* Рядок 2 — праворуч */}
-        <div
-          className="relative py-2 w-full"
-          style={{ maskImage: MASK, WebkitMaskImage: MASK }}
-        >
+        <div className="relative py-2 w-full">
           <div className="integrations-track-rtl flex">
             {track2.map((item, i) => <IntegrationCard key={i} item={item} />)}
           </div>
