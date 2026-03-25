@@ -99,11 +99,10 @@
 /* Features slider nav buttons */
 .features-nav-btn {
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
 .features-nav-btn:hover {
-  transform: translateY(-50%) scale(1.12);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.13);
+  transform: translateY(-50%) scale(1.125);
 }
 
 /* Footer link hover */
