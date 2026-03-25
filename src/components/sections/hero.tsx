@@ -35,20 +35,16 @@ export default function Hero() {
 
   return (
     <section
-      className={`bg-white flex flex-col items-center ${stageClass}`}
+      className={`bg-white w-full flex flex-col items-center px-6 ${stageClass}`}
       style={{ paddingTop: 80, paddingBottom: 120, gap: 64 }}
     >
-      {/* Content container */}
+      {/* Text + buttons — 1080px */}
       <div
-        className="flex flex-col items-center justify-center w-full px-6 lg:px-8 text-center"
+        className="w-full flex flex-col items-center text-center"
         style={{ maxWidth: 1080, gap: 40 }}
       >
-        {/* Info: h1 + subtitle */}
-        <div
-          className="flex flex-col items-center justify-center text-center w-full"
-          style={{ gap: 32 }}
-        >
-          {/* H1 — word-by-word */}
+        {/* h1 + subtitle */}
+        <div className="w-full flex flex-col items-center text-center" style={{ gap: 32 }}>
           <h1
             style={{
               fontSize: 72,
@@ -63,8 +59,7 @@ export default function Hero() {
               <span key={li} style={{ display: "block" }}>
                 {line.map((word, wi) => {
                   const globalIndex =
-                    H1_LINES.slice(0, li).reduce((a, l) => a + l.length, 0) +
-                    wi;
+                    H1_LINES.slice(0, li).reduce((a, l) => a + l.length, 0) + wi;
                   return (
                     <span key={wi} className="hero-word-outer">
                       <span
@@ -81,7 +76,6 @@ export default function Hero() {
             ))}
           </h1>
 
-          {/* Subtitle */}
           <p
             style={{
               fontSize: 18,
@@ -129,7 +123,6 @@ export default function Hero() {
           >
             Записатися на демо-перегляд
           </button>
-
           <button
             style={{
               background: "#fff",
@@ -153,9 +146,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Mockup — full width of content block */}
+      {/* Mockup — повна ширина 1080px, без паддінгу */}
       <div
-        className="w-full px-6 lg:px-8"
+        className="w-full"
         style={{
           maxWidth: 1080,
           isolation: "isolate",

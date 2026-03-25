@@ -1,8 +1,7 @@
 export default function Team() {
   return (
-    <section className="flex flex-col items-center py-24 w-full">
-      <div className="flex flex-col gap-14 items-center justify-center max-w-[1080px] w-full px-6">
-        {/* Info */}
+    <section className="w-full flex flex-col items-center px-6 py-24">
+      <div className="w-full flex flex-col gap-14 items-center" style={{ maxWidth: 1080 }}>
         <div className="flex flex-col gap-8 items-center text-center w-full">
           <h2 className="font-semibold text-[54px] leading-[64px] text-[#141414] tracking-tight">
             Команда Maybutne Consulting
@@ -13,8 +12,6 @@ export default function Team() {
             впроваджували різні CRM, ERP і системи управління.
           </p>
         </div>
-
-        {/* Photo / Video placeholder */}
         <div className="bg-white border-2 border-[#e5e6ea] rounded-2xl w-full h-[528px]" />
       </div>
     </section>

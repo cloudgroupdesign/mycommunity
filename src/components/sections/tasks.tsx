@@ -27,16 +27,14 @@ const tasks = [
 
 export default function Tasks() {
   return (
-    <section className="flex flex-col items-center py-24 w-full">
-      <div className="flex flex-col gap-14 items-center justify-center max-w-[1080px] w-full px-6">
-        {/* Info */}
+    <section className="w-full flex flex-col items-center px-6 py-24">
+      <div className="w-full flex flex-col gap-14 items-center" style={{ maxWidth: 1080 }}>
         <div className="flex flex-col items-center text-center w-full">
           <h2 className="font-semibold text-[54px] leading-[64px] text-[#141414] tracking-tight">
             Які задачі вирішує система
           </h2>
         </div>
 
-        {/* 3×2 grid */}
         <div className="border border-[#e5e6ea] rounded-2xl overflow-hidden grid grid-cols-3 w-full">
           {tasks.map((item, i) => {
             const isLastRow = i >= 3;
@@ -50,11 +48,9 @@ export default function Tasks() {
                   !isLastCol ? "border-r border-[#e5e6ea]" : "",
                 ].join(" ")}
               >
-                {/* Photo / Video placeholder */}
                 <div className="flex-1 bg-[#f9fafb] flex items-center justify-center">
                   <div className="bg-white rounded-2xl shadow-sm size-[76px]" />
                 </div>
-                {/* Content */}
                 <div className="flex flex-col gap-3 pb-8 pt-7 px-7">
                   <p className="font-semibold text-[18px] leading-6 text-[#141414]">
                     {item.title}
