@@ -57,7 +57,7 @@ export default function Integrations() {
       </div>
 
       {/* Marquee wrapper — max 3024px, centered, clips horizontally */}
-      <div className="mx-auto w-full" style={{ maxWidth: 3024, overflowX: "clip" }}>
+      <div className="mx-auto w-full" style={{ maxWidth: 3024, overflow: "clip", overflowClipMargin: "40px" }}>
 
         {/* Рядок 1 — ліворуч */}
         <div
