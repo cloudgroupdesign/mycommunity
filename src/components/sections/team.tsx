@@ -12,7 +12,7 @@ export default function Team() {
             впроваджували різні CRM, ERP і системи управління.
           </p>
         </div>
-        <div className="bg-white border-2 border-[#e5e6ea] rounded-2xl w-full h-[528px]" />
+        <div className="bg-white border border-[#e5e6ea] rounded-2xl w-full h-[528px]" />
       </div>
     </section>
   );

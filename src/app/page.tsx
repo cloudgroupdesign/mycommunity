@@ -4,6 +4,7 @@ import Hero from "@/components/sections/hero";
 import Team from "@/components/sections/team";
 import Why from "@/components/sections/why";
 import Tasks from "@/components/sections/tasks";
+import Integrations from "@/components/sections/integrations";
 
 export default function Page() {
   return (
@@ -14,6 +15,7 @@ export default function Page() {
         <Team />
         <Why />
         <Tasks />
+        <Integrations />
       </main>
       <Footer />
     </div>
