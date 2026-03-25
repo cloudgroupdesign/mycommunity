@@ -45,7 +45,7 @@ const MASK = "linear-gradient(to right, transparent 0%, black 6%, black 94%, tra
 
 export default function Integrations() {
   return (
-    <section className="py-24 bg-white overflow-x-hidden w-full">
+    <section className="py-24 bg-white w-full">
       {/* Заголовок */}
       <div className="w-full mx-auto px-6 text-center" style={{ maxWidth: 1080, marginBottom: 56 }}>
         <h2 className="font-semibold text-[54px] leading-[64px] text-[#141414] tracking-tight">
@@ -53,24 +53,29 @@ export default function Integrations() {
         </h2>
       </div>
 
-      {/* Рядок 1 — ліворуч */}
-      <div
-        className="relative py-4 w-full"
-        style={{ maskImage: MASK, WebkitMaskImage: MASK }}
-      >
-        <div className="integrations-track flex">
-          {track1.map((item, i) => <IntegrationCard key={i} item={item} />)}
-        </div>
-      </div>
+      {/* Marquee wrapper — max 3024px, centered, clips horizontally */}
+      <div className="mx-auto w-full" style={{ maxWidth: 3024, overflowX: "hidden" }}>
 
-      {/* Рядок 2 — праворуч */}
-      <div
-        className="relative py-4 w-full"
-        style={{ maskImage: MASK, WebkitMaskImage: MASK }}
-      >
-        <div className="integrations-track-rtl flex">
-          {track2.map((item, i) => <IntegrationCard key={i} item={item} />)}
+        {/* Рядок 1 — ліворуч */}
+        <div
+          className="relative py-4 w-full"
+          style={{ maskImage: MASK, WebkitMaskImage: MASK }}
+        >
+          <div className="integrations-track flex">
+            {track1.map((item, i) => <IntegrationCard key={i} item={item} />)}
+          </div>
         </div>
+
+        {/* Рядок 2 — праворуч */}
+        <div
+          className="relative py-4 w-full"
+          style={{ maskImage: MASK, WebkitMaskImage: MASK }}
+        >
+          <div className="integrations-track-rtl flex">
+            {track2.map((item, i) => <IntegrationCard key={i} item={item} />)}
+          </div>
+        </div>
+
       </div>
     </section>
   );
