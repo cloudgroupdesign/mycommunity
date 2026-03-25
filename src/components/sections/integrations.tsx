@@ -25,7 +25,7 @@ const track2 = Array(8).fill(ROW_2).flat();
 function IntegrationCard({ item }: { item: { id: string; name: string; desc: string } }) {
   return (
     <div
-      className="flex-shrink-0 flex items-start gap-4 bg-white border border-[#e5e6ea] rounded-2xl"
+      className="integration-card flex-shrink-0 flex items-start gap-4 bg-white border border-[#e5e6ea] rounded-2xl"
       style={{ width: 370, padding: "22px 28px", margin: "0 8px" }}
     >
       {/* Logo placeholder — замінити на <Image> коли будуть фото */}
@@ -35,7 +35,7 @@ function IntegrationCard({ item }: { item: { id: string; name: string; desc: str
       />
       <div className="min-w-0">
         <p className="font-semibold text-[15px] leading-6 text-[#141414] mb-1">{item.name}</p>
-        <p className="font-normal text-[14px] leading-5 text-[#727272]">{item.desc}</p>
+        <p className="integration-card-desc font-normal text-[14px] leading-5 text-[#727272]">{item.desc}</p>
       </div>
     </div>
   );

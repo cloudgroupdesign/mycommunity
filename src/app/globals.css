@@ -83,9 +83,17 @@
   animation: marquee-rtl 28s linear infinite;
   will-change: transform;
 }
-.integrations-track:hover,
-.integrations-track-rtl:hover {
-  animation-play-state: paused;
+/* Card hover — subtle shadow + text highlight */
+.integration-card {
+  transition: box-shadow 0.22s ease, transform 0.22s ease;
+  cursor: default;
+}
+.integration-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+  transform: translateY(-2px);
+}
+.integration-card:hover .integration-card-desc {
+  color: #4b5563;
 }
 
 /* Footer link hover */
