@@ -36,7 +36,7 @@ export default function Hero() {
   return (
     <section
       className={`bg-white w-full flex flex-col items-center px-6 ${stageClass}`}
-      style={{ paddingTop: 72, paddingBottom: 120, gap: 72 }}
+      style={{ paddingTop: 72, paddingBottom: 120, gap: 80 }}
     >
       {/* Text + buttons — 1080px */}
       <div
