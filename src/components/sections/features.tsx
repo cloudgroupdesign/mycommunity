@@ -69,7 +69,6 @@ export default function Features() {
               style={{
                 left: -32,
                 top: "50%",
-                transform: "translateY(-50%)",
                 width: 64,
                 height: 64,
                 zIndex: 10,
@@ -142,7 +141,6 @@ export default function Features() {
               style={{
                 right: -32,
                 top: "50%",
-                transform: "translateY(-50%)",
                 width: 64,
                 height: 64,
                 zIndex: 10,

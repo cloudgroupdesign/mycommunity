@@ -99,6 +99,7 @@
 /* Features slider nav buttons */
 .features-nav-btn {
   cursor: pointer;
+  transform: translateY(-50%);
   transition: transform 0.2s ease;
 }
 .features-nav-btn:hover {
