@@ -32,13 +32,50 @@
 }
 
 @keyframes gradientSpin {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  from { transform: rotate3d(0, 0, 1, 0deg); }
+  to   { transform: rotate3d(0, 0, 1, 360deg); }
 }
 
 @keyframes plopInAnimation {
   0%   { opacity: 0; transform: translateY(2.5rem) rotateX(-25deg); }
   100% { opacity: 1; transform: translateY(0) rotateX(0deg); }
+}
+
+.hero-word-outer {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.1;
+  perspective: 500px;
+  vertical-align: middle;
+}
+
+.hero-word-inner {
+  display: inline-block;
+  margin-top: -0.15em;
+  vertical-align: middle;
+  overflow: hidden;
+  perspective: 500px;
+  opacity: 0;
+  animation: plopInAnimation 0.8s cubic-bezier(0.3, 1.34, 0.38, 1) both;
+  animation-play-state: paused;
+  will-change: opacity, transform;
+}
+
+.hero-stage-1 .hero-word-inner {
+  animation-play-state: running;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes gradientSpin {
+    from { transform: rotate3d(0, 0, 1, 0deg); }
+    to   { transform: rotate3d(0, 0, 1, 0deg); }
+  }
+  @keyframes plopInAnimation {
+    0%   { opacity: 0; transform: none; }
+    100% { opacity: 1; transform: none; }
+  }
+  .hero-word-inner { animation-duration: 0.01ms !important; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
 @layer base {
