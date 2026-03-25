@@ -1,8 +1,9 @@
 import { Play } from "@geist-ui/icons";
+import HeroMockup from "./hero-mockup";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col items-center gap-16 pt-20 pb-[120px] w-full">
+    <section className="flex flex-col items-center gap-16 pt-20 pb-[120px] w-full overflow-hidden">
       <div className="flex flex-col gap-10 items-center justify-center max-w-[1080px] w-full px-6">
         {/* Text block */}
         <div className="flex flex-col gap-8 items-center text-center w-full">
@@ -34,10 +35,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Hero media placeholder */}
-      <div className="bg-white border-2 border-[#e5e6ea] rounded-2xl w-[1080px] h-[604px] flex items-center justify-center text-[#e5e6ea]">
-        {/* Photo / Video goes here */}
-      </div>
+      {/* Mockup with gradient spin + scroll animation */}
+      <HeroMockup />
     </section>
   );
 }

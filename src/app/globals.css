@@ -31,6 +31,16 @@
   --radius: 0.625rem;
 }
 
+@keyframes gradientSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes plopInAnimation {
+  0%   { opacity: 0; transform: translateY(2.5rem) rotateX(-25deg); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0deg); }
+}
+
 @layer base {
   * {
     @apply border-border;
