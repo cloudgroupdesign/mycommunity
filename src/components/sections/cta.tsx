@@ -1,6 +1,6 @@
 export default function CTA() {
   return (
-    <section className="w-full" style={{ padding: "0 24px", paddingBottom: 48 }}>
+    <section className="w-full" style={{ padding: "0 32px", paddingBottom: 0 }}>
       <div
         style={{
           borderRadius: 24,
@@ -17,11 +17,11 @@ export default function CTA() {
             inset: 0,
             pointerEvents: "none",
             background: `
-              radial-gradient(ellipse 58% 62% at   0%  85%, rgba(41,171,226,0.28)  0%, transparent 70%),
-              radial-gradient(ellipse 52% 52% at  25%  93%, rgba(32,169,157,0.22)  0%, transparent 68%),
-              radial-gradient(ellipse 52% 48% at  50% 110%, rgba(141,198,63,0.18)  0%, transparent 68%),
-              radial-gradient(ellipse 52% 52% at  75%  93%, rgba(247,148,29,0.22)  0%, transparent 68%),
-              radial-gradient(ellipse 58% 62% at 100%  85%, rgba(232,76,61,0.25)   0%, transparent 70%)
+              radial-gradient(ellipse 58% 62% at   0%  95%, rgba(41,171,226,0.28)  0%, transparent 70%),
+              radial-gradient(ellipse 52% 52% at  25% 102%, rgba(32,169,157,0.22)  0%, transparent 68%),
+              radial-gradient(ellipse 52% 48% at  50% 118%, rgba(141,198,63,0.18)  0%, transparent 68%),
+              radial-gradient(ellipse 52% 52% at  75% 102%, rgba(247,148,29,0.22)  0%, transparent 68%),
+              radial-gradient(ellipse 58% 62% at 100%  95%, rgba(232,76,61,0.25)   0%, transparent 70%)
             `,
           }}
         />

@@ -43,7 +43,7 @@ export default function Footer() {
   return (
     <footer className="bg-white w-full px-6">
       {/* Main */}
-      <div className="w-full mx-auto" style={{ maxWidth: 1080, paddingTop: 48, paddingBottom: 44 }}>
+      <div className="w-full mx-auto" style={{ maxWidth: 1080, paddingTop: 56, paddingBottom: 40 }}>
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-12">
 
           {/* Brand */}
@@ -120,7 +120,7 @@ export default function Footer() {
       <div className="w-full mx-auto" style={{ maxWidth: 1080 }}>
         <div
           className="flex flex-col sm:flex-row items-center justify-between gap-3"
-          style={{ borderTop: "1px solid #e5e6ea", paddingTop: 32, paddingBottom: 56 }}
+          style={{ borderTop: "1px solid #e5e6ea", paddingTop: 40, paddingBottom: 56 }}
         >
           <p style={{ fontSize: 12, color: "#727272" }}>
             © {year} My Community. Усі права захищено.
