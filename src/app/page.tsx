@@ -1,11 +1,10 @@
 import Navbar from "@/components/shared/navbar";
 import Footer from "@/components/shared/footer";
 import Hero from "@/components/sections/hero";
-import Team from "@/components/sections/team";
-import Why from "@/components/sections/why";
 import Tasks from "@/components/sections/tasks";
 import Features from "@/components/sections/features";
 import Integrations from "@/components/sections/integrations";
+import CTA from "@/components/sections/cta";
 
 export default function Page() {
   return (
@@ -13,11 +12,10 @@ export default function Page() {
       <Navbar />
       <main className="flex flex-col items-center w-full">
         <Hero />
-        <Team />
-        <Why />
         <Tasks />
         <Features />
         <Integrations />
+        <CTA />
       </main>
       <Footer />
     </div>
