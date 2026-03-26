@@ -1,53 +1,81 @@
 "use client";
 
 import { useState } from "react";
-import { Users, MessageSquare, CheckSquare, Grid, Briefcase, ChevronLeft, ChevronRight } from "@geist-ui/icons";
+import { ChevronLeft, ChevronRight } from "@geist-ui/icons";
+
+/* ── Fill-іконки (Heroicons 20/solid paths) ── */
+const FunnelFill = () => (
+  <svg width="17" height="17" viewBox="2.5 1 15.5 17.5" fill="white">
+    <path fillRule="evenodd" d="M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 0 1 .628.74v2.288a2.25 2.25 0 0 1-.659 1.59l-4.682 4.683a2.25 2.25 0 0 0-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 0 1 8 18.25v-5.757a2.25 2.25 0 0 0-.659-1.591L2.66 6.22A2.25 2.25 0 0 1 2 4.629V2.34a.75.75 0 0 1 .628-.74z" clipRule="evenodd" />
+  </svg>
+);
+const CheckCircleFill = () => (
+  <svg width="17" height="17" viewBox="2 2 16 16" fill="white">
+    <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
+  </svg>
+);
+const ChatFill = () => (
+  <svg width="17" height="17" viewBox="2 4 16 13" fill="white">
+    <path fillRule="evenodd" d="M2 6.75A2.75 2.75 0 0 1 4.75 4h10.5A2.75 2.75 0 0 1 18 6.75v5.5A2.75 2.75 0 0 1 15.25 15H8.614l-3.348 2.236A.75.75 0 0 1 4 16.75v-2.15A2.75 2.75 0 0 1 2 12.25v-5.5Z" clipRule="evenodd" />
+  </svg>
+);
+const FolderFill = () => (
+  <svg width="17" height="17" viewBox="2 2 16 15" fill="white">
+    <path d="M2 4.5A2.5 2.5 0 0 1 4.5 2h3.879a2.5 2.5 0 0 1 1.768.732l.62.62c.162.162.38.253.609.253H15.5A2.5 2.5 0 0 1 18 6H2V4.5Z" />
+    <path fillRule="evenodd" d="M2 7h16v7.5A2.5 2.5 0 0 1 15.5 17h-11A2.5 2.5 0 0 1 2 14.5V7Z" clipRule="evenodd" />
+  </svg>
+);
+const UsersFill = () => (
+  <svg width="17" height="17" viewBox="1.5 2 18 15" fill="white">
+    <path d="M7 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM14.5 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM1.615 16.428a1.224 1.224 0 0 1-.569-1.175 6.002 6.002 0 0 1 11.908 0c.058.467-.172.92-.57 1.174A9.953 9.953 0 0 1 7 17a9.953 9.953 0 0 1-5.385-1.572ZM14.5 16h-.106c.07-.297.088-.611.048-.933a7.47 7.47 0 0 0-1.588-3.755 4.502 4.502 0 0 1 5.874 2.636.818.818 0 0 1-.36.98A7.465 7.465 0 0 1 14.5 16Z" />
+  </svg>
+);
 
 const slides = [
   {
     label: "CRM-системи",
-    Icon: Users,
+    Icon: FunnelFill,
     title: "CRM та продажі",
     desc: "Воронки продажів, управління клієнтами та угодами, повна історія взаємодій, аналітика продажів та KPI, інтеграції та автоматизації у продажах, АІ-агент, який спілкується з клієнтами — і все це підтягується в угоди.",
-    accent: "#3B6FD4",
+    accent: "#367bf6",
     dark: "#1a3a7a",
     bg: "#eef2fc",
   },
   {
-    label: "Комунікації",
-    Icon: MessageSquare,
-    title: "Омніканальні комунікації",
-    desc: "Усі канали в одному інтерфейсі: Telegram, Viber, Instagram, WhatsApp — вся комунікація з клієнтом зберігається в My Community.",
-    accent: "#20A99D",
-    dark: "#0a5a54",
-    bg: "#e4f5f4",
-  },
-  {
     label: "Завдання",
-    Icon: CheckSquare,
+    Icon: CheckCircleFill,
     title: "Управління задачами",
     desc: "Постановка задач співробітникам, контроль дедлайнів і пріоритетів, командні та персональні задачі, прив'язка задач до клієнтів і проєктів.",
-    accent: "#F7941D",
-    dark: "#7a3e00",
-    bg: "#fef3e3",
+    accent: "#34a853",
+    dark: "#1a4a25",
+    bg: "#e8f5e9",
+  },
+  {
+    label: "Комунікація",
+    Icon: ChatFill,
+    title: "Омніканальні комунікації",
+    desc: "Усі канали в одному інтерфейсі: Telegram, Viber, Instagram, WhatsApp — вся комунікація з клієнтом зберігається в My Community.",
+    accent: "#f7a117",
+    dark: "#7a4a00",
+    bg: "#fff8e1",
   },
   {
     label: "Проєкти",
-    Icon: Grid,
+    Icon: FolderFill,
     title: "Проєкти та виробництво",
     desc: "Планування процесів (Kanban, діаграма Ганта), контроль етапів та строків, узгоджена робота команд, управління виробничими циклами.",
-    accent: "#8DC63F",
-    dark: "#3a5900",
-    bg: "#eef7e2",
+    accent: "#ea463e",
+    dark: "#6a1a16",
+    bg: "#fce4e2",
   },
   {
     label: "HR та фінанси",
-    Icon: Briefcase,
+    Icon: UsersFill,
     title: "HR, фінанси та склад",
     desc: "Управління командою та ролями, контроль ефективності співробітників, облік доходів і витрат, управління складом і ресурсами.",
-    accent: "#9B59B6",
-    dark: "#52207a",
-    bg: "#f4edf9",
+    accent: "#b747f6",
+    dark: "#5a1a7a",
+    bg: "#f3e8fd",
   },
 ];
 
@@ -71,7 +99,7 @@ export default function Features() {
         </div>
 
         {/* Таби */}
-        <div className="flex flex-wrap justify-center" style={{ gap: 8 }}>
+        <div className="flex flex-wrap justify-center" style={{ gap: 16 }}>
           {slides.map((s, i) => {
             const active = i === current;
             return (
@@ -81,22 +109,22 @@ export default function Features() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: 12,
-                  padding: "12px 20px 12px 12px",
-                  borderRadius: 16,
+                  gap: 10,
+                  padding: "10px 14px 10px 10px",
+                  borderRadius: 14,
                   border: "none",
                   cursor: "pointer",
-                  background: active ? s.accent + "18" : "transparent",
+                  background: active ? s.accent + "1a" : "transparent",
                   transition: "background 0.25s ease",
                   minWidth: 0,
                 }}
               >
-                {/* Іконка — завжди кольорова */}
+                {/* Іконка — fill, 20×20, padding 5px, rounded 6px */}
                 <div
                   style={{
-                    width: 40,
-                    height: 40,
-                    borderRadius: 11,
+                    width: 36,
+                    height: 36,
+                    borderRadius: 10,
                     background: s.accent,
                     display: "flex",
                     alignItems: "center",
@@ -104,14 +132,14 @@ export default function Features() {
                     flexShrink: 0,
                   }}
                 >
-                  <s.Icon size={20} color="#fff" strokeWidth={2.5} />
+                  <s.Icon />
                 </div>
 
-                {/* Назва — кольорова лише у активній табі */}
+                {/* Назва */}
                 <span
                   style={{
-                    fontWeight: 600,
-                    fontSize: 15,
+                    fontWeight: 500,
+                    fontSize: 17,
                     lineHeight: "22px",
                     color: active ? s.accent : "#141414",
                     transition: "color 0.25s ease",
@@ -140,13 +168,13 @@ export default function Features() {
 
         <div
           className="w-full rounded-2xl overflow-hidden flex flex-col lg:flex-row"
-          style={{ height: 464 }}
+          style={{ height: 440 }}
         >
           {/* Ліворуч — кольорова зона з мокапом */}
           <div
             className="flex-shrink-0 flex items-end justify-center"
             style={{
-              flex: "0 0 52%",
+              flex: "0 0 60%",
               background: slide.accent,
               transition: "background 0.35s ease",
               padding: "40px 40px 0",
@@ -166,12 +194,16 @@ export default function Features() {
 
           {/* Праворуч — текст */}
           <div
-            className="flex flex-col justify-center p-10 lg:p-14"
+            className="flex flex-col justify-start"
             style={{
               gap: 24,
               flex: 1,
               background: slide.bg,
               transition: "background 0.35s ease",
+              paddingTop: 56,
+              paddingLeft: 48,
+              paddingRight: 64,
+              paddingBottom: 40,
             }}
           >
             <h3

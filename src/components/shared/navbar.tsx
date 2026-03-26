@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronDown } from "@geist-ui/icons";
 
 export default function Navbar() {
@@ -6,14 +7,16 @@ export default function Navbar() {
     <header className="border-b border-[#e5e6ea] h-16 flex items-center px-6 w-full sticky top-0 bg-white z-50">
       {/* Left — Logo */}
       <div className="flex flex-1 items-center">
-        <Image
-          src="/logo.png"
-          alt="My Community"
-          width={210}
-          height={36}
-          priority
-          className="h-9 w-auto object-contain"
-        />
+        <Link href="/">
+          <Image
+            src="/logo.png"
+            alt="My Community"
+            width={210}
+            height={36}
+            priority
+            className="h-9 w-auto object-contain"
+          />
+        </Link>
       </div>
 
       {/* Center — Nav */}
@@ -22,15 +25,15 @@ export default function Navbar() {
           Продукти
           <ChevronDown size={14} />
         </button>
-        <button className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
+        <Link href="/prices" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
           Ціни
-        </button>
+        </Link>
         <button className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
           Відгуки
         </button>
-        <button className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
+        <Link href="/integrations" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
           Інтеграції
-        </button>
+        </Link>
       </nav>
 
       {/* Right */}
