@@ -1,13 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ChevronDown } from "@geist-ui/icons";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   return (
     <header className="border-b border-[#e5e6ea] h-16 flex items-center px-6 w-full sticky top-0 bg-white z-50">
       {/* Left — Logo */}
       <div className="flex flex-1 items-center">
-        <Link href="/">
+        <Link
+          href="/"
+          onClick={() => { if (pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" }); }}
+        >
           <Image
             src="/logo.png"
             alt="My Community"

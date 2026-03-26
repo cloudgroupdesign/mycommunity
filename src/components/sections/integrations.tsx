@@ -92,8 +92,10 @@ export default function Integrations() {
 
       {/* Кнопка */}
       <div className="flex justify-center" style={{ marginTop: 48 }}>
-        <button
+        <a
+          href="/integrations"
           style={{
+            display: "inline-block",
             background: "#141414",
             color: "#fff",
             fontSize: 16,
@@ -101,12 +103,12 @@ export default function Integrations() {
             lineHeight: "24px",
             padding: "14px 32px",
             borderRadius: 12,
-            border: "none",
+            textDecoration: "none",
             cursor: "pointer",
           }}
         >
           Дивитись всі інтеграції
-        </button>
+        </a>
       </div>
     </section>
   );
