@@ -37,15 +37,14 @@
 }
 
 @keyframes plopInAnimation {
-  0%   { opacity: 0; transform: translateY(2.5rem) rotateX(-25deg); }
-  100% { opacity: 1; transform: translateY(0) rotateX(0deg); }
+  0%   { opacity: 0; transform: translateY(1.5rem); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .hero-word-outer {
   display: inline-block;
   overflow: hidden;
   line-height: 1.1;
-  perspective: 500px;
   vertical-align: middle;
 }
 
@@ -53,10 +52,8 @@
   display: inline-block;
   margin-top: -0.15em;
   vertical-align: middle;
-  overflow: hidden;
-  perspective: 500px;
   opacity: 0;
-  animation: plopInAnimation 0.8s cubic-bezier(0.3, 1.34, 0.38, 1) both;
+  animation: plopInAnimation 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-play-state: paused;
 }
 
