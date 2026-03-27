@@ -65,6 +65,12 @@
   animation-play-state: running;
 }
 
+/* Release GPU compositing layers after animation — fixes font-weight inconsistency */
+.hero-stage-4 .hero-word-inner {
+  will-change: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
 /* Integrations marquee — 3 copies, each set = 6×386px = 2316px.
    width:max-content ensures translateX % calculates against track's own width,
    not the clipped parent. -2316px = exactly one set → seamless infinite loop. */
