@@ -85,21 +85,21 @@ export default function Features() {
   const slide = slides[current];
 
   return (
-    <section className="w-full flex flex-col items-center px-6 py-24">
-      <div className="w-full flex flex-col gap-12" style={{ maxWidth: 1080 }}>
+    <section id="features" className="w-full flex flex-col items-center px-4 md:px-6 py-14 md:py-20 lg:py-24">
+      <div className="w-full flex flex-col gap-8 md:gap-12" style={{ maxWidth: 1080 }}>
 
         {/* Заголовок */}
-        <div className="flex flex-col gap-5 items-center text-center">
-          <h2 className="font-semibold text-[54px] leading-[64px] text-[#141414] tracking-tight">
+        <div className="flex flex-col gap-4 md:gap-5 items-center text-center">
+          <h2 className="section-h2">
             Можливості My Community
           </h2>
-          <p className="font-normal text-[18px] leading-[30px] text-[#727272]" style={{ maxWidth: 580 }}>
+          <p className="text-[15px] md:text-[17px] lg:text-[18px] leading-[26px] md:leading-[28px] lg:leading-[30px] font-normal text-[#727272]" style={{ maxWidth: 580 }}>
             Все для управління бізнесом в одній системі
           </p>
         </div>
 
         {/* Таби */}
-        <div className="flex flex-wrap justify-center" style={{ gap: 16 }}>
+        <div className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-1 sm:gap-4">
           {slides.map((s, i) => {
             const active = i === current;
             return (
@@ -166,10 +166,7 @@ export default function Features() {
             <ChevronLeft size={32} color="#141414" strokeWidth={2.5} />
           </button>
 
-        <div
-          className="w-full rounded-2xl overflow-hidden flex flex-col lg:flex-row"
-          style={{ height: 440 }}
-        >
+        <div className="w-full rounded-2xl overflow-hidden flex flex-col lg:flex-row lg:h-[440px]">
           {/* Ліворуч — кольорова зона з мокапом */}
           <div
             className="flex-shrink-0 flex items-end justify-center"
@@ -177,14 +174,15 @@ export default function Features() {
               flex: "0 0 60%",
               background: slide.accent,
               transition: "background 0.35s ease",
-              padding: "40px 40px 0",
+              padding: "28px 28px 0",
             }}
           >
             {/* Мокап-placeholder — замінити на <Image> */}
             <div
+              className="lg:h-[360px]"
               style={{
                 width: "100%",
-                height: 360,
+                height: 200,
                 background: "rgba(255,255,255,0.15)",
                 borderRadius: "12px 12px 0 0",
                 border: "1px solid rgba(255,255,255,0.25)",
@@ -194,26 +192,21 @@ export default function Features() {
 
           {/* Праворуч — текст */}
           <div
-            className="flex flex-col justify-start"
+            className="flex flex-col justify-start py-12 px-7 lg:px-10 gap-4"
             style={{
-              gap: 24,
               flex: 1,
               background: slide.bg,
               transition: "background 0.35s ease",
-              paddingTop: 56,
-              paddingLeft: 48,
-              paddingRight: 64,
-              paddingBottom: 40,
             }}
           >
             <h3
-              className="font-semibold text-[32px] leading-[40px] tracking-tight"
+              className="font-semibold text-[22px] md:text-[26px] lg:text-[32px] leading-[30px] md:leading-[34px] lg:leading-[40px] tracking-tight"
               style={{ color: slide.dark }}
             >
               {slide.title}
             </h3>
             <p
-              className="font-normal text-[18px] leading-[30px]"
+              className="font-normal text-[14px] md:text-[16px] lg:text-[18px] leading-6 lg:leading-[30px]"
               style={{ color: slide.dark, opacity: 0.72 }}
             >
               {slide.desc}

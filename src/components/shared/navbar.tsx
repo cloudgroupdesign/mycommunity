@@ -3,64 +3,183 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { ChevronDown } from "@geist-ui/icons";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X } from "@geist-ui/icons";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 4);
+    const onScroll = () => {
+      const current = window.scrollY;
+      setScrolled(current > 4);
+
+      // Auto-hide only on mobile/tablet (< 1024px)
+      if (window.innerWidth < 1024) {
+        if (current > lastScrollY.current && current > 64) {
+          // Scrolling down — hide
+          setHidden(true);
+        } else if (current < lastScrollY.current) {
+          if (current < 100) {
+            // Near top — always show
+            setHidden(false);
+          } else if (current > 200) {
+            // Scrolling up, past hero zone — show with animation
+            setHidden(false);
+          }
+          // Between 100–200px: maintain state to avoid confusion near hero
+        }
+      }
+      lastScrollY.current = current;
+    };
+
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setHidden(false);
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  const scrollToFeatures = () => {
+    if (pathname === "/") {
+      document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = "/#features";
+    }
+  };
+
+  const shadowClass = scrolled ? "shadow-[0_2px_12px_0_rgba(0,0,0,0.08)]" : "";
+  const hideClass = hidden ? "-translate-y-full" : "translate-y-0";
+
   return (
-    <header className={`border-b border-[#e5e6ea] h-16 flex items-center px-6 w-full sticky top-0 bg-white z-50 transition-shadow duration-300 ${scrolled ? "shadow-[0_2px_12px_0_rgba(0,0,0,0.08)]" : ""}`}>
-      {/* Left — Logo */}
-      <div className="flex flex-1 items-center">
-        <Link
-          href="/"
-          onClick={() => { if (pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" }); }}
+    <>
+      <header
+        className={`border-b border-[#e5e6ea] h-16 flex items-center px-6 w-full sticky top-0 bg-white z-50 transition-all duration-300 ${shadowClass} ${hideClass}`}
+      >
+        {/* Left — Logo */}
+        <div className="flex flex-1 items-center">
+          <Link
+            href="/"
+            onClick={() => { if (pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" }); }}
+          >
+            <Image
+              src="/logo.png"
+              alt="My Community"
+              width={210}
+              height={36}
+              priority
+              className="h-9 w-auto object-contain"
+            />
+          </Link>
+        </div>
+
+        {/* Center — Nav (desktop only) */}
+        <nav className="hidden lg:flex flex-1 items-center justify-center gap-6">
+          <button onClick={scrollToFeatures} className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
+            Продукти
+          </button>
+          <Link href="/prices" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
+            Ціни
+          </Link>
+          <Link href="/reviews" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
+            Відгуки
+          </Link>
+          <Link href="/integrations" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
+            Інтеграції
+          </Link>
+          <Link href="/about" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors whitespace-nowrap">
+            Про нас
+          </Link>
+        </nav>
+
+        {/* Right — Увійти (desktop only) */}
+        <div className="hidden lg:flex flex-1 justify-end">
+          <button className="px-4 py-2 text-[14px] font-medium text-[#29abe2] hover:opacity-80 transition-opacity">
+            Увійти
+          </button>
+        </div>
+
+        {/* Burger (mobile + tablet) */}
+        <button
+          className="lg:hidden p-2 -mr-1 text-[#141414]"
+          onClick={() => setMenuOpen(true)}
+          aria-label="Відкрити меню"
         >
-          <Image
-            src="/logo.png"
-            alt="My Community"
-            width={210}
-            height={36}
-            priority
-            className="h-9 w-auto object-contain"
-          />
-        </Link>
-      </div>
+          <Menu size={24} />
+        </button>
+      </header>
 
-      {/* Center — Nav */}
-      <nav className="flex flex-1 items-center justify-center gap-6">
-        <button className="flex items-center gap-1.5 px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
-          Продукти
-          <ChevronDown size={14} />
-        </button>
-        <Link href="/prices" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
-          Ціни
-        </Link>
-        <button className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
-          Відгуки
-        </button>
-        <Link href="/integrations" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
-          Інтеграції
-        </Link>
-        <Link href="#" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors whitespace-nowrap">
-          Про нас
-        </Link>
-      </nav>
+      {/* Mobile/tablet full-screen sidebar */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 z-[100] bg-white flex flex-col lg:hidden"
+          style={{ animation: "slideInRight 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
+        >
+          {/* Sidebar header */}
+          <div className="flex items-center justify-between px-6 h-16 border-b border-[#e5e6ea] flex-shrink-0">
+            <Image src="/logo.png" alt="My Community" width={160} height={32} className="h-8 w-auto object-contain" />
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="p-2 -mr-1 text-[#141414]"
+              aria-label="Закрити меню"
+            >
+              <X size={24} />
+            </button>
+          </div>
 
-      {/* Right */}
-      <div className="flex flex-1 justify-end">
-        <button className="px-4 py-2 text-[14px] font-medium text-[#29abe2] hover:opacity-80 transition-opacity">
-          Увійти
-        </button>
-      </div>
-    </header>
+          {/* Nav links */}
+          <nav className="flex flex-col px-6 pt-4 flex-1 overflow-y-auto">
+            <button
+              onClick={() => { scrollToFeatures(); setMenuOpen(false); }}
+              className="py-4 text-[16px] font-medium text-[#111827] border-b border-[#f0f0f0] w-full text-left"
+            >
+              Продукти
+            </button>
+            <Link
+              href="/prices"
+              className="py-4 text-[16px] font-medium text-[#111827] border-b border-[#f0f0f0] block"
+              onClick={() => setMenuOpen(false)}
+            >
+              Ціни
+            </Link>
+            <Link
+              href="/reviews"
+              className="py-4 text-[16px] font-medium text-[#111827] border-b border-[#f0f0f0] block"
+              onClick={() => setMenuOpen(false)}
+            >
+              Відгуки
+            </Link>
+            <Link
+              href="/integrations"
+              className="py-4 text-[16px] font-medium text-[#111827] border-b border-[#f0f0f0] block"
+              onClick={() => setMenuOpen(false)}
+            >
+              Інтеграції
+            </Link>
+            <Link
+              href="/about"
+              className="py-4 text-[16px] font-medium text-[#111827] border-b border-[#f0f0f0] block"
+              onClick={() => setMenuOpen(false)}
+            >
+              Про нас
+            </Link>
+          </nav>
+        </div>
+      )}
+    </>
   );
 }

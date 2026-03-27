@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { SWRegister } from "@/components/shared/sw-register";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -26,7 +27,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="uk" className={`${inter.variable} antialiased`}>
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        {children}
+        <SWRegister />
+      </body>
     </html>
   );
 }

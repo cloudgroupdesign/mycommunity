@@ -1,18 +1,19 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const navLinks = [
-  { label: "Ціни",       href: "#" },
-  { label: "Відгуки",    href: "#" },
-  { label: "Інтеграції", href: "#" },
-  { label: "Про нас",    href: "#" },
+  { label: "Ціни",       href: "/prices" },
+  { label: "Відгуки",    href: "/reviews" },
+  { label: "Інтеграції", href: "/integrations" },
+  { label: "Про нас",    href: "/about" },
 ];
 
 const modules = [
-  "CRM та продажі",
-  "Виробництво",
-  "Проєкти та задачі",
-  "Склад",
-  "HR процеси",
+  { label: "CRM та продажі",    href: "/products/crm" },
+  { label: "Виробництво",       href: "/products/manufacturing" },
+  { label: "Проєкти та задачі", href: "/products/projects" },
+  { label: "Склад",             href: "/products/warehouse" },
+  { label: "HR процеси",        href: "/products/hr" },
 ];
 
 const socials = [
@@ -62,8 +63,8 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Nav columns */}
-          <div className="flex gap-12 lg:gap-16 xl:gap-24 flex-shrink-0">
+          {/* Nav columns — < 640px: vertical; ≥ 640px tablet: justify-between; desktop: fixed gaps */}
+          <div className="flex flex-col sm:flex-row sm:justify-between lg:justify-start w-full lg:w-auto lg:gap-16 xl:gap-24 gap-8 flex-shrink-0">
 
             {/* Навігація */}
             <div>
@@ -71,9 +72,9 @@ export default function Footer() {
               <ul className="flex flex-col gap-3">
                 {navLinks.map(({ label, href }) => (
                   <li key={label}>
-                    <a href={href} className="footer-link" style={{ fontSize: 14, whiteSpace: "nowrap" }}>
+                    <Link href={href} className="footer-link" style={{ fontSize: 14, whiteSpace: "nowrap" }}>
                       {label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -83,11 +84,11 @@ export default function Footer() {
             <div>
               <p style={{ fontSize: 14, fontWeight: 600, color: "#141414", marginBottom: 20 }}>Продукт</p>
               <ul className="flex flex-col gap-3">
-                {modules.map((name) => (
-                  <li key={name}>
-                    <a href="#" className="footer-link" style={{ fontSize: 14, whiteSpace: "nowrap" }}>
-                      {name}
-                    </a>
+                {modules.map(({ label, href }) => (
+                  <li key={label}>
+                    <Link href={href} className="footer-link" style={{ fontSize: 14, whiteSpace: "nowrap" }}>
+                      {label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -127,10 +128,13 @@ export default function Footer() {
             © {year} My Community. Усі права захищено.
           </p>
           <div className="flex items-center gap-4">
-            {["Політика конфіденційності", "Умови використання"].map((label) => (
-              <a key={label} href="#" className="footer-link" style={{ fontSize: 12 }}>
+            {[
+              { label: "Політика конфіденційності", href: "/privacy" },
+              { label: "Умови використання",        href: "/terms" },
+            ].map(({ label, href }) => (
+              <Link key={label} href={href} className="footer-link" style={{ fontSize: 12 }}>
                 {label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
