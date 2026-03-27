@@ -54,10 +54,10 @@ export default function Integrations() {
     <section className="py-24 bg-white w-full">
       {/* Заголовок + опис */}
       <div className="w-full mx-auto px-6 text-center flex flex-col items-center gap-5" style={{ maxWidth: 1080, marginBottom: 56 }}>
-        <h2 className="font-semibold text-[54px] leading-[64px] text-[#141414] tracking-tight">
+        <h2 className="section-h2">
           Підключіться до улюблених сервісів
         </h2>
-        <p className="font-normal text-[18px] leading-[30px] text-[#727272]" style={{ maxWidth: 600 }}>
+        <p className="text-[15px] md:text-[17px] lg:text-[18px] leading-[26px] lg:leading-[30px] font-normal text-[#727272]" style={{ maxWidth: 600 }}>
           My Community інтегрується з інструментами, які ви вже використовуєте — без зайвих налаштувань
         </p>
       </div>

@@ -85,41 +85,27 @@ export default function PricesPage() {
       <main className="flex flex-col items-center w-full">
 
         {/* Hero */}
-        <section className="w-full flex flex-col items-center text-center px-6 pt-24 pb-16">
-          <div className="flex flex-col gap-5 items-center" style={{ maxWidth: 640 }}>
-            <h1
-              style={{
-                fontSize: 72,
-                fontWeight: 600,
-                lineHeight: "78px",
-                letterSpacing: "-0.01em",
-                color: "#141414",
-              }}
-            >
+        <section className="w-full flex flex-col items-center text-center px-4 md:px-6 pt-10 pb-10 md:pt-16 md:pb-14 lg:pt-24 lg:pb-16">
+          <div className="flex flex-col gap-4 md:gap-5 items-center" style={{ maxWidth: 640 }}>
+            <h1 className="hero-h1">
               Прозорі ціни для вашого бізнесу
             </h1>
-            <p style={{ fontSize: 18, lineHeight: "30px", color: "#727272", fontWeight: 400 }}>
+            <p className="text-[15px] md:text-[17px] lg:text-[18px] leading-6 md:leading-7 lg:leading-[30px] font-normal text-[#727272]">
               Обирайте модулі, які потрібні саме вам. Платіть лише за те, що використовуєте.
             </p>
           </div>
         </section>
 
         {/* Module cards */}
-        <section className="w-full px-6 pb-16">
-          <div
-            className="w-full mx-auto grid gap-5"
-            style={{
-              maxWidth: 1080,
-              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-            }}
-          >
+        <section className="w-full px-4 md:px-6 pb-10 md:pb-14 lg:pb-16">
+          <div className="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5" style={{ maxWidth: 1080 }}>
             {modules.map((m) => (
               <div
                 key={m.label}
                 style={{
                   background: m.bg,
                   borderRadius: 20,
-                  padding: "32px 32px 36px",
+                  padding: "28px 24px 32px",
                   display: "flex",
                   flexDirection: "column",
                   gap: 16,
@@ -161,20 +147,14 @@ export default function PricesPage() {
         </section>
 
         {/* Bundle + Setup row */}
-        <section className="w-full px-6 pb-24">
-          <div
-            className="w-full mx-auto grid gap-5"
-            style={{
-              maxWidth: 1080,
-              gridTemplateColumns: "1fr 1fr",
-            }}
-          >
+        <section className="w-full px-4 md:px-6 pb-16 md:pb-20 lg:pb-24">
+          <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5" style={{ maxWidth: 1080 }}>
             {/* Bundle */}
             <div
               style={{
                 background: "#141414",
                 borderRadius: 20,
-                padding: "40px 40px 44px",
+                padding: "32px 28px 36px",
                 display: "flex",
                 flexDirection: "column",
                 gap: 20,
@@ -233,7 +213,7 @@ export default function PricesPage() {
               style={{
                 background: "#f5f5f7",
                 borderRadius: 20,
-                padding: "40px 40px 44px",
+                padding: "32px 28px 36px",
                 display: "flex",
                 flexDirection: "column",
                 gap: 20,

@@ -127,7 +127,8 @@ export default function HeroMockup() {
           style={{
             borderRadius: 13,
             background: "#F8FAFC",
-            height: 588,
+            aspectRatio: "16/9",
+            width: "100%",
           }}
         />
       </div>

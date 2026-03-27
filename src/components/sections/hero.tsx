@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Play } from "@geist-ui/icons";
 import HeroMockup from "./hero-mockup";
 
@@ -35,26 +35,13 @@ export default function Hero() {
 
   return (
     <section
-      className={`bg-white w-full flex flex-col items-center px-6 ${stageClass}`}
-      style={{ paddingTop: 72, paddingBottom: 120, gap: 80 }}
+      className={`bg-white w-full flex flex-col items-center px-4 md:px-6 pt-10 pb-14 md:pt-14 md:pb-20 lg:pt-[72px] lg:pb-[120px] gap-10 md:gap-14 lg:gap-20 ${stageClass}`}
     >
-      {/* Text + buttons — 1080px */}
-      <div
-        className="w-full flex flex-col items-center text-center"
-        style={{ maxWidth: 1080, gap: 40 }}
-      >
+      {/* Text + buttons */}
+      <div className="w-full flex flex-col items-center text-center gap-8 md:gap-10" style={{ maxWidth: 1080 }}>
         {/* h1 + subtitle */}
-        <div className="w-full flex flex-col items-center text-center" style={{ gap: 32 }}>
-          <h1
-            style={{
-              fontSize: 72,
-              fontWeight: 600,
-              lineHeight: "78px",
-              letterSpacing: "-0.01em",
-              color: "#141414",
-              width: "100%",
-            }}
-          >
+        <div className="w-full flex flex-col items-center text-center gap-5 md:gap-7 lg:gap-8">
+          <h1 className="hero-h1">
             {H1_LINES.map((line, li) => (
               <span key={li} style={{ display: "block" }}>
                 {line.map((word, wi) => {
@@ -77,44 +64,40 @@ export default function Hero() {
           </h1>
 
           <p
+            className="text-[15px] leading-6 md:text-[17px] md:leading-7 lg:text-[18px] lg:leading-[30px] font-normal text-[#4b5563]"
             style={{
-              fontSize: 18,
-              fontWeight: 400,
-              lineHeight: "30px",
-              color: "#4b5563",
-              width: "100%",
+              maxWidth: 640,
               opacity: stage >= 2 ? 1 : 0,
               transform: stage >= 2 ? "translateY(0)" : "translateY(12px)",
               transition: "opacity 0.7s ease, transform 0.7s ease",
             }}
           >
-            My Community об&apos;єднує продажі, комунікації, задачі, команди,{" "}
-            <br />
-            виробництво, фінанси та аналітику в одному зручному просторі.{" "}
-            <br />
-            Без хаосу. Без десятків сервісів.
+            My Community об'єднує продажі, комунікації, задачі та команди,
+            <br className="hidden lg:block" />
+            {" "}виробництво, фінанси та аналітику в одному зручному просторі.
+            <br className="hidden lg:block" />
+            {" "}Без хаосу. Без десятків сервісів.
           </p>
         </div>
 
         {/* Buttons */}
         <div
+          className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center w-full sm:w-auto"
           style={{
-            display: "flex",
-            gap: 8,
-            alignItems: "flex-start",
             opacity: stage >= 3 ? 1 : 0,
             transform: stage >= 3 ? "translateY(0)" : "translateY(16px)",
             transition: "opacity 0.7s ease, transform 0.7s ease",
           }}
         >
           <button
+            className="w-full sm:w-auto"
             style={{
               background: "#29abe2",
               color: "#fff",
-              fontSize: 20,
+              fontSize: 17,
               fontWeight: 600,
-              lineHeight: "32px",
-              padding: "14px 32px",
+              lineHeight: "28px",
+              padding: "13px 28px",
               borderRadius: 12,
               border: "none",
               cursor: "pointer",
@@ -124,19 +107,20 @@ export default function Hero() {
             Записатися на демо-перегляд
           </button>
           <button
+            className="w-full sm:w-auto"
             style={{
               background: "#fff",
               color: "#141414",
-              fontSize: 20,
+              fontSize: 17,
               fontWeight: 600,
-              lineHeight: "32px",
-              padding: "14px 32px",
+              lineHeight: "28px",
+              padding: "13px 28px",
               borderRadius: 12,
               border: "1px solid #e5e6ea",
               cursor: "pointer",
-              whiteSpace: "nowrap",
               display: "flex",
               alignItems: "center",
+              justifyContent: "center",
               gap: 8,
             }}
           >
@@ -146,7 +130,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Mockup — повна ширина 1080px, без паддінгу */}
+      {/* Mockup */}
       <div
         className="w-full"
         style={{

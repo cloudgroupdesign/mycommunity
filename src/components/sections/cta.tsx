@@ -1,6 +1,6 @@
 export default function CTA() {
   return (
-    <section className="w-full" style={{ padding: "0 32px", paddingBottom: 0 }}>
+    <section className="w-full px-4 md:px-8" style={{ paddingBottom: 0 }}>
       <div
         style={{
           borderRadius: 24,
@@ -28,31 +28,18 @@ export default function CTA() {
 
         {/* Контент */}
         <div
-          className="relative flex flex-col items-center text-center px-6"
-          style={{ paddingTop: 96, paddingBottom: 168, gap: 28, zIndex: 1 }}
+          className="relative flex flex-col items-center text-center px-4 md:px-6"
+          style={{ paddingTop: 64, paddingBottom: 120, gap: 24, zIndex: 1 }}
         >
-          <h2
-            style={{
-              fontSize: 72,
-              fontWeight: 600,
-              lineHeight: "78px",
-              letterSpacing: "-0.01em",
-              color: "#141414",
-            }}
-          >
+          <h2 className="cta-h2">
             Почніть керувати бізнесом
-            <br />
-            розумніше вже сьогодні
+            <br className="hidden md:block" />
+            {" "}розумніше вже сьогодні
           </h2>
 
           <p
-            style={{
-              fontSize: 18,
-              fontWeight: 400,
-              lineHeight: "30px",
-              color: "#4b5563",
-              maxWidth: 520,
-            }}
+            className="text-[15px] md:text-[16px] lg:text-[18px] leading-6 lg:leading-[30px] font-normal text-[#4b5563]"
+            style={{ maxWidth: 520 }}
           >
             Об&apos;єднайте всі процеси в одному місці та забудьте про хаос.
             Спробуйте My Community безкоштовно.
@@ -60,12 +47,12 @@ export default function CTA() {
 
           <button
             style={{
-              marginTop: 8,
+              marginTop: 4,
               background: "#29abe2",
               color: "#fff",
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: 600,
-              lineHeight: "28px",
+              lineHeight: "24px",
               padding: "14px 36px",
               borderRadius: 12,
               border: "none",
