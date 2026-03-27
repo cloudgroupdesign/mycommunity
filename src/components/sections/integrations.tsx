@@ -18,9 +18,10 @@ const ROW_2 = [
   { id: "google-meet",  name: "Google Meet",  desc: "Проводьте відеозустрічі прямо з платформи без переключення." },
 ];
 
-// 8× duplication — covers viewport even at 10% browser zoom
-const track1 = Array(8).fill(ROW_1).flat();
-const track2 = Array(8).fill(ROW_2).flat();
+// 3× duplication — 3 × 2316px = 6948px, within GPU texture limits on Windows.
+// Covers up to ~4632px viewport (2×one-set) which exceeds our 3024px cap.
+const track1 = Array(3).fill(ROW_1).flat();
+const track2 = Array(3).fill(ROW_2).flat();
 
 // Білий градієнт-overlay для fade ефекту на краях.
 // НЕ використовуємо mask-image / overflow:hidden на контейнері —
@@ -50,7 +51,7 @@ export default function Integrations() {
   return (
     // overflow-x: clip на секції — клiпає горизонтальний overflow треку,
     // але НЕ впливає на vertical overflow (тіні карток)
-    <section className="py-24 bg-white w-full" style={{ overflowX: "clip" }}>
+    <section className="py-24 bg-white w-full">
       {/* Заголовок + опис */}
       <div className="w-full mx-auto px-6 text-center flex flex-col items-center gap-5" style={{ maxWidth: 1080, marginBottom: 56 }}>
         <h2 className="font-semibold text-[54px] leading-[64px] text-[#141414] tracking-tight">
@@ -65,7 +66,7 @@ export default function Integrations() {
           НЕ має overflow — тіні карток вільно виходять вертикально.
           Горизонтальний клiп — через overflow-x:clip на секції.
           Fade ефект — білий gradient overlay (absolute, pointer-events:none). */}
-      <div className="relative mx-auto w-full" style={{ maxWidth: 3024 }}>
+      <div className="relative mx-auto w-full" style={{ maxWidth: 3024, overflowX: "clip" }}>
 
         {/* Білий fade overlay — поверх карток, тільки по краях, не обрізає тіні */}
         <div

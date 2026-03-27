@@ -3,13 +3,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { ChevronDown } from "@geist-ui/icons";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 4);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="border-b border-[#e5e6ea] h-16 flex items-center px-6 w-full sticky top-0 bg-white z-50">
+    <header className={`border-b border-[#e5e6ea] h-16 flex items-center px-6 w-full sticky top-0 bg-white z-50 transition-shadow duration-300 ${scrolled ? "shadow-[0_2px_12px_0_rgba(0,0,0,0.08)]" : ""}`}>
       {/* Left — Logo */}
       <div className="flex flex-1 items-center">
         <Link
@@ -41,6 +49,9 @@ export default function Navbar() {
         </button>
         <Link href="/integrations" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
           Інтеграції
+        </Link>
+        <Link href="#" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors whitespace-nowrap">
+          Про нас
         </Link>
       </nav>
 

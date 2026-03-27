@@ -4,6 +4,7 @@ const navLinks = [
   { label: "Ціни",       href: "#" },
   { label: "Відгуки",    href: "#" },
   { label: "Інтеграції", href: "#" },
+  { label: "Про нас",    href: "#" },
 ];
 
 const modules = [
@@ -43,7 +44,7 @@ export default function Footer() {
   return (
     <footer className="bg-white w-full px-6">
       {/* Main */}
-      <div className="w-full mx-auto" style={{ maxWidth: 1080, paddingTop: 56, paddingBottom: 40 }}>
+      <div className="w-full mx-auto" style={{ maxWidth: 1080, paddingTop: 96, paddingBottom: 40 }}>
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-12">
 
           {/* Brand */}

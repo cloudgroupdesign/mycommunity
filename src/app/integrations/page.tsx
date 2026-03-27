@@ -124,7 +124,7 @@ export default function IntegrationsPage() {
         {/* Content */}
         <section className="w-full px-6 pb-24">
           <div
-            className="w-full mx-auto flex gap-[26px]"
+            className="w-full mx-auto flex gap-[40px]"
             style={{ maxWidth: 1080 }}
           >
 

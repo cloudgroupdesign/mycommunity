@@ -65,14 +65,14 @@
   animation-play-state: running;
 }
 
-/* Integrations marquee — px-based so zoom level doesn't break alignment */
-/* One set = 6 cards × (370px width + 16px margin) = 2316px */
+/* Integrations marquee — 3 copies, -33.333% = exactly 1 set (1/3 of total).
+   % is DPI-independent. 3×2316=6948px stays within GPU texture limits on Windows. */
 @keyframes marquee-ltr {
   from { transform: translateX(0); }
-  to   { transform: translateX(-2316px); }
+  to   { transform: translateX(-33.333%); }
 }
 @keyframes marquee-rtl {
-  from { transform: translateX(-2316px); }
+  from { transform: translateX(-33.333%); }
   to   { transform: translateX(0); }
 }
 .integrations-track {
