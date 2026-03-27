@@ -58,17 +58,10 @@
   opacity: 0;
   animation: plopInAnimation 0.8s cubic-bezier(0.3, 1.34, 0.38, 1) both;
   animation-play-state: paused;
-  will-change: opacity, transform;
 }
 
 .hero-stage-1 .hero-word-inner {
   animation-play-state: running;
-}
-
-/* Release GPU compositing layers after animation — fixes font-weight inconsistency */
-.hero-stage-4 .hero-word-inner {
-  will-change: auto;
-  -webkit-font-smoothing: antialiased;
 }
 
 /* Integrations marquee — 3 copies, each set = 6×386px = 2316px.

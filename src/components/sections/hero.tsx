@@ -20,8 +20,6 @@ export default function Hero() {
       setStage(1);
       setTimeout(() => setStage(2), H1_ANIM_DURATION * 0.5);
       setTimeout(() => setStage(3), H1_ANIM_DURATION * 0.8);
-      // Release GPU layers after all word animations finish → consistent font rendering
-      setTimeout(() => setStage(4), H1_ANIM_DURATION + 400);
     };
     const fallback = setTimeout(start, 300);
     return () => clearTimeout(fallback);
@@ -31,7 +29,6 @@ export default function Hero() {
     stage >= 1 ? "hero-stage-1" : "",
     stage >= 2 ? "hero-stage-2" : "",
     stage >= 3 ? "hero-stage-3" : "",
-    stage >= 4 ? "hero-stage-4" : "",
   ]
     .filter(Boolean)
     .join(" ");
