@@ -13,7 +13,9 @@ export default function Error({ error, reset }: ErrorProps) {
   const reason = detectNotFoundReason(error)
 
   useEffect(() => {
-    console.error("[error boundary]", error.digest ?? error.message, error)
+    if (process.env.NODE_ENV === "development") {
+      console.error("[error boundary]", error.digest ?? error.message, error)
+    }
   }, [error])
 
   return <NotFoundUI reason={reason} onRetry={reset} />

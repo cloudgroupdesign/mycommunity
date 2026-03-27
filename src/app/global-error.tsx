@@ -14,7 +14,9 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
   const config = getNotFoundConfig(reason)
 
   useEffect(() => {
-    console.error("[global error]", error.digest ?? error.message, error)
+    if (process.env.NODE_ENV === "development") {
+      console.error("[global error]", error.digest ?? error.message, error)
+    }
   }, [error])
 
   return (
