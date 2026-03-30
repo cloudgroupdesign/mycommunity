@@ -3,6 +3,7 @@ import Footer from "@/components/shared/footer";
 import Hero from "@/components/sections/hero";
 import Tasks from "@/components/sections/tasks";
 import Features from "@/components/sections/features";
+import Why from "@/components/sections/why";
 import Integrations from "@/components/sections/integrations";
 import CTA from "@/components/sections/cta";
 
@@ -14,6 +15,7 @@ export default function Page() {
         <Hero />
         <Tasks />
         <Features />
+        <Why />
         <Integrations />
         <CTA />
       </main>

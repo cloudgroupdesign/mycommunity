@@ -1,56 +1,87 @@
-const problems = [
-  {
-    title: "Складні інтерфейси та дорогі системи",
-    desc: "Більшість CRM та ERP систем розроблені для корпорацій і вимагають місяців впровадження та навчання персоналу.",
-  },
-  {
-    title: "Рішення не адаптовані під реальні бізнес процеси",
-    desc: "Готові рішення вимагають підстроювати бізнес під систему, а не навпаки. Кастомізація — дорога та складна.",
-  },
-  {
-    title: "Розрізнені інструменти та ручна операційна робота",
-    desc: "Більшість CRM та ERP систем розроблені для корпорацій і вимагають місяців впровадження та навчання персоналу.",
-  },
-];
-
 export default function Why() {
   return (
-    <section className="w-full flex flex-col items-center px-6 py-24">
-      <div className="w-full flex flex-col gap-14 items-center" style={{ maxWidth: 1080 }}>
-        <div className="flex flex-col gap-8 items-center text-center w-full">
-          <h2 className="font-semibold text-[54px] leading-[64px] text-[#141414] tracking-tight">
-            Чому створено My Community
+    <section className="w-full flex flex-col items-center px-4 md:px-6 py-14 md:py-20 lg:py-24">
+      <div className="w-full flex flex-col gap-8 md:gap-12" style={{ maxWidth: 1080 }}>
+
+        {/* Header */}
+        <div className="flex flex-col gap-4 md:gap-5 items-center text-center">
+          <h2 className="section-h2">
+            Чим My Community відрізняється
           </h2>
-          <p className="font-normal text-[18px] leading-[30px] text-[#727272] max-w-[820px]">
-            Розробники My Community — власники консалтингової компанії Maybutne
-            Consulting, які більше 10 років працювали з реальними бізнесами та
-            впроваджували різні CRM, ERP і системи управління.
+          <p className="text-[15px] md:text-[17px] lg:text-[18px] leading-[26px] md:leading-[28px] lg:leading-[30px] font-normal text-[#727272]" style={{ maxWidth: 560 }}>
+            Система, створена в Україні підприємцями для підприємців
           </p>
         </div>
 
-        <div className="flex gap-4 items-stretch w-full">
-          {problems.map((item, i) => (
-            <div
-              key={i}
-              className="bg-white border border-[#e5e6ea] rounded-2xl flex flex-col flex-1 overflow-hidden h-[504px]"
-            >
-              <div className="flex-1 bg-white" />
-              <div className="flex flex-col gap-4 pb-8 pt-7 px-7">
-                <p className="font-semibold text-[18px] leading-7 text-[#141414]">
-                  {item.title}
-                </p>
-                <p className="font-normal text-[16px] leading-6 text-[#727272]">
-                  {item.desc}
+        {/* Cards */}
+        <div className="flex flex-col gap-6">
+
+          {/* Top row — 2 cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            {/* Card 1 */}
+            <div className="rounded-2xl overflow-hidden flex flex-col lg:h-[404px]" style={{ background: "#eef2fc" }}>
+              <div className="flex flex-col gap-3 px-7 pt-8 pb-6 lg:h-[60%]">
+                <h3 className="font-semibold text-[20px] md:text-[22px] lg:text-[24px] leading-[28px] lg:leading-[32px] tracking-tight" style={{ color: "#1a3a7a" }}>
+                  Створена підприємцями для підприємців
+                </h3>
+                <p className="text-[14px] md:text-[15px] lg:text-[16px] leading-6" style={{ color: "#1a3a7a", opacity: 0.7 }}>
+                  Ми самі будували бізнес і знаємо, що потрібно насправді. Тому кожна функція вирішує реальну задачу, а не теоретичну.
                 </p>
               </div>
+              <div className="mx-6 flex-1 min-h-[180px] lg:flex-none lg:h-[40%] rounded-t-xl" style={{ background: "#c7d7f9" }} />
             </div>
-          ))}
+
+            {/* Card 2 */}
+            <div className="rounded-2xl overflow-hidden flex flex-col lg:h-[404px]" style={{ background: "#f3e8fd" }}>
+              <div className="flex flex-col gap-3 px-7 pt-8 pb-6 lg:h-[60%]">
+                <h3 className="font-semibold text-[20px] md:text-[22px] lg:text-[24px] leading-[28px] lg:leading-[32px] tracking-tight" style={{ color: "#5a1a7a" }}>
+                  Легка в управлінні та масштабуванні
+                </h3>
+                <p className="text-[14px] md:text-[15px] lg:text-[16px] leading-6" style={{ color: "#5a1a7a", opacity: 0.7 }}>
+                  Інтуїтивний інтерфейс без складного навчання. Система росте разом із вашим бізнесом — нові модулі підключаються коли потрібно.
+                </p>
+              </div>
+              <div className="mx-6 flex-1 min-h-[180px] lg:flex-none lg:h-[40%] rounded-t-xl" style={{ background: "#dbb8f9" }} />
+            </div>
+
+          </div>
+
+          {/* Bottom card — full width */}
+          <div className="rounded-2xl overflow-hidden flex flex-col lg:flex-row lg:h-[404px]" style={{ background: "#fff8e1" }}>
+            <div className="flex flex-col gap-4 px-9 pt-10 pb-10 lg:px-12 lg:py-14 justify-center" style={{ flex: "0 0 60%" }}>
+              <h3 className="font-semibold text-[20px] md:text-[22px] lg:text-[24px] leading-[28px] lg:leading-[32px] tracking-tight" style={{ color: "#7a4a00" }}>
+                Доступно і швидко — без довгого впровадження
+              </h3>
+              <p className="text-[14px] md:text-[15px] lg:text-[16px] leading-6" style={{ color: "#7a4a00", opacity: 0.7 }}>
+                Доступна альтернатива міжнародним системам. Ми самі розробники — впроваджуємо під ваші потреби швидко, без посередників.
+              </p>
+            </div>
+            <div className="flex-1 min-h-[200px] lg:min-h-0" style={{ background: "#ffe0a0" }} />
+          </div>
+
         </div>
 
-        <p className="font-normal text-[18px] leading-[30px] text-[#727272] text-center max-w-[820px]">
-          Саме тому було створено My Community — систему, де всі процеси
-          логічні, легкі в управлінні та швидко адаптовані під реальний бізнес.
-        </p>
+        {/* CTA */}
+        <div className="flex justify-center">
+          <button
+            style={{
+              background: "#29abe2",
+              color: "#fff",
+              fontSize: 16,
+              fontWeight: 600,
+              lineHeight: "24px",
+              padding: "14px 36px",
+              borderRadius: 12,
+              border: "none",
+              cursor: "pointer",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Записатися на демо
+          </button>
+        </div>
+
       </div>
     </section>
   );

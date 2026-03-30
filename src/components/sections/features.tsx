@@ -30,6 +30,12 @@ const UsersFill = () => (
     <path d="M7 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM14.5 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM1.615 16.428a1.224 1.224 0 0 1-.569-1.175 6.002 6.002 0 0 1 11.908 0c.058.467-.172.92-.57 1.174A9.953 9.953 0 0 1 7 17a9.953 9.953 0 0 1-5.385-1.572ZM14.5 16h-.106c.07-.297.088-.611.048-.933a7.47 7.47 0 0 0-1.588-3.755 4.502 4.502 0 0 1 5.874 2.636.818.818 0 0 1-.36.98A7.465 7.465 0 0 1 14.5 16Z" />
   </svg>
 );
+const WarehouseFill = () => (
+  <svg width="17" height="17" viewBox="0 0 20 20" fill="white">
+    <path d="M2 3a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H2Z" />
+    <path fillRule="evenodd" d="M2 7.5h16l-.811 7.71a2 2 0 0 1-1.99 1.79H4.802a2 2 0 0 1-1.99-1.79L2 7.5ZM7 11a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Z" clipRule="evenodd" />
+  </svg>
+);
 
 const slides = [
   {
@@ -71,11 +77,20 @@ const slides = [
   {
     label: "HR та фінанси",
     Icon: UsersFill,
-    title: "HR, фінанси та склад",
-    desc: "Управління командою та ролями, контроль ефективності співробітників, облік доходів і витрат, управління складом і ресурсами.",
+    title: "HR та фінанси",
+    desc: "Управління командою та ролями, контроль ефективності співробітників, облік доходів і витрат.",
     accent: "#b747f6",
     dark: "#5a1a7a",
     bg: "#f3e8fd",
+  },
+  {
+    label: "Виробництво",
+    Icon: WarehouseFill,
+    title: "Виробництво та склади",
+    desc: "Облік товарів та залишків, управління складськими операціями та ресурсами, контроль переміщень і списань.",
+    accent: "#0fa3b1",
+    dark: "#064a52",
+    bg: "#e0f7fa",
   },
 ];
 
@@ -99,10 +114,10 @@ export default function Features() {
         </div>
 
         {/* Таби */}
-        <div className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-1 sm:gap-4">
-          {slides.map((s, i) => {
+        <div className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-1 sm:gap-x-4 sm:gap-y-2">
+          {slides.flatMap((s, i) => {
             const active = i === current;
-            return (
+            const btn = (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
@@ -150,6 +165,8 @@ export default function Features() {
                 </span>
               </button>
             );
+            if (i === 3) return [btn, <div key="break" className="hidden lg:block" style={{ flexBasis: "100%", height: 0 }} />];
+            return btn;
           })}
         </div>
 

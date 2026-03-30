@@ -2,18 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
+  { label: "Продукти",   href: "/#features" },
   { label: "Ціни",       href: "/prices" },
   { label: "Відгуки",    href: "/reviews" },
   { label: "Інтеграції", href: "/integrations" },
   { label: "Про нас",    href: "/about" },
-];
-
-const modules = [
-  { label: "CRM та продажі",    href: "/products/crm" },
-  { label: "Виробництво",       href: "/products/manufacturing" },
-  { label: "Проєкти та задачі", href: "/products/projects" },
-  { label: "Склад",             href: "/products/warehouse" },
-  { label: "HR процеси",        href: "/products/hr" },
 ];
 
 const socials = [
@@ -71,20 +64,6 @@ export default function Footer() {
               <p style={{ fontSize: 14, fontWeight: 600, color: "#141414", marginBottom: 20 }}>Навігація</p>
               <ul className="flex flex-col gap-3">
                 {navLinks.map(({ label, href }) => (
-                  <li key={label}>
-                    <Link href={href} className="footer-link" style={{ fontSize: 14, whiteSpace: "nowrap" }}>
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Продукт */}
-            <div>
-              <p style={{ fontSize: 14, fontWeight: 600, color: "#141414", marginBottom: 20 }}>Продукт</p>
-              <ul className="flex flex-col gap-3">
-                {modules.map(({ label, href }) => (
                   <li key={label}>
                     <Link href={href} className="footer-link" style={{ fontSize: 14, whiteSpace: "nowrap" }}>
                       {label}
