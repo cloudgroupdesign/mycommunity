@@ -61,15 +61,15 @@
   animation-play-state: running;
 }
 
-/* Integrations marquee — 3 copies, each set = 6×386px = 2316px.
+/* Integrations marquee — 3 copies, each set = 5×386px = 1930px.
    width:max-content ensures translateX % calculates against track's own width,
-   not the clipped parent. -2316px = exactly one set → seamless infinite loop. */
+   not the clipped parent. -1930px = exactly one set → seamless infinite loop. */
 @keyframes marquee-ltr {
   from { transform: translateX(0); }
-  to   { transform: translateX(-2316px); }
+  to   { transform: translateX(-1930px); }
 }
 @keyframes marquee-rtl {
-  from { transform: translateX(-2316px); }
+  from { transform: translateX(-1930px); }
   to   { transform: translateX(0); }
 }
 .integrations-track {
@@ -82,6 +82,35 @@
   animation: marquee-rtl 50s linear infinite;
   will-change: transform;
 }
+/* ── CTA buttons ── */
+.btn-primary {
+  transition: background 0.2s ease, transform 0.12s ease;
+}
+.btn-primary:hover  { background: #1a96cc !important; }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.12s ease;
+}
+.btn-secondary:hover  { background: #f5f5f5 !important; border-color: #d0d1d5 !important; }
+.btn-secondary:active { transform: scale(0.97); }
+
+.btn-dark {
+  transition: background 0.2s ease, transform 0.12s ease;
+}
+.btn-dark:hover  { background: #2a2a2a !important; }
+.btn-dark:active { transform: scale(0.97); }
+
+/* Touch devices — map hover → active */
+@media (hover: none) {
+  .btn-primary:hover  { background: #29abe2 !important; }
+  .btn-primary:active { background: #1a96cc !important; }
+  .btn-secondary:hover  { background: #fff !important; }
+  .btn-secondary:active { background: #f5f5f5 !important; }
+  .btn-dark:hover  { background: #141414 !important; }
+  .btn-dark:active { background: #2a2a2a !important; }
+}
+
 /* Card hover — subtle shadow + text highlight */
 .integration-card {
   transition: box-shadow 0.22s ease, transform 0.22s ease;
@@ -161,6 +190,219 @@
 @keyframes slideInRight {
   from { transform: translateX(100%); }
   to   { transform: translateX(0); }
+}
+
+/* ── Demo Modal ── */
+/* opacity + transform — єдині GPU-accelerated властивості, без перемальовування */
+@keyframes modalFadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.demo-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  /* rgba без backdrop-filter — не навантажує GPU */
+  background: rgba(0, 0, 0, 0.48);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: modalFadeIn 0.18s ease both;
+  /* Власний compositing-шар для overlay */
+  will-change: opacity;
+  transform: translateZ(0);
+}
+
+.demo-modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 480px;
+  padding: 36px;
+  animation: modalSlideUp 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  /* Власний compositing-шар — ізолює перемальовування від сторінки */
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+.demo-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: #141414;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+.demo-modal-close:hover { background: #ebebeb; }
+
+.demo-modal-header { margin-bottom: 24px; }
+
+.demo-modal-title {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 34px;
+  letter-spacing: -0.01em;
+  color: #141414;
+  padding-right: 28px;
+}
+
+.demo-modal-desc {
+  font-size: 16px;
+  line-height: 24px;
+  color: #727272;
+  margin-top: 8px;
+}
+
+/* Form card */
+.demo-form-card {
+  border: 1px solid #e5e6ea;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.demo-form-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+}
+.demo-form-row--error { padding-bottom: 0; }
+
+.demo-form-terms-row {
+  align-items: flex-start;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.demo-form-icon {
+  flex-shrink: 0;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.demo-form-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  /* 16px запобігає iOS auto-zoom (< 16px triggers zoom) */
+  font-size: 16px;
+  line-height: 24px;
+  color: #141414;
+  background: transparent;
+  font-family: inherit;
+  /* Без transition — миттєва відповідь на введення */
+  transition: none;
+}
+.demo-form-input::placeholder { color: #9ca3af; }
+
+.demo-form-eye {
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.15s ease;
+}
+.demo-form-eye:hover { color: #6b7280; }
+
+.demo-form-divider { height: 1px; background: #e5e6ea; margin: 0; }
+
+.demo-form-error {
+  font-size: 12px;
+  color: #f7a117;
+  padding: 16px 20px 10px;
+  margin: 0;
+}
+
+/* Checkbox */
+.demo-checkbox {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1.5px solid #d1d5db;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  margin-top: 2px;
+}
+.demo-checkbox--checked {
+  background: #29abe2;
+  border-color: #29abe2;
+}
+
+.demo-terms-text {
+  font-size: 13px;
+  line-height: 20px;
+  color: #4b5563;
+}
+.demo-terms-link {
+  color: #141414;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Submit button */
+.demo-submit-btn {
+  width: 100%;
+  margin-top: 20px;
+  background: #29abe2;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  padding: 15px 28px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Success state */
+.demo-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px 0 8px;
+}
+
+.demo-success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #29abe2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .demo-modal-content { padding: 32px 20px 28px; border-radius: 16px; }
 }
 
 /* ── Responsive typography ── */

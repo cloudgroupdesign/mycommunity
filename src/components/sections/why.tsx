@@ -1,4 +1,9 @@
+"use client";
+
+import { useDemoModal } from "@/components/shared/modal-context";
+
 export default function Why() {
+  const { open: openModal } = useDemoModal();
   return (
     <section className="w-full flex flex-col items-center px-4 md:px-6 py-14 md:py-20 lg:py-24">
       <div className="w-full flex flex-col gap-8 md:gap-12" style={{ maxWidth: 1080 }}>
@@ -65,6 +70,8 @@ export default function Why() {
         {/* CTA */}
         <div className="flex justify-center">
           <button
+            className="btn-primary"
+            onClick={openModal}
             style={{
               background: "#29abe2",
               color: "#fff",

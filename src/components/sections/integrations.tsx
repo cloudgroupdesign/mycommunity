@@ -1,25 +1,25 @@
+import IntegrationCard, { type IntegrationItem } from "@/components/shared/integration-card";
+
 // One card slot: 370px width + 8px margin each side = 386px
-// One set (6 cards): 6 × 386 = 2316px — used in CSS keyframes
-const ROW_1 = [
-  { id: "google-calendar", name: "Google Calendar", desc: "Синхронізація зустрічей та подій команди в реальному часі." },
-  { id: "zoom",            name: "Zoom",            desc: "Запускайте відеодзвінки прямо з картки клієнта або угоди." },
-  { id: "amazon",          name: "Amazon",          desc: "Управляйте замовленнями Amazon Marketplace з єдиного кабінету." },
-  { id: "nova-poshta",     name: "Nova Poshta API", desc: "Автоматичне створення ТТН та відстеження доставки Новою Поштою." },
-  { id: "rozetka",         name: "Rozetka",         desc: "Обробляйте замовлення з найбільшого українського маркетплейсу." },
-  { id: "telegram-bot",    name: "Telegram Bot",    desc: "Отримуйте сповіщення та відповідайте клієнтам прямо в Telegram." },
+// One set (5 cards): 5 × 386 = 1930px — used in CSS keyframes
+const ROW_1: IntegrationItem[] = [
+  { id: "google-calendar", name: "Google Calendar", desc: "Синхронізуйте зустрічі та події команди в реальному часі.",  logo: "/google-calendar-v2.png" },
+  { id: "zoom",            name: "Zoom",            desc: "Запускайте відеодзвінки прямо з картки клієнта або угоди.", logo: "/zoom-v2.png" },
+  { id: "telegram",        name: "Telegram",        desc: "Отримуйте сповіщення та відповідайте клієнтам прямо в Telegram.", logo: "/telegram-new.png" },
+  { id: "viber",           name: "Viber",           desc: "Надсилайте повідомлення та сповіщення клієнтам через Viber.", logo: "/viber-v2.png" },
+  { id: "meta",            name: "Meta",            desc: "Отримуйте ліди з Facebook Lead Ads та спілкуйтесь через Messenger.", logo: "/facebook-v2.png" },
 ];
 
-const ROW_2 = [
-  { id: "ebay",         name: "eBay",         desc: "Синхронізуйте товари та замовлення з міжнародним маркетплейсом." },
-  { id: "google-drive", name: "Google Drive", desc: "Зберігайте та надавайте спільний доступ до документів команди." },
-  { id: "stripe",       name: "Stripe",       desc: "Приймайте онлайн-платежі та керуйте підписками клієнтів." },
-  { id: "prom",         name: "Prom.ua",      desc: "Синхронізуйте каталог товарів та замовлення з Prom.ua." },
-  { id: "viber",        name: "Viber",        desc: "Надсилайте повідомлення та сповіщення клієнтам через Viber." },
-  { id: "google-meet",  name: "Google Meet",  desc: "Проводьте відеозустрічі прямо з платформи без переключення." },
+const ROW_2: IntegrationItem[] = [
+  { id: "amazon",    name: "Amazon",    desc: "Управляйте замовленнями Amazon Marketplace з єдиного кабінету.", logo: "/amazon-v2.png" },
+  { id: "ebay",      name: "eBay",      desc: "Синхронізуйте товари та замовлення з міжнародним маркетплейсом.", logo: "/ebay-v2.png" },
+  { id: "rozetka",   name: "Rozetka",   desc: "Обробляйте замовлення з найбільшого українського маркетплейсу.", logo: "/rozetka-new.png" },
+  { id: "ringostat", name: "Ringostat", desc: "Відстежуйте дзвінки та автоматично прив'язуйте їх до клієнтів і угод.", logo: "/ringostat-v2.png" },
+  { id: "unitalk",   name: "Unitalk",   desc: "IP-телефонія з автоматичною фіксацією дзвінків у картці клієнта.", logo: "/unitalk-v2.png" },
 ];
 
-// 3× duplication — 3 × 2316px = 6948px, within GPU texture limits on Windows.
-// Covers up to ~4632px viewport (2×one-set) which exceeds our 3024px cap.
+// 3× duplication — 3 × 1930px = 5790px, within GPU texture limits on Windows.
+// Covers up to ~3860px viewport (2×one-set) which exceeds our 3024px cap.
 const track1 = Array(3).fill(ROW_1).flat();
 const track2 = Array(3).fill(ROW_2).flat();
 
@@ -27,25 +27,6 @@ const track2 = Array(3).fill(ROW_2).flat();
 // НЕ використовуємо mask-image / overflow:hidden на контейнері —
 // вони обрізають box-shadow дочірніх елементів (те саме що було з мокапом).
 const FADE_OVERLAY = "linear-gradient(to right, white 0%, transparent 8%, transparent 92%, white 100%)";
-
-function IntegrationCard({ item }: { item: { id: string; name: string; desc: string } }) {
-  return (
-    <div
-      className="integration-card flex-shrink-0 flex items-start gap-4 bg-white border border-[#e5e6ea] rounded-2xl"
-      style={{ width: 370, padding: "22px 28px", margin: "0 8px" }}
-    >
-      {/* Logo placeholder — замінити на <Image> коли будуть фото */}
-      <div
-        className="flex-shrink-0 rounded-xl border border-[#e5e6ea] bg-[#f9fafb] mt-0.5"
-        style={{ width: 48, height: 48 }}
-      />
-      <div className="min-w-0">
-        <p className="font-semibold text-[15px] leading-6 text-[#141414] mb-1">{item.name}</p>
-        <p className="integration-card-desc font-normal text-[14px] leading-5 text-[#727272]">{item.desc}</p>
-      </div>
-    </div>
-  );
-}
 
 export default function Integrations() {
   return (
@@ -78,14 +59,28 @@ export default function Integrations() {
         {/* Рядок 1 — ліворуч */}
         <div className="relative py-2 w-full">
           <div className="integrations-track flex">
-            {track1.map((item, i) => <IntegrationCard key={i} item={item} />)}
+            {track1.map((item, i) => (
+              <IntegrationCard
+                key={i}
+                item={item}
+                className="integration-card flex-shrink-0"
+                style={{ width: 370, padding: "22px 28px", margin: "0 8px" }}
+              />
+            ))}
           </div>
         </div>
 
         {/* Рядок 2 — праворуч */}
         <div className="relative py-2 w-full">
           <div className="integrations-track-rtl flex">
-            {track2.map((item, i) => <IntegrationCard key={i} item={item} />)}
+            {track2.map((item, i) => (
+              <IntegrationCard
+                key={i}
+                item={item}
+                className="integration-card flex-shrink-0"
+                style={{ width: 370, padding: "22px 28px", margin: "0 8px" }}
+              />
+            ))}
           </div>
         </div>
 
@@ -95,6 +90,7 @@ export default function Integrations() {
       <div className="flex justify-center" style={{ marginTop: 48 }}>
         <a
           href="/integrations"
+          className="btn-dark"
           style={{
             display: "inline-block",
             background: "#141414",

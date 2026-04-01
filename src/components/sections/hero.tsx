@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Play } from "@geist-ui/icons";
 import HeroMockup from "./hero-mockup";
+import { useDemoModal } from "@/components/shared/modal-context";
 
 const H1_LINES = [
   ["Єдина", "система"],
@@ -14,6 +15,7 @@ const H1_ANIM_DURATION = WORD_COUNT * 120 + 800;
 
 export default function Hero() {
   const [stage, setStage] = useState(0);
+  const { open: openModal } = useDemoModal();
 
   useEffect(() => {
     const start = () => {
@@ -90,7 +92,8 @@ export default function Hero() {
           }}
         >
           <button
-            className="w-full sm:w-auto"
+            className="btn-primary w-full sm:w-auto"
+            onClick={openModal}
             style={{
               background: "#29abe2",
               color: "#fff",
@@ -107,7 +110,7 @@ export default function Hero() {
             Записатися на демо-перегляд
           </button>
           <button
-            className="w-full sm:w-auto"
+            className="btn-secondary w-full sm:w-auto"
             style={{
               background: "#fff",
               color: "#141414",

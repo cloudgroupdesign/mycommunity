@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "@geist-ui/icons";
+import { useDemoModal } from "./modal-context";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -54,6 +55,13 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
+  const { open: openModal, isOpen: modalOpen } = useDemoModal();
+
+  // When modal opens — always reveal navbar so it's visible after modal closes
+  useEffect(() => {
+    if (modalOpen) setHidden(false);
+  }, [modalOpen]);
+
   const scrollToFeatures = () => {
     if (pathname === "/") {
       document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
@@ -95,9 +103,7 @@ export default function Navbar() {
           <Link href="/prices" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
             Ціни
           </Link>
-          <Link href="/reviews" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
-            Відгуки
-          </Link>
+
           <Link href="/integrations" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
             Інтеграції
           </Link>
@@ -106,10 +112,25 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        {/* Right — Увійти (desktop only) */}
+        {/* Right — CTA (desktop only) */}
         <div className="hidden lg:flex flex-1 justify-end">
-          <button className="px-4 py-2 text-[14px] font-medium text-[#29abe2] hover:opacity-80 transition-opacity">
-            Увійти
+          <button
+            className="btn-primary"
+            onClick={openModal}
+            style={{
+              background: "#29abe2",
+              color: "#fff",
+              fontSize: 14,
+              fontWeight: 600,
+              lineHeight: "22px",
+              padding: "9px 20px",
+              borderRadius: 10,
+              border: "none",
+              cursor: "pointer",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Замовити демо
           </button>
         </div>
 
@@ -118,6 +139,8 @@ export default function Navbar() {
           className="lg:hidden p-2 -mr-1 text-[#141414]"
           onClick={() => setMenuOpen(true)}
           aria-label="Відкрити меню"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <Menu size={24} />
         </button>
@@ -126,8 +149,12 @@ export default function Navbar() {
       {/* Mobile/tablet full-screen sidebar */}
       {menuOpen && (
         <div
+          id="mobile-menu"
           className="fixed inset-0 z-[100] bg-white flex flex-col lg:hidden"
           style={{ animation: "slideInRight 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Навігаційне меню"
         >
           {/* Sidebar header */}
           <div className="flex items-center justify-between px-6 h-16 border-b border-[#e5e6ea] flex-shrink-0">
@@ -156,13 +183,7 @@ export default function Navbar() {
             >
               Ціни
             </Link>
-            <Link
-              href="/reviews"
-              className="py-4 text-[16px] font-medium text-[#111827] border-b border-[#f0f0f0] block"
-              onClick={() => setMenuOpen(false)}
-            >
-              Відгуки
-            </Link>
+
             <Link
               href="/integrations"
               className="py-4 text-[16px] font-medium text-[#111827] border-b border-[#f0f0f0] block"

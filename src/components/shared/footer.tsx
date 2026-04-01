@@ -4,7 +4,6 @@ import Link from "next/link";
 const navLinks = [
   { label: "Продукти",   href: "/#features" },
   { label: "Ціни",       href: "/prices" },
-  { label: "Відгуки",    href: "/reviews" },
   { label: "Інтеграції", href: "/integrations" },
   { label: "Про нас",    href: "/about" },
 ];

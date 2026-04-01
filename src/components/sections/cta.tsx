@@ -1,4 +1,9 @@
+"use client";
+
+import { useDemoModal } from "@/components/shared/modal-context";
+
 export default function CTA() {
+  const { open: openModal } = useDemoModal();
   return (
     <section className="w-full px-4 md:px-8" style={{ paddingBottom: 0 }}>
       <div
@@ -46,6 +51,8 @@ export default function CTA() {
           </p>
 
           <button
+            className="btn-primary"
+            onClick={openModal}
             style={{
               marginTop: 4,
               background: "#29abe2",

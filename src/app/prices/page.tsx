@@ -1,29 +1,23 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/shared/navbar";
 import Footer from "@/components/shared/footer";
+import DemoCTAButton from "@/components/shared/demo-cta-button";
+import { FunnelFill, CheckCircleFill, UsersFill } from "@/components/shared/icons";
 
-const FunnelFill = () => (
-  <svg width="20" height="20" viewBox="2.5 1 15.5 17.5" fill="white">
-    <path fillRule="evenodd" d="M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 0 1 .628.74v2.288a2.25 2.25 0 0 1-.659 1.59l-4.682 4.683a2.25 2.25 0 0 0-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 0 1 8 18.25v-5.757a2.25 2.25 0 0 0-.659-1.591L2.66 6.22A2.25 2.25 0 0 1 2 4.629V2.34a.75.75 0 0 1 .628-.74z" clipRule="evenodd" />
-  </svg>
-);
+export const metadata: Metadata = {
+  title: "Ціни",
+  description:
+    "Прозорі ціни на модулі My Community. Обирайте CRM, задачі, виробництво, склад та HR-процеси — платіть лише за те, що використовуєте.",
+};
+
 const HammerFill = () => (
   <svg width="20" height="20" viewBox="0 0 16 16" fill="white">
     <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 13.5 14.5l1.95-1.955a.5.5 0 0 0-.017-.707l-8.5-8.333.042-.438z" />
   </svg>
 );
-const CheckCircleFill = () => (
-  <svg width="20" height="20" viewBox="2 2 16 16" fill="white">
-    <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
-  </svg>
-);
 const CubeFill = () => (
   <svg width="20" height="20" viewBox="2 1.5 16 17" fill="white">
     <path d="M10.75 1.566a1.5 1.5 0 0 0-1.5 0L2.5 5.5v9l7.75 4.434L18 14.5v-9l-7.25-3.934Z" />
-  </svg>
-);
-const UsersFill = () => (
-  <svg width="20" height="20" viewBox="1.5 2 18 15" fill="white">
-    <path d="M7 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM14.5 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM1.615 16.428a1.224 1.224 0 0 1-.569-1.175 6.002 6.002 0 0 1 11.908 0c.058.467-.172.92-.57 1.174A9.953 9.953 0 0 1 7 17a9.953 9.953 0 0 1-5.385-1.572ZM14.5 16h-.106c.07-.297.088-.611.048-.933a7.47 7.47 0 0 0-1.588-3.755 4.502 4.502 0 0 1 5.874 2.636.818.818 0 0 1-.36.98A7.465 7.465 0 0 1 14.5 16Z" />
   </svg>
 );
 
@@ -189,7 +183,8 @@ export default function PricesPage() {
                 <span style={{ fontSize: 16, color: "rgba(255,255,255,0.55)" }}>/міс</span>
               </div>
 
-              <button
+              <DemoCTAButton
+                className="btn-primary"
                 style={{
                   marginTop: 8,
                   background: "#29abe2",
@@ -205,7 +200,7 @@ export default function PricesPage() {
                 }}
               >
                 Записатися на демо
-              </button>
+              </DemoCTAButton>
             </div>
 
             {/* Setup */}
@@ -237,7 +232,8 @@ export default function PricesPage() {
                 <span style={{ fontSize: 16, color: "#727272" }}>за блок</span>
               </div>
 
-              <button
+              <DemoCTAButton
+                className="btn-dark"
                 style={{
                   marginTop: 8,
                   background: "#141414",
@@ -253,7 +249,7 @@ export default function PricesPage() {
                 }}
               >
                 Отримати консультацію
-              </button>
+              </DemoCTAButton>
             </div>
           </div>
         </section>
