@@ -35,7 +35,7 @@ export default function IntegrationsContent() {
   return (
     <>
       {/* Hero */}
-      <section className="w-full flex flex-col items-center text-center px-4 md:px-6 pt-10 pb-10 md:pt-16 md:pb-14 lg:pt-24 lg:pb-16">
+      <section className="w-full flex flex-col items-center text-center px-4 md:px-6 pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-[72px] lg:pb-[72px]">
         <div className="flex flex-col gap-4 md:gap-5 items-center" style={{ maxWidth: 640 }}>
           <h1 className="hero-h1">
             Інтеграції
