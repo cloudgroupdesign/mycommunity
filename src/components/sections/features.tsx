@@ -5,19 +5,20 @@ import { ChevronLeft, ChevronRight } from "@geist-ui/icons";
 import { FunnelFill, CheckCircleFill, UsersFill } from "@/components/shared/icons";
 
 /* ── Fill-іконки (Heroicons 20/solid paths) ── */
-const ChatFill = () => (
-  <svg width="17" height="17" viewBox="2 4 16 13" fill="white">
+type IconProps = { size?: number; fill?: string };
+const ChatFill = ({ size = 17, fill = "white" }: IconProps) => (
+  <svg width={size} height={size} viewBox="2 4 16 13" fill={fill}>
     <path fillRule="evenodd" d="M2 6.75A2.75 2.75 0 0 1 4.75 4h10.5A2.75 2.75 0 0 1 18 6.75v5.5A2.75 2.75 0 0 1 15.25 15H8.614l-3.348 2.236A.75.75 0 0 1 4 16.75v-2.15A2.75 2.75 0 0 1 2 12.25v-5.5Z" clipRule="evenodd" />
   </svg>
 );
-const FolderFill = () => (
-  <svg width="17" height="17" viewBox="2 2 16 15" fill="white">
+const FolderFill = ({ size = 17, fill = "white" }: IconProps) => (
+  <svg width={size} height={size} viewBox="2 2 16 15" fill={fill}>
     <path d="M2 4.5A2.5 2.5 0 0 1 4.5 2h3.879a2.5 2.5 0 0 1 1.768.732l.62.62c.162.162.38.253.609.253H15.5A2.5 2.5 0 0 1 18 6H2V4.5Z" />
     <path fillRule="evenodd" d="M2 7h16v7.5A2.5 2.5 0 0 1 15.5 17h-11A2.5 2.5 0 0 1 2 14.5V7Z" clipRule="evenodd" />
   </svg>
 );
-const WarehouseFill = () => (
-  <svg width="17" height="17" viewBox="0 0 20 20" fill="white">
+const WarehouseFill = ({ size = 17, fill = "white" }: IconProps) => (
+  <svg width={size} height={size} viewBox="0 0 20 20" fill={fill}>
     <path d="M2 3a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H2Z" />
     <path fillRule="evenodd" d="M2 7.5h16l-.811 7.71a2 2 0 0 1-1.99 1.79H4.802a2 2 0 0 1-1.99-1.79L2 7.5ZM7 11a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Z" clipRule="evenodd" />
   </svg>
@@ -82,6 +83,7 @@ const slides = [
 
 export default function Features() {
   const [current, setCurrent] = useState(0);
+  const [hovered, setHovered] = useState<number | null>(null);
 
   const slide = slides[current];
 
@@ -94,38 +96,50 @@ export default function Features() {
           <h2 className="section-h2">
             Можливості My Community
           </h2>
-          <p className="text-[15px] md:text-[17px] lg:text-[18px] leading-[26px] md:leading-[28px] lg:leading-[30px] font-normal text-[#727272]" style={{ maxWidth: 580 }}>
+          <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-[26px] md:leading-[28px] lg:leading-[32px] font-normal text-[#727272]" style={{ maxWidth: 580 }}>
             Все для управління бізнесом в одній системі
           </p>
         </div>
 
-        {/* Таби */}
-        <div className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-1 sm:gap-x-4 sm:gap-y-2">
-          {slides.flatMap((s, i) => {
+        {/* Таби — mobile+tablet: horizontal scroll; lg+: flex-wrap centered */}
+        <div
+          className="flex lg:flex-wrap lg:justify-center gap-4"
+          style={{ overflowX: "auto", scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
+        >
+          {slides.map((s, i) => {
             const active = i === current;
-            const btn = (
+            return (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
+                className="features-tab-btn"
+                onMouseEnter={() => { if (!active) setHovered(i); }}
+                onMouseLeave={() => setHovered(null)}
                 style={{
+                  flexShrink: 0,
                   display: "flex",
+                  flexDirection: "column",
                   alignItems: "center",
-                  gap: 10,
-                  padding: "10px 14px 10px 10px",
-                  borderRadius: 14,
+                  justifyContent: "center",
+                  gap: 12,
+                  padding: 24,
+                  borderRadius: 16,
                   border: "none",
                   cursor: "pointer",
-                  background: active ? s.accent + "1a" : "transparent",
+                  width: 144,
+                  background: active
+                    ? s.accent + "12"
+                    : hovered === i ? s.accent + "0F" : "transparent",
                   transition: "background 0.25s ease",
-                  minWidth: 0,
                 }}
               >
-                {/* Іконка — fill, 20×20, padding 5px, rounded 6px */}
+                {/* Іконка з боксом — desktop/tablet */}
                 <div
+                  className="features-tab-icon-box"
                   style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: 10,
+                    width: 48,
+                    height: 48,
+                    borderRadius: 13,
                     background: s.accent,
                     display: "flex",
                     alignItems: "center",
@@ -133,15 +147,20 @@ export default function Features() {
                     flexShrink: 0,
                   }}
                 >
-                  <s.Icon />
+                  <s.Icon size={22} />
+                </div>
+
+                {/* Іконка без боксу — mobile */}
+                <div className="features-tab-icon-naked" style={{ flexShrink: 0, display: "none" }}>
+                  <s.Icon size={24} fill={s.accent} />
                 </div>
 
                 {/* Назва */}
                 <span
                   style={{
-                    fontWeight: 500,
-                    fontSize: 17,
-                    lineHeight: "22px",
+                    fontWeight: 600,
+                    fontSize: 16,
+                    lineHeight: "20px",
                     color: active ? s.accent : "#141414",
                     transition: "color 0.25s ease",
                     whiteSpace: "nowrap",
@@ -151,8 +170,6 @@ export default function Features() {
                 </span>
               </button>
             );
-            if (i === 3) return [btn, <div key="break" className="hidden lg:block" style={{ flexBasis: "100%", height: 0 }} />];
-            return btn;
           })}
         </div>
 
@@ -169,53 +186,47 @@ export default function Features() {
             <ChevronLeft size={32} color="#141414" strokeWidth={2.5} />
           </button>
 
-        <div className="w-full rounded-2xl overflow-hidden flex flex-col lg:flex-row lg:h-[440px]">
-          {/* Ліворуч — кольорова зона з мокапом */}
+          {/* Картка: mobile — flex-col; md — grid 1.40fr:1fr 497px; lg — grid 1.40fr:1fr 417px */}
           <div
-            className="flex-shrink-0 flex items-end justify-center"
+            className="w-full overflow-hidden flex flex-col md:grid md:h-[497px] lg:h-[417px]"
             style={{
-              flex: "0 0 60%",
-              background: slide.accent,
-              transition: "background 0.35s ease",
-              padding: "28px 28px 0",
+              borderRadius: 24,
+              gridTemplateColumns: "1.40fr 1fr",
             }}
           >
-            {/* Мокап-placeholder — замінити на <Image> */}
+            {/* Ліворуч — зона фотографії */}
             <div
-              className="lg:h-[360px]"
+              className="w-full aspect-[342/231] md:aspect-auto"
               style={{
-                width: "100%",
-                height: 200,
-                background: "rgba(255,255,255,0.15)",
-                borderRadius: "12px 12px 0 0",
-                border: "1px solid rgba(255,255,255,0.25)",
+                background: slide.accent,
+                transition: "background 0.35s ease",
               }}
-            />
-          </div>
+            >
+              {/* TODO: замінити на <Image src="..." /> */}
+            </div>
 
-          {/* Праворуч — текст */}
-          <div
-            className="flex flex-col justify-start py-12 px-7 lg:px-10 gap-4"
-            style={{
-              flex: 1,
-              background: slide.bg,
-              transition: "background 0.35s ease",
-            }}
-          >
-            <h3
-              className="font-semibold text-[22px] md:text-[26px] lg:text-[32px] leading-[30px] md:leading-[34px] lg:leading-[40px] tracking-tight"
-              style={{ color: slide.dark }}
+            {/* Праворуч — текст */}
+            <div
+              className="flex flex-col justify-start p-8 md:px-12 md:py-[58px] gap-4"
+              style={{
+                background: slide.bg,
+                transition: "background 0.35s ease",
+              }}
             >
-              {slide.title}
-            </h3>
-            <p
-              className="font-normal text-[14px] md:text-[16px] lg:text-[18px] leading-6 lg:leading-[30px]"
-              style={{ color: slide.dark, opacity: 0.72 }}
-            >
-              {slide.desc}
-            </p>
+              <h3
+                className="font-semibold text-[24px] md:text-[32px] leading-[30px] md:leading-[40px]"
+                style={{ color: slide.dark, letterSpacing: "-0.01em" }}
+              >
+                {slide.title}
+              </h3>
+              <p
+                className="font-normal text-[15px] md:text-[16px]"
+                style={{ color: slide.dark, opacity: 0.72, lineHeight: "1.6" }}
+              >
+                {slide.desc}
+              </p>
+            </div>
           </div>
-        </div>
 
           {/* Права стрілка */}
           <button

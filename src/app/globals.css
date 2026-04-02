@@ -124,6 +124,21 @@
   color: #4b5563;
 }
 
+
+@media (max-width: 1023px) {
+  /* tablet: keep 144px width, single row scroll — no changes needed */
+}
+@media (max-width: 767px) {
+  .features-tab-btn {
+    flex-direction: row !important;
+    padding: 16px !important;
+    gap: 12px !important;
+    width: auto !important;   /* content-based width, never compress */
+  }
+  .features-tab-icon-box { display: none !important; }
+  .features-tab-icon-naked { display: flex !important; }
+}
+
 /* Features slider nav buttons */
 .features-nav-btn {
   cursor: pointer;
@@ -405,6 +420,22 @@
   .demo-modal-content { padding: 32px 20px 28px; border-radius: 16px; }
 }
 
+/* ── Hero mockup fluid height ──
+   390px → 172px, 768px → 464px, 1024px → 596px, smooth clamp between */
+.hero-mockup-inner {
+  height: clamp(172px, calc(-129.3px + 77.25vw), 464px);
+}
+@media (min-width: 768px) {
+  .hero-mockup-inner {
+    height: clamp(464px, calc(68px + 51.56vw), 596px);
+  }
+}
+@media (min-width: 1024px) {
+  .hero-mockup-inner {
+    height: 596px;
+  }
+}
+
 /* ── Responsive typography ── */
 .hero-h1 {
   font-size: 34px;
@@ -455,16 +486,28 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Spinning effects — freeze */
   @keyframes gradientSpin {
     from { transform: rotate3d(0, 0, 1, 0deg); }
     to   { transform: rotate3d(0, 0, 1, 0deg); }
   }
-  @keyframes plopInAnimation {
-    0%   { opacity: 0; transform: none; }
-    100% { opacity: 1; transform: none; }
+  @keyframes mockupBorderSpin {
+    to { --mockup-angle: 0deg; }
   }
-  .hero-word-inner { animation-duration: 0.01ms !important; }
-  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  /* Marquee — stop (continuous scroll is vestibular-triggering) */
+  .integrations-track,
+  .integrations-track-rtl {
+    animation: none;
+  }
+  /* Hero words — opacity fade only, no transform */
+  @keyframes plopInAnimation {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  .hero-word-inner { animation-duration: 0.25s !important; }
+  /* Modal/slide animations — shorten, keep visible */
+  .demo-modal-overlay { animation-duration: 0.1s !important; }
+  .demo-modal-content { animation-duration: 0.1s !important; }
 }
 
 @layer base {

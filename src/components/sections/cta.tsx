@@ -43,7 +43,7 @@ export default function CTA() {
           </h2>
 
           <p
-            className="text-[15px] md:text-[16px] lg:text-[18px] leading-6 lg:leading-[30px] font-normal text-[#4b5563]"
+            className="text-[16px] md:text-[18px] lg:text-[20px] leading-[26px] md:leading-[28px] lg:leading-[32px] font-normal text-[#4b5563]"
             style={{ maxWidth: 520 }}
           >
             Об&apos;єднайте всі процеси в одному місці та забудьте про хаос.

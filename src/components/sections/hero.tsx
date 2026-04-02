@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Play } from "@geist-ui/icons";
 import HeroMockup from "./hero-mockup";
 import { useDemoModal } from "@/components/shared/modal-context";
 
@@ -66,7 +65,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className="text-[15px] leading-6 md:text-[17px] md:leading-7 lg:text-[18px] lg:leading-[30px] font-normal text-[#4b5563]"
+            className="text-[16px] leading-[26px] md:text-[18px] md:leading-[28px] lg:text-[20px] lg:leading-[32px] font-normal text-[#4b5563]"
             style={{
               maxWidth: 640,
               opacity: stage >= 2 ? 1 : 0,
@@ -111,6 +110,7 @@ export default function Hero() {
           </button>
           <button
             className="btn-secondary w-full sm:w-auto"
+            onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
             style={{
               background: "#fff",
               color: "#141414",
@@ -127,8 +127,10 @@ export default function Hero() {
               gap: 8,
             }}
           >
-            <Play size={16} />
-            Переглянути демо
+            Переглянути можливості
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.5 5l5 5-5 5" stroke="#141414" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </button>
         </div>
       </div>

@@ -84,8 +84,11 @@ export default function PricesPage() {
             <h1 className="hero-h1">
               Прозорі ціни для вашого бізнесу
             </h1>
-            <p className="text-[15px] md:text-[17px] lg:text-[18px] leading-6 md:leading-7 lg:leading-[30px] font-normal text-[#727272]">
-              Обирайте модулі, які потрібні саме вам. Платіть лише за те, що використовуєте.
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-[26px] md:leading-[28px] lg:leading-[32px] font-normal text-[#727272]">
+              Обирайте модулі під свій бізнес. Ціни фіксовані — жодних прихованих платежів.{" "}
+              <span className="text-[#141414] font-medium">
+                Підключення відбувається після персональної демонстрації системи.
+              </span>
             </p>
           </div>
         </section>
@@ -137,6 +140,25 @@ export default function PricesPage() {
                 </div>
               </div>
             ))}
+
+          </div>
+          {/* Кнопка по центру після карток */}
+          <div className="w-full mx-auto flex justify-center" style={{ maxWidth: 1080, paddingTop: 64 }}>
+            <DemoCTAButton
+              style={{
+                background: "#29abe2",
+                color: "#fff",
+                fontSize: 16,
+                fontWeight: 600,
+                padding: "14px 36px",
+                borderRadius: 12,
+                border: "none",
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Записатися на демо
+            </DemoCTAButton>
           </div>
         </section>
 

@@ -13,7 +13,7 @@ export default function Why() {
           <h2 className="section-h2">
             Чим My Community відрізняється
           </h2>
-          <p className="text-[15px] md:text-[17px] lg:text-[18px] leading-[26px] md:leading-[28px] lg:leading-[30px] font-normal text-[#727272]" style={{ maxWidth: 560 }}>
+          <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-[26px] md:leading-[28px] lg:leading-[32px] font-normal text-[#727272]" style={{ maxWidth: 600 }}>
             Система, створена в Україні підприємцями для підприємців
           </p>
         </div>
@@ -25,42 +25,69 @@ export default function Why() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
             {/* Card 1 */}
-            <div className="rounded-2xl overflow-hidden flex flex-col lg:h-[404px]" style={{ background: "#eef2fc" }}>
-              <div className="flex flex-col gap-3 px-7 pt-8 pb-6 lg:h-[60%]">
-                <h3 className="font-semibold text-[20px] md:text-[22px] lg:text-[24px] leading-[28px] lg:leading-[32px] tracking-tight" style={{ color: "#1a3a7a" }}>
-                  Створена підприємцями для підприємців
-                </h3>
-                <p className="text-[14px] md:text-[15px] lg:text-[16px] leading-6" style={{ color: "#1a3a7a", opacity: 0.7 }}>
-                  Ми самі будували бізнес і знаємо, що потрібно насправді. Тому кожна функція вирішує реальну задачу, а не теоретичну.
-                </p>
+            <div className="rounded-3xl overflow-hidden flex flex-col lg:h-[424px]" style={{ background: "#eef2fc" }}>
+              <div className="flex-1 flex flex-col items-center text-center pt-10 px-8 lg:pt-[64px] lg:px-[57px]">
+                <div className="flex flex-col items-center" style={{ maxWidth: 400, width: "100%" }}>
+                  <h3
+                    className="font-semibold text-[22px] md:text-[26px] lg:text-[32px] leading-[30px] md:leading-[34px] lg:leading-[40px]"
+                    style={{ color: "#1a3a7a", letterSpacing: "-0.01em" }}
+                  >
+                    Створена підприємцями для підприємців
+                  </h3>
+                  <p
+                    className="text-[14px] md:text-[15px] lg:text-[16px]"
+                    style={{ color: "#1a3a7a", opacity: 0.7, lineHeight: "22px", marginTop: 16, marginBottom: 28 }}
+                  >
+                    Ми самі будували бізнес — тому кожна функція вирішує реальну задачу.
+                  </p>
+                </div>
               </div>
-              <div className="mx-6 flex-1 min-h-[180px] lg:flex-none lg:h-[40%] rounded-t-xl" style={{ background: "#c7d7f9" }} />
+              <div className="h-[160px] lg:h-[191px] shrink-0" style={{ background: "#c7d7f9" }} />
             </div>
 
             {/* Card 2 */}
-            <div className="rounded-2xl overflow-hidden flex flex-col lg:h-[404px]" style={{ background: "#f3e8fd" }}>
-              <div className="flex flex-col gap-3 px-7 pt-8 pb-6 lg:h-[60%]">
-                <h3 className="font-semibold text-[20px] md:text-[22px] lg:text-[24px] leading-[28px] lg:leading-[32px] tracking-tight" style={{ color: "#5a1a7a" }}>
-                  Легка в управлінні та масштабуванні
-                </h3>
-                <p className="text-[14px] md:text-[15px] lg:text-[16px] leading-6" style={{ color: "#5a1a7a", opacity: 0.7 }}>
-                  Інтуїтивний інтерфейс без складного навчання. Система росте разом із вашим бізнесом — нові модулі підключаються коли потрібно.
-                </p>
+            <div className="rounded-3xl overflow-hidden flex flex-col lg:h-[424px]" style={{ background: "#f3e8fd" }}>
+              <div className="flex-1 flex flex-col items-center text-center pt-10 px-8 lg:pt-[64px] lg:px-[57px]">
+                <div className="flex flex-col items-center" style={{ maxWidth: 400, width: "100%" }}>
+                  <h3
+                    className="font-semibold text-[22px] md:text-[26px] lg:text-[32px] leading-[30px] md:leading-[34px] lg:leading-[40px]"
+                    style={{ color: "#5a1a7a", letterSpacing: "-0.01em" }}
+                  >
+                    Легка в управлінні та масштабуванні
+                  </h3>
+                  <p
+                    className="text-[14px] md:text-[15px] lg:text-[16px]"
+                    style={{ color: "#5a1a7a", opacity: 0.7, lineHeight: "22px", marginTop: 16, marginBottom: 28 }}
+                  >
+                    Інтуїтивний інтерфейс без навчання — система росте разом із вашим бізнесом.
+                  </p>
+                </div>
               </div>
-              <div className="mx-6 flex-1 min-h-[180px] lg:flex-none lg:h-[40%] rounded-t-xl" style={{ background: "#dbb8f9" }} />
+              <div className="h-[160px] lg:h-[191px] shrink-0" style={{ background: "#dbb8f9" }} />
             </div>
 
           </div>
 
           {/* Bottom card — full width */}
-          <div className="rounded-2xl overflow-hidden flex flex-col lg:flex-row lg:h-[404px]" style={{ background: "#fff8e1" }}>
-            <div className="flex flex-col gap-4 px-9 pt-10 pb-10 lg:px-12 lg:py-14 justify-center" style={{ flex: "0 0 60%" }}>
-              <h3 className="font-semibold text-[20px] md:text-[22px] lg:text-[24px] leading-[28px] lg:leading-[32px] tracking-tight" style={{ color: "#7a4a00" }}>
-                Доступно і швидко — без довгого впровадження
-              </h3>
-              <p className="text-[14px] md:text-[15px] lg:text-[16px] leading-6" style={{ color: "#7a4a00", opacity: 0.7 }}>
-                Доступна альтернатива міжнародним системам. Ми самі розробники — впроваджуємо під ваші потреби швидко, без посередників.
-              </p>
+          <div className="rounded-3xl overflow-hidden flex flex-col lg:flex-row lg:h-[400px]" style={{ background: "#fff8e1" }}>
+            <div
+              className="flex flex-col items-center justify-center text-center pt-10 pb-7 px-8 lg:px-10"
+              style={{ flex: "0 0 50%" }}
+            >
+              <div className="flex flex-col items-center" style={{ maxWidth: 400 }}>
+                <h3
+                  className="font-semibold text-[22px] md:text-[26px] lg:text-[32px] leading-[30px] md:leading-[34px] lg:leading-[40px]"
+                  style={{ color: "#7a4a00", letterSpacing: "-0.01em" }}
+                >
+                  Доступно, швидко і без посередників
+                </h3>
+                <p
+                  className="text-[14px] md:text-[15px] lg:text-[16px]"
+                  style={{ color: "#7a4a00", opacity: 0.7, lineHeight: "22px", marginTop: 16, marginBottom: 28 }}
+                >
+                  Доступна альтернатива міжнародним системам — впроваджуємо швидко і без посередників.
+                </p>
+              </div>
             </div>
             <div className="flex-1 min-h-[200px] lg:min-h-0" style={{ background: "#ffe0a0" }} />
           </div>

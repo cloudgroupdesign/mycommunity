@@ -40,7 +40,7 @@ export default function IntegrationsContent() {
           <h1 className="hero-h1">
             Інтеграції
           </h1>
-          <p className="text-[15px] md:text-[17px] lg:text-[18px] leading-6 md:leading-7 lg:leading-[30px] font-normal text-[#727272]">
+          <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-[26px] md:leading-[28px] lg:leading-[32px] font-normal text-[#727272]">
             My Community підключається до інструментів, які ви вже використовуєте — без зайвих налаштувань.
           </p>
         </div>

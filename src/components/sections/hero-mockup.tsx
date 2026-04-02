@@ -124,10 +124,10 @@ export default function HeroMockup() {
       {/* Gradient border: conic-gradient як background + padding 3px — без overflow:hidden */}
       <div className="mockup-gradient-border">
         <div
+          className="hero-mockup-inner"
           style={{
             borderRadius: 13,
             background: "#F8FAFC",
-            aspectRatio: "16/9",
             width: "100%",
           }}
         />

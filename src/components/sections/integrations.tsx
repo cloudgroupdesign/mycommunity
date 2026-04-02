@@ -38,7 +38,7 @@ export default function Integrations() {
         <h2 className="section-h2">
           Підключіться до улюблених сервісів
         </h2>
-        <p className="text-[15px] md:text-[17px] lg:text-[18px] leading-[26px] lg:leading-[30px] font-normal text-[#727272]" style={{ maxWidth: 600 }}>
+        <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-[26px] md:leading-[28px] lg:leading-[32px] font-normal text-[#727272]" style={{ maxWidth: 600 }}>
           My Community інтегрується з інструментами, які ви вже використовуєте — без зайвих налаштувань
         </p>
       </div>
