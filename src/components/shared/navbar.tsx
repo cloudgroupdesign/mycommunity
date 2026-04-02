@@ -76,10 +76,11 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`border-b border-[#e5e6ea] w-full sticky bg-white z-50 transition-all duration-300 ${shadowClass} ${hideClass}`}
+        className={`border-b border-[#e5e6ea] w-full sticky bg-white z-50 ${shadowClass} ${hideClass}`}
         style={{
           top: "calc(-1 * env(safe-area-inset-top))",
           paddingTop: "env(safe-area-inset-top)",
+          transition: "transform 0.3s ease, box-shadow 0.3s ease",
         }}
       >
         <div className="h-16 flex items-center px-6 w-full">
