@@ -50,8 +50,7 @@ export default function Footer() {
               className="h-8 w-auto object-contain object-left"
             />
             <p style={{ fontSize: 14, lineHeight: 1.6, color: "#727272" }}>
-              Сучасна ERP/CRM платформа для українського бізнесу.
-              Автоматизуйте процеси та ростіть ефективніше.
+              Сучасна ERP/CRM платформа для бізнесу. Оптимізуйте процеси та масштабуйтеся швидше.
             </p>
           </div>
 
