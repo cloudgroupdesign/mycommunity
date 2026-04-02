@@ -1,4 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
+};
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SWRegister } from "@/components/shared/sw-register";

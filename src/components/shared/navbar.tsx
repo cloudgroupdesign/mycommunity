@@ -76,8 +76,10 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`border-b border-[#e5e6ea] h-16 flex items-center px-6 w-full sticky top-0 bg-white z-50 transition-all duration-300 ${shadowClass} ${hideClass}`}
+        className={`border-b border-[#e5e6ea] w-full sticky top-0 bg-white z-50 transition-all duration-300 ${shadowClass} ${hideClass}`}
+        style={{ paddingTop: "env(safe-area-inset-top)" }}
       >
+        <div className="h-16 flex items-center px-6 w-full">
         {/* Left — Logo */}
         <div className="flex flex-1 items-center">
           <Link
@@ -144,6 +146,7 @@ export default function Navbar() {
         >
           <Menu size={24} />
         </button>
+        </div>
       </header>
 
       {/* Mobile/tablet full-screen sidebar */}
@@ -157,7 +160,10 @@ export default function Navbar() {
           aria-label="Навігаційне меню"
         >
           {/* Sidebar header */}
-          <div className="flex items-center justify-between px-6 h-16 border-b border-[#e5e6ea] flex-shrink-0">
+          <div
+            className="flex items-center justify-between px-6 border-b border-[#e5e6ea] flex-shrink-0"
+            style={{ paddingTop: "calc(env(safe-area-inset-top) + 0px)", minHeight: "calc(64px + env(safe-area-inset-top))" }}
+          >
             <Image src="/logo.png" alt="My Community" width={160} height={32} className="h-8 w-auto object-contain" />
             <button
               onClick={() => setMenuOpen(false)}
