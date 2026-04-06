@@ -1,3 +1,5 @@
+export const revalidate = 86400; // ISR: revalidate daily
+
 import type { Metadata } from "next";
 import Navbar from "@/components/shared/navbar";
 import Footer from "@/components/shared/footer";

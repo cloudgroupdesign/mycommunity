@@ -1,3 +1,5 @@
+export const revalidate = 3600; // ISR: revalidate every hour
+
 import Navbar from "@/components/shared/navbar";
 import Footer from "@/components/shared/footer";
 import Hero from "@/components/sections/hero";
