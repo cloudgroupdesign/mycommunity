@@ -1,31 +1,28 @@
+import Image from "next/image";
+
 const founders = [
   {
-    name: "Андрій Коваленко",
-    role: "CEO & Co-founder",
-    initials: "АК",
+    name: "Анна Буркацька",
+    role: "Founder",
+    photo: "/anna-burkackaya.jpg",
+  },
+  {
+    name: "Денис Купраш",
+    role: "Founder",
+    photo: "/denis-kuprash.jpg",
+  },
+  {
+    name: "Владислава Пилипенко",
+    role: "Founder",
+    photo: "/vladyslava-pylypenko.jpg",
+  },
+  {
+    name: "Сергій Кулик",
+    role: "Founder",
+    photo: null,
+    initials: "СК",
     bg: "#eef2fc",
     color: "#1a3a7a",
-  },
-  {
-    name: "Олена Мельник",
-    role: "CTO & Co-founder",
-    initials: "ОМ",
-    bg: "#e8f5e9",
-    color: "#1a4a25",
-  },
-  {
-    name: "Дмитро Савченко",
-    role: "CPO & Co-founder",
-    initials: "ДС",
-    bg: "#f3e8fd",
-    color: "#5a1a7a",
-  },
-  {
-    name: "Марія Бондаренко",
-    role: "CMO & Co-founder",
-    initials: "МБ",
-    bg: "#fff8e1",
-    color: "#7a4a00",
   },
 ];
 
@@ -64,17 +61,25 @@ export default function AboutContent() {
           </div>
 
           <div
-            className="flex flex-col gap-5 items-center text-center"
-            style={{ maxWidth: 720 }}
+            className="flex flex-col gap-6 items-center text-center"
+            style={{ maxWidth: 680 }}
           >
             <p className="text-[16px] md:text-[17px] lg:text-[18px] leading-[26px] md:leading-[28px] lg:leading-[30px] font-normal text-[#4b5563]">
-              My Community — це CRM та ERP-система для українських церков,
-              громад і організацій. Ми об'єднуємо управління членами, задачами,
-              комунікаціями та фінансами в єдиному просторі.
+              Ми команда засновників консалтингової компанії{" "}
+              <a
+                href="https://mbtn.com.ua/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-[#ec693d] hover:text-[#c94e28] hover:underline transition-colors duration-200"
+              >MAYBUTNE Consulting</a>{" "}
+              з понад 10-річним досвідом роботи з бізнесами.
             </p>
             <p className="text-[16px] md:text-[17px] lg:text-[18px] leading-[26px] md:leading-[28px] lg:leading-[30px] font-normal text-[#4b5563]">
-              Наша місія — позбавити лідерів громад від операційного хаосу, щоб
-              вони могли зосередитися на головному: людях і розвитку спільноти.
+              Працюючи з різними організаціями, ми глибоко зрозуміли їхні реальні виклики.
+              Цей досвід сформував наше бачення простого та ефективного управління.
+            </p>
+            <p className="text-[16px] md:text-[17px] lg:text-[18px] leading-[26px] md:leading-[28px] lg:leading-[30px] font-normal text-[#4b5563]">
+              Тому ми створили My Community.
             </p>
           </div>
         </div>
@@ -104,17 +109,31 @@ export default function AboutContent() {
               >
                 {/* Photo — full bleed, portrait */}
                 <div
-                  className="w-full relative flex items-center justify-center"
-                  style={{ aspectRatio: "3/4", background: founder.bg }}
+                  className="w-full relative"
+                  style={{ aspectRatio: "3/4" }}
                 >
-                  {/* Replace with <Image> when real photos are available */}
-                  <span
-                    className="text-[48px] font-semibold leading-none select-none"
-                    style={{ color: founder.color, letterSpacing: "-0.01em" }}
-                    aria-hidden="true"
-                  >
-                    {founder.initials}
-                  </span>
+                  {founder.photo ? (
+                    <Image
+                      src={founder.photo}
+                      alt={founder.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                  ) : (
+                    <div
+                      className="w-full h-full flex items-center justify-center"
+                      style={{ background: founder.bg }}
+                    >
+                      <span
+                        className="text-[48px] font-semibold leading-none select-none"
+                        style={{ color: founder.color, letterSpacing: "-0.01em" }}
+                        aria-hidden="true"
+                      >
+                        {founder.initials}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Info */}

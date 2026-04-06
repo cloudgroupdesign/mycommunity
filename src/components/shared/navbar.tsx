@@ -83,7 +83,7 @@ export default function Navbar() {
           transition: "transform 0.3s ease, box-shadow 0.3s ease",
         }}
       >
-        <div className="h-16 flex items-center px-6 w-full">
+        <div className="h-[68px] lg:h-16 pt-1 lg:pt-0 flex items-center px-6 w-full">
         {/* Left — Logo */}
         <div className="flex flex-1 items-center">
           <Link
@@ -103,7 +103,7 @@ export default function Navbar() {
 
         {/* Center — Nav (desktop only) */}
         <nav className="hidden lg:flex flex-1 items-center justify-center gap-6">
-          <button onClick={scrollToFeatures} className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
+          <button onClick={scrollToFeatures} className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors cursor-pointer">
             Продукти
           </button>
           <Link href="/prices" className="px-1 py-1 text-[14px] font-medium text-[#111827] hover:text-[#29abe2] transition-colors">
@@ -165,10 +165,10 @@ export default function Navbar() {
         >
           {/* Sidebar header */}
           <div
-            className="flex items-center justify-between px-6 border-b border-[#e5e6ea] flex-shrink-0"
-            style={{ paddingTop: "env(safe-area-inset-top)", minHeight: "calc(64px + env(safe-area-inset-top))" }}
+            className="flex items-center justify-between px-6 flex-shrink-0"
+            style={{ paddingTop: "calc(env(safe-area-inset-top) + 4px)", minHeight: "calc(68px + env(safe-area-inset-top))" }}
           >
-            <Image src="/logo.png" alt="My Community" width={160} height={32} className="h-8 w-auto object-contain" />
+            <Image src="/logo.png" alt="My Community" width={210} height={36} className="h-9 w-auto object-contain" />
             <button
               onClick={() => setMenuOpen(false)}
               className="p-2 -mr-1 text-[#141414]"
@@ -178,37 +178,60 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Nav links */}
-          <nav className="flex flex-col px-6 pt-4 flex-1 overflow-y-auto">
-            <button
-              onClick={() => { scrollToFeatures(); setMenuOpen(false); }}
-              className="py-4 text-[16px] font-medium text-[#111827] border-b border-[#f0f0f0] w-full text-left"
-            >
-              Продукти
-            </button>
-            <Link
-              href="/prices"
-              className="py-4 text-[16px] font-medium text-[#111827] border-b border-[#f0f0f0] block"
-              onClick={() => setMenuOpen(false)}
-            >
-              Ціни
-            </Link>
+          {/* Nav links + socials */}
+          <div className="flex flex-col px-6 flex-1 overflow-y-auto" style={{ paddingTop: 32 }}>
+            <nav className="flex flex-col gap-[12px]">
+              <button
+                onClick={() => { scrollToFeatures(); setMenuOpen(false); }}
+                className="flex items-center w-full text-left text-[#111827] font-medium hover:text-[#29abe2] transition-colors"
+                style={{ fontSize: 36, height: 48 }}
+              >
+                Продукти
+              </button>
+              <Link
+                href="/prices"
+                className="flex items-center text-[#111827] font-medium hover:text-[#29abe2] transition-colors"
+                style={{ fontSize: 36, height: 48 }}
+                onClick={() => setMenuOpen(false)}
+              >
+                Ціни
+              </Link>
+              <Link
+                href="/integrations"
+                className="flex items-center text-[#111827] font-medium hover:text-[#29abe2] transition-colors"
+                style={{ fontSize: 36, height: 48 }}
+                onClick={() => setMenuOpen(false)}
+              >
+                Інтеграції
+              </Link>
+              <Link
+                href="/about"
+                className="flex items-center text-[#111827] font-medium hover:text-[#29abe2] transition-colors"
+                style={{ fontSize: 36, height: 48 }}
+                onClick={() => setMenuOpen(false)}
+              >
+                Про нас
+              </Link>
+            </nav>
 
-            <Link
-              href="/integrations"
-              className="py-4 text-[16px] font-medium text-[#111827] border-b border-[#f0f0f0] block"
-              onClick={() => setMenuOpen(false)}
-            >
-              Інтеграції
-            </Link>
-            <Link
-              href="/about"
-              className="py-4 text-[16px] font-medium text-[#111827] border-b border-[#f0f0f0] block"
-              onClick={() => setMenuOpen(false)}
-            >
-              Про нас
-            </Link>
-          </nav>
+            {/* Socials */}
+            <div style={{ marginTop: 32 }}>
+              <p style={{ fontSize: 18, fontWeight: 600, color: "#101828", letterSpacing: 0, marginBottom: 6 }}>Слідкуйте за нами</p>
+              <div className="flex flex-col" style={{ gap: 6 }}>
+                {[
+                  { name: "Facebook",  href: "#" },
+                  { name: "Instagram", href: "#" },
+                  { name: "YouTube",   href: "#" },
+                  { name: "LinkedIn",  href: "#" },
+                  { name: "Telegram",  href: "#" },
+                ].map(({ name, href }) => (
+                  <a key={name} href={href} className="flex items-center hover:text-[#29abe2] transition-colors" style={{ fontSize: 18, color: "#4b5563", height: 32 }} onClick={() => setMenuOpen(false)}>
+                    {name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </>

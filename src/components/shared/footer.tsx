@@ -42,14 +42,16 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="flex flex-col gap-5" style={{ maxWidth: 280 }}>
-            <Image
-              src="/logo.png"
-              alt="My Community"
-              width={160}
-              height={40}
-              className="h-8 w-auto object-contain object-left"
-            />
-            <p style={{ fontSize: 14, lineHeight: 1.6, color: "#727272" }}>
+            <Link href="/">
+              <Image
+                src="/logo.png"
+                alt="My Community"
+                width={160}
+                height={40}
+                className="h-8 w-auto object-contain object-left"
+              />
+            </Link>
+            <p className="text-[16px] lg:text-[14px]" style={{ lineHeight: 1.6, color: "#727272" }}>
               Сучасна ERP/CRM платформа для бізнесу. Оптимізуйте процеси та масштабуйтеся швидше.
             </p>
           </div>
@@ -59,11 +61,11 @@ export default function Footer() {
 
             {/* Навігація */}
             <div>
-              <p style={{ fontSize: 14, fontWeight: 600, color: "#141414", marginBottom: 20 }}>Навігація</p>
+              <p className="text-[16px] lg:text-[14px]" style={{ fontWeight: 600, color: "#141414", marginBottom: 20 }}>Навігація</p>
               <ul className="flex flex-col gap-3">
                 {navLinks.map(({ label, href }) => (
                   <li key={label}>
-                    <Link href={href} className="footer-link" style={{ fontSize: 14, whiteSpace: "nowrap" }}>
+                    <Link href={href} className="footer-link text-[16px] lg:text-[14px]" style={{ whiteSpace: "nowrap" }}>
                       {label}
                     </Link>
                   </li>
@@ -73,15 +75,15 @@ export default function Footer() {
 
             {/* Соцмережі */}
             <div>
-              <p style={{ fontSize: 14, fontWeight: 600, color: "#141414", marginBottom: 20 }}>Слідкуйте за нами</p>
+              <p className="text-[16px] lg:text-[14px]" style={{ fontWeight: 600, color: "#141414", marginBottom: 20 }}>Слідкуйте за нами</p>
               <ul className="flex flex-col gap-3">
                 {socials.map(({ id, name, href, icon }) => (
                   <li key={id}>
                     <a
                       href={href}
-                      className="social-link"
+                      className="social-link text-[16px] lg:text-[14px]"
                       data-social={id}
-                      style={{ fontSize: 14, display: "flex", alignItems: "center", gap: 10 }}
+                      style={{ display: "flex", alignItems: "center", gap: 10 }}
                     >
                       <span style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>{icon}</span>
                       <span style={{ whiteSpace: "nowrap" }}>{name}</span>
@@ -101,7 +103,7 @@ export default function Footer() {
           className="flex flex-col sm:flex-row items-center justify-between gap-3"
           style={{ borderTop: "1px solid #e5e6ea", paddingTop: 40, paddingBottom: 56 }}
         >
-          <p style={{ fontSize: 12, color: "#727272" }}>
+          <p className="text-[14px] lg:text-[12px]" style={{ color: "#727272" }}>
             © {year} My Community. Усі права захищено.
           </p>
           <div className="flex items-center gap-4">
@@ -109,7 +111,7 @@ export default function Footer() {
               { label: "Політика конфіденційності", href: "/privacy" },
               { label: "Умови використання",        href: "/terms" },
             ].map(({ label, href }) => (
-              <Link key={label} href={href} className="footer-link" style={{ fontSize: 12 }}>
+              <Link key={label} href={href} className="footer-link text-[14px] lg:text-[12px]">
                 {label}
               </Link>
             ))}
