@@ -1,5 +1,6 @@
 export const revalidate = 86400; // ISR: revalidate daily
 
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import Navbar from "@/components/shared/navbar";
 import Footer from "@/components/shared/footer";
@@ -16,7 +17,9 @@ export default function IntegrationsPage() {
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
       <main className="flex flex-col items-center w-full">
-        <IntegrationsContent />
+        <Suspense>
+          <IntegrationsContent />
+        </Suspense>
       </main>
       <Footer />
     </div>

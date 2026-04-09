@@ -5,6 +5,7 @@ export type IntegrationItem = {
   name: string;
   desc: string;
   logo: string;
+  category?: string;
 };
 
 type Props = {

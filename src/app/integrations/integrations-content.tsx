@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import IntegrationCard, { type IntegrationItem } from "@/components/shared/integration-card";
 
 const ALL: IntegrationItem[] = [
@@ -28,7 +29,18 @@ const categories = [
 ];
 
 export default function IntegrationsContent() {
-  const [activeId, setActiveId] = useState("all");
+  const searchParams = useSearchParams();
+  const [activeId, setActiveId] = useState(() => {
+    const cat = searchParams.get("cat");
+    return categories.some((c) => c.id === cat) ? cat! : "all";
+  });
+
+  useEffect(() => {
+    const cat = searchParams.get("cat");
+    if (cat && categories.some((c) => c.id === cat)) {
+      setActiveId(cat);
+    }
+  }, [searchParams]);
 
   const active = categories.find((c) => c.id === activeId) ?? categories[0];
 

@@ -3,19 +3,19 @@ import IntegrationCard, { type IntegrationItem } from "@/components/shared/integ
 // One card slot: 370px width + 8px margin each side = 386px
 // One set (5 cards): 5 × 386 = 1930px — used in CSS keyframes
 const ROW_1: IntegrationItem[] = [
-  { id: "google-calendar", name: "Google Calendar", desc: "Синхронізуйте зустрічі та події команди в реальному часі.",  logo: "/google-calendar-v2.png" },
-  { id: "zoom",            name: "Zoom",            desc: "Запускайте відеодзвінки прямо з картки клієнта або угоди.", logo: "/zoom-v2.png" },
-  { id: "telegram",        name: "Telegram",        desc: "Отримуйте сповіщення та відповідайте клієнтам прямо в Telegram.", logo: "/telegram-new.png" },
-  { id: "viber",           name: "Viber",           desc: "Надсилайте повідомлення та сповіщення клієнтам через Viber.", logo: "/viber-v2.png" },
-  { id: "meta",            name: "Meta",            desc: "Отримуйте ліди з Facebook Lead Ads та спілкуйтесь через Messenger.", logo: "/facebook-v2.png" },
+  { id: "google-calendar", name: "Google Calendar", desc: "Синхронізуйте зустрічі та події команди в реальному часі.",       logo: "/google-calendar-v2.png", category: "productivity" },
+  { id: "zoom",            name: "Zoom",            desc: "Запускайте відеодзвінки прямо з картки клієнта або угоди.",        logo: "/zoom-v2.png",            category: "video"        },
+  { id: "telegram",        name: "Telegram",        desc: "Отримуйте сповіщення та відповідайте клієнтам прямо в Telegram.", logo: "/telegram-new.png",       category: "messengers"   },
+  { id: "viber",           name: "Viber",           desc: "Надсилайте повідомлення та сповіщення клієнтам через Viber.",      logo: "/viber-v2.png",           category: "messengers"   },
+  { id: "meta",            name: "Meta",            desc: "Отримуйте ліди з Facebook Lead Ads та спілкуйтесь через Messenger.", logo: "/facebook-v2.png",      category: "messengers"   },
 ];
 
 const ROW_2: IntegrationItem[] = [
-  { id: "amazon",    name: "Amazon",    desc: "Управляйте замовленнями Amazon Marketplace з єдиного кабінету.", logo: "/amazon-v2.png" },
-  { id: "ebay",      name: "eBay",      desc: "Синхронізуйте товари та замовлення з міжнародним маркетплейсом.", logo: "/ebay-v2.png" },
-  { id: "rozetka",   name: "Rozetka",   desc: "Обробляйте замовлення з найбільшого українського маркетплейсу.", logo: "/rozetka-new.png" },
-  { id: "ringostat", name: "Ringostat", desc: "Відстежуйте дзвінки та автоматично прив'язуйте їх до клієнтів і угод.", logo: "/ringostat-v2.png" },
-  { id: "unitalk",   name: "Unitalk",   desc: "IP-телефонія з автоматичною фіксацією дзвінків у картці клієнта.", logo: "/unitalk-v2.png" },
+  { id: "amazon",    name: "Amazon",    desc: "Управляйте замовленнями Amazon Marketplace з єдиного кабінету.",           logo: "/amazon-v2.png",    category: "marketplaces" },
+  { id: "ebay",      name: "eBay",      desc: "Синхронізуйте товари та замовлення з міжнародним маркетплейсом.",          logo: "/ebay-v2.png",      category: "marketplaces" },
+  { id: "rozetka",   name: "Rozetka",   desc: "Обробляйте замовлення з найбільшого українського маркетплейсу.",           logo: "/rozetka-new.png",  category: "marketplaces" },
+  { id: "ringostat", name: "Ringostat", desc: "Відстежуйте дзвінки та автоматично прив'язуйте їх до клієнтів і угод.",   logo: "/ringostat-v2.png", category: "telephony"    },
+  { id: "unitalk",   name: "Unitalk",   desc: "IP-телефонія з автоматичною фіксацією дзвінків у картці клієнта.",         logo: "/unitalk-v2.png",   category: "telephony"    },
 ];
 
 // 3× duplication — 3 × 1930px = 5790px, within GPU texture limits on Windows.
@@ -60,12 +60,17 @@ export default function Integrations() {
         <div className="relative py-2 w-full">
           <div className="integrations-track flex">
             {track1.map((item, i) => (
-              <IntegrationCard
+              <a
                 key={i}
-                item={item}
-                className="integration-card flex-shrink-0"
-                style={{ width: 370, padding: "22px 28px", margin: "0 8px" }}
-              />
+                href={`/integrations?cat=${item.category}`}
+                style={{ display: "block", flexShrink: 0, width: 370, margin: "0 8px", textDecoration: "none" }}
+              >
+                <IntegrationCard
+                  item={item}
+                  className="integration-card"
+                  style={{ padding: "22px 28px" }}
+                />
+              </a>
             ))}
           </div>
         </div>
@@ -74,12 +79,17 @@ export default function Integrations() {
         <div className="relative py-2 w-full">
           <div className="integrations-track-rtl flex">
             {track2.map((item, i) => (
-              <IntegrationCard
+              <a
                 key={i}
-                item={item}
-                className="integration-card flex-shrink-0"
-                style={{ width: 370, padding: "22px 28px", margin: "0 8px" }}
-              />
+                href={`/integrations?cat=${item.category}`}
+                style={{ display: "block", flexShrink: 0, width: 370, margin: "0 8px", textDecoration: "none" }}
+              >
+                <IntegrationCard
+                  item={item}
+                  className="integration-card"
+                  style={{ padding: "22px 28px" }}
+                />
+              </a>
             ))}
           </div>
         </div>

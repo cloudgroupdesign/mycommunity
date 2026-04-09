@@ -113,8 +113,9 @@
 
 /* Card hover — subtle shadow + text highlight */
 .integration-card {
+  height: 134px;
   transition: box-shadow 0.22s ease, transform 0.22s ease;
-  cursor: default;
+  cursor: pointer;
 }
 .integration-card:hover {
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);

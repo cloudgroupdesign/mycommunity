@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 
 export const viewport: Viewport = {
   viewportFit: "cover",
+  themeColor: "#ffffff",
 };
 import { Inter } from "next/font/google";
 import "./globals.css";
