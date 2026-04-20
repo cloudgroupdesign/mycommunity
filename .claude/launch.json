@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "mycommunity",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeExecutable": "/Users/romakulyk/Dev/mycommunity/.claude/start-dev.sh",
+      "runtimeArgs": [],
       "port": 3000,
       "autoPort": true
     }

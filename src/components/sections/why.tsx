@@ -1,9 +1,26 @@
 "use client";
 
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useDemoModal } from "@/components/shared/modal-context";
+
+const founders = [
+  { src: "/denys.webp", alt: "Денис" },
+  { src: "/vlada.webp", alt: "Влада" },
+  { src: "/anna.webp", alt: "Анна" },
+];
 
 export default function Why() {
   const { open: openModal } = useDemoModal();
+  const [activeFounder, setActiveFounder] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveFounder((prev) => (prev + 1) % founders.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="w-full flex flex-col items-center px-4 md:px-6 py-14 md:py-20 lg:py-24">
       <div className="w-full flex flex-col gap-8 md:gap-12" style={{ maxWidth: 1080 }}>
@@ -24,72 +41,102 @@ export default function Why() {
           {/* Top row — 2 cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-            {/* Card 1 */}
+            {/* Card 1 — founders crossfade */}
             <div className="rounded-3xl overflow-hidden flex flex-col lg:h-[424px]" style={{ background: "#eef2fc" }}>
-              <div className="flex-1 flex flex-col items-center text-center pt-10 px-8 lg:pt-[64px] lg:px-[57px]">
+              <div className="lg:flex-1 flex flex-col items-center text-center pt-10 px-8 lg:pt-[64px] lg:px-[57px]">
                 <div className="flex flex-col items-center" style={{ maxWidth: 400, width: "100%" }}>
                   <h3
                     className="font-semibold text-[22px] md:text-[26px] lg:text-[32px] leading-[30px] md:leading-[34px] lg:leading-[40px]"
                     style={{ color: "#1a3a7a", letterSpacing: "-0.01em" }}
                   >
-                    Створена підприємцями для підприємців
+                    Створена підприємцями<br className="hidden lg:block" /> для підприємців
                   </h3>
                   <p
-                    className="text-[14px] md:text-[15px] lg:text-[16px]"
-                    style={{ color: "#1a3a7a", opacity: 0.7, lineHeight: "22px", marginTop: 16, marginBottom: 28 }}
+                    className="text-[14px] md:text-[15px] lg:text-[16px] mt-4 mb-5 lg:mb-7"
+                    style={{ color: "#1a3a7a", opacity: 0.7, lineHeight: "22px" }}
                   >
                     Ми самі будували бізнес — тому кожна функція вирішує реальну задачу.
                   </p>
                 </div>
               </div>
-              <div className="h-[160px] lg:h-[191px] shrink-0" style={{ background: "#c7d7f9" }} />
+              <div className="relative shrink-0 h-[191px] w-full">
+                {founders.map((founder, i) => (
+                  <Image
+                    key={founder.src}
+                    src={founder.src}
+                    alt={founder.alt}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    style={{
+                      opacity: i === activeFounder ? 1 : 0,
+                      transition: "opacity 1s ease-in-out",
+                    }}
+                    priority={i === 0}
+                  />
+                ))}
+              </div>
             </div>
 
-            {/* Card 2 */}
+            {/* Card 2 — analytics */}
             <div className="rounded-3xl overflow-hidden flex flex-col lg:h-[424px]" style={{ background: "#f3e8fd" }}>
-              <div className="flex-1 flex flex-col items-center text-center pt-10 px-8 lg:pt-[64px] lg:px-[57px]">
+              <div className="lg:flex-1 flex flex-col items-center text-center pt-10 px-8 lg:pt-[64px] lg:px-[57px]">
                 <div className="flex flex-col items-center" style={{ maxWidth: 400, width: "100%" }}>
                   <h3
                     className="font-semibold text-[22px] md:text-[26px] lg:text-[32px] leading-[30px] md:leading-[34px] lg:leading-[40px]"
                     style={{ color: "#5a1a7a", letterSpacing: "-0.01em" }}
                   >
-                    Легка в управлінні та масштабуванні
+                    Легка в управлінні та<br className="hidden lg:block" /> масштабуванні
                   </h3>
                   <p
-                    className="text-[14px] md:text-[15px] lg:text-[16px]"
-                    style={{ color: "#5a1a7a", opacity: 0.7, lineHeight: "22px", marginTop: 16, marginBottom: 28 }}
+                    className="text-[14px] md:text-[15px] lg:text-[16px] mt-4 mb-5 lg:mb-7"
+                    style={{ color: "#5a1a7a", opacity: 0.7, lineHeight: "22px" }}
                   >
                     Інтуїтивний інтерфейс без навчання — система росте разом із вашим бізнесом.
                   </p>
                 </div>
               </div>
-              <div className="h-[160px] lg:h-[191px] shrink-0" style={{ background: "#dbb8f9" }} />
+              {/* Photo — full bleed, same as card 1 */}
+              <div className="relative shrink-0 h-[191px] w-full">
+                <Image
+                  src="/analytics.webp"
+                  alt="Легка в управлінні"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
             </div>
 
           </div>
 
           {/* Bottom card — full width */}
           <div className="rounded-3xl overflow-hidden flex flex-col lg:flex-row lg:h-[400px]" style={{ background: "#fff8e1" }}>
-            <div
-              className="flex flex-col items-center justify-center text-center pt-10 pb-7 px-8 lg:px-10"
-              style={{ flex: "0 0 50%" }}
-            >
+            <div className="lg:flex-1 flex flex-col items-center lg:justify-center text-center pt-10 pb-6 lg:pb-7 px-8 lg:px-10">
               <div className="flex flex-col items-center" style={{ maxWidth: 400 }}>
                 <h3
                   className="font-semibold text-[22px] md:text-[26px] lg:text-[32px] leading-[30px] md:leading-[34px] lg:leading-[40px]"
                   style={{ color: "#7a4a00", letterSpacing: "-0.01em" }}
                 >
-                  Доступно, швидко і без посередників
+                  Доступно, швидко і<br className="hidden lg:block" /> без посередників
                 </h3>
                 <p
-                  className="text-[14px] md:text-[15px] lg:text-[16px]"
-                  style={{ color: "#7a4a00", opacity: 0.7, lineHeight: "22px", marginTop: 16, marginBottom: 28 }}
+                  className="text-[14px] md:text-[15px] lg:text-[16px] mt-4 mb-0 lg:mb-[28px]"
+                  style={{ color: "#7a4a00", opacity: 0.7, lineHeight: "22px" }}
                 >
                   Доступна альтернатива міжнародним системам — впроваджуємо швидко і без посередників.
                 </p>
               </div>
             </div>
-            <div className="flex-1 min-h-[200px] lg:min-h-0" style={{ background: "#ffe0a0" }} />
+            <div className="relative min-h-[260px] lg:min-h-0 lg:w-[540px] lg:shrink-0">
+              <Image
+                src="/launch.webp"
+                alt="Доступно, швидко і без посередників"
+                fill
+                className="object-cover object-center scale-[1.1]"
+                sizes="(max-width: 1024px) 100vw, 540px"
+              />
+            </div>
           </div>
 
         </div>
