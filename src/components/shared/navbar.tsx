@@ -219,11 +219,9 @@ export default function Navbar() {
               <p style={{ fontSize: 18, fontWeight: 600, color: "#101828", letterSpacing: 0, marginBottom: 6 }}>Слідкуйте за нами</p>
               <div className="flex flex-col" style={{ gap: 6 }}>
                 {[
-                  { name: "Facebook",  href: "#" },
-                  { name: "Instagram", href: "#" },
-                  { name: "YouTube",   href: "#" },
-                  { name: "LinkedIn",  href: "#" },
-                  { name: "Telegram",  href: "#" },
+                  { name: "Facebook",  href: "https://m.facebook.com/people/Maybutne-Consulting/61558223992122/" },
+                  { name: "Instagram", href: "https://www.instagram.com/mbtn_consulting" },
+                  { name: "Telegram",  href: "https://t.me/mbtn_consulting" },
                 ].map(({ name, href }) => (
                   <a key={name} href={href} className="flex items-center hover:text-[#29abe2] transition-colors" style={{ fontSize: 18, color: "#4b5563", height: 32 }} onClick={() => setMenuOpen(false)}>
                     {name}
