@@ -133,6 +133,8 @@ export default function Why() {
                 src="/launch.webp"
                 alt="Доступно, швидко і без посередників"
                 fill
+                quality={100}
+                priority
                 className="object-cover object-center scale-[1.1]"
                 sizes="(max-width: 1024px) 100vw, 540px"
               />

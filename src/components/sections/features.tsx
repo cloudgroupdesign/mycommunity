@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "@geist-ui/icons";
 import { FunnelFill, CheckCircleFill, UsersFill } from "@/components/shared/icons";
 
@@ -33,6 +34,7 @@ const slides = [
     accent: "#367bf6",
     dark: "#1a3a7a",
     bg: "#eef2fc",
+    image: "/CRM.webp",
   },
   {
     label: "Завдання",
@@ -42,6 +44,7 @@ const slides = [
     accent: "#34a853",
     dark: "#1a4a25",
     bg: "#e8f5e9",
+    image: "/Завдання.webp",
   },
   {
     label: "Комунікація",
@@ -51,15 +54,17 @@ const slides = [
     accent: "#f7a117",
     dark: "#7a4a00",
     bg: "#fff8e1",
+    image: "/Комунікація.webp",
   },
   {
     label: "Проєкти",
     Icon: FolderFill,
-    title: "Проєкти та виробництво",
+    title: "Проєкти",
     desc: "Планування процесів (Kanban, діаграма Ганта), контроль етапів та строків, узгоджена робота команд, управління виробничими циклами.",
     accent: "#ea463e",
     dark: "#6a1a16",
     bg: "#fce4e2",
+    image: "/Проєкти.webp",
   },
   {
     label: "HR та фінанси",
@@ -69,6 +74,7 @@ const slides = [
     accent: "#b747f6",
     dark: "#5a1a7a",
     bg: "#f3e8fd",
+    image: "/Персонал.webp",
   },
   {
     label: "Виробництво",
@@ -78,6 +84,7 @@ const slides = [
     accent: "#0fa3b1",
     dark: "#064a52",
     bg: "#e0f7fa",
+    image: "/Виробництво.webp",
   },
 ];
 
@@ -195,14 +202,23 @@ export default function Features() {
             }}
           >
             {/* Ліворуч — зона фотографії */}
-            <div
-              className="w-full aspect-[342/231] md:aspect-auto"
-              style={{
-                background: slide.accent,
-                transition: "background 0.35s ease",
-              }}
-            >
-              {/* TODO: замінити на <Image src="..." /> */}
+            <div className="relative w-full aspect-[342/231] md:aspect-auto overflow-hidden">
+              {slides.map((s, i) => (
+                <Image
+                  key={s.image}
+                  src={s.image}
+                  alt={s.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  quality={100}
+                  priority={i === 0}
+                  style={{
+                    opacity: i === current ? 1 : 0,
+                    transition: "opacity 0.35s ease",
+                  }}
+                />
+              ))}
             </div>
 
             {/* Праворуч — текст */}

@@ -111,18 +111,8 @@
   .btn-dark:active { background: #2a2a2a !important; }
 }
 
-/* Card hover — subtle shadow + text highlight */
 .integration-card {
   height: 134px;
-  transition: box-shadow 0.22s ease, transform 0.22s ease;
-  cursor: pointer;
-}
-.integration-card:hover {
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
-  transform: translateY(-2px);
-}
-.integration-card:hover .integration-card-desc {
-  color: #4b5563;
 }
 
 
@@ -185,14 +175,6 @@
 
 /* ── Touch: hover → active (press) feedback ── */
 @media (hover: none) {
-  .integration-card:hover {
-    box-shadow: none;
-    transform: none;
-  }
-  .integration-card:active {
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
-    transform: translateY(-2px);
-  }
   .footer-link:hover { color: #727272; }
   .footer-link:active { color: #141414; }
   .social-link:hover { color: #727272; }

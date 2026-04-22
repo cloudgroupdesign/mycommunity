@@ -60,17 +60,16 @@ export default function Integrations() {
         <div className="relative py-2 w-full">
           <div className="integrations-track flex">
             {track1.map((item, i) => (
-              <a
+              <div
                 key={i}
-                href={`/integrations?cat=${item.category}`}
-                style={{ display: "block", flexShrink: 0, width: 370, margin: "0 8px", textDecoration: "none" }}
+                style={{ flexShrink: 0, width: 370, margin: "0 8px" }}
               >
                 <IntegrationCard
                   item={item}
                   className="integration-card"
                   style={{ padding: "22px 28px" }}
                 />
-              </a>
+              </div>
             ))}
           </div>
         </div>
@@ -79,17 +78,16 @@ export default function Integrations() {
         <div className="relative py-2 w-full">
           <div className="integrations-track-rtl flex">
             {track2.map((item, i) => (
-              <a
+              <div
                 key={i}
-                href={`/integrations?cat=${item.category}`}
-                style={{ display: "block", flexShrink: 0, width: 370, margin: "0 8px", textDecoration: "none" }}
+                style={{ flexShrink: 0, width: 370, margin: "0 8px" }}
               >
                 <IntegrationCard
                   item={item}
                   className="integration-card"
                   style={{ padding: "22px 28px" }}
                 />
-              </a>
+              </div>
             ))}
           </div>
         </div>
