@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 export default function HeroMockup() {
@@ -127,10 +128,19 @@ export default function HeroMockup() {
           className="hero-mockup-inner"
           style={{
             borderRadius: 13,
-            background: "#F8FAFC",
+            overflow: "hidden",
             width: "100%",
+            position: "relative",
           }}
-        />
+        >
+          <Image
+            src="/Канбан.webp"
+            alt="Kanban board preview"
+            fill
+            style={{ objectFit: "cover", objectPosition: "top" }}
+            priority
+          />
+        </div>
       </div>
     </div>
   );
