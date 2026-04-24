@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { X } from "@geist-ui/icons";
 import { useDemoModal } from "./modal-context";
 import { validatePhone, liveFormatPhone } from "@/lib/phone";
+import { createDemoLead } from "@/lib/api";
 
 type Step = "form" | "success";
 interface FormErrors { name?: string; phone?: string; }
@@ -51,7 +52,9 @@ export default function DemoModal() {
     }, 250);
   }, [close]);
 
-  const handleSubmit = useCallback((e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     const name  = nameRef.current?.value.trim()  ?? "";
     const phone = phoneRef.current?.value.trim() ?? "";
@@ -68,7 +71,16 @@ export default function DemoModal() {
 
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
-    setStep("success");
+    setLoading(true);
+
+    try {
+      await createDemoLead(name, phone);
+    } catch (err) {
+      console.error("[createDemoLead] error:", err);
+    } finally {
+      setLoading(false);
+      setStep("success");
+    }
   }, []);
 
   // Phone input — filter invalid chars + live formatting as user types.
@@ -162,8 +174,8 @@ export default function DemoModal() {
 
               </div>
 
-              <button type="submit" className="btn-primary demo-submit-btn">
-                Записатися
+              <button type="submit" className="btn-primary demo-submit-btn" disabled={loading}>
+                {loading ? "Надсилаємо…" : "Записатися"}
               </button>
             </form>
           </>
