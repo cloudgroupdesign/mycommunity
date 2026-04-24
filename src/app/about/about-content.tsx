@@ -1,29 +1,10 @@
 import Image from "next/image";
 
 const founders = [
-  {
-    name: "Анна Буркацька",
-    role: "Founder",
-    photo: "/anna-burkackaya.jpg",
-  },
-  {
-    name: "Денис Купраш",
-    role: "Founder",
-    photo: "/denis-kuprash.jpg",
-  },
-  {
-    name: "Владислава Пилипенко",
-    role: "Founder",
-    photo: "/vladyslava-pylypenko.jpg",
-  },
-  {
-    name: "Сергій Кулик",
-    role: "Founder",
-    photo: null,
-    initials: "СК",
-    bg: "#eef2fc",
-    color: "#1a3a7a",
-  },
+  { name: "Анна Буркацька",      role: "COO", photo: "/anna-burkackaya.jpg"      },
+  { name: "Денис Купраш",        role: "CMO", photo: "/denis-kuprash.jpg"        },
+  { name: "Владислава Пилипенко",role: "CEO", photo: "/vladyslava-pylypenko.jpg" },
+  { name: "Сергій Кулик",        role: "CTO", photo: null                        },
 ];
 
 export default function AboutContent() {
@@ -109,7 +90,7 @@ export default function AboutContent() {
               >
                 {/* Photo — full bleed, portrait */}
                 <div
-                  className="w-full relative"
+                  className="w-full relative bg-[#f0f0f0]"
                   style={{ aspectRatio: "3/4" }}
                 >
                   {founder.photo ? (
@@ -121,23 +102,16 @@ export default function AboutContent() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                   ) : (
-                    <div
-                      className="w-full h-full flex items-center justify-center"
-                      style={{ background: founder.bg }}
-                    >
-                      <span
-                        className="text-[48px] font-semibold leading-none select-none"
-                        style={{ color: founder.color, letterSpacing: "-0.01em" }}
-                        aria-hidden="true"
-                      >
-                        {founder.initials}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-5xl font-semibold text-[#c0c0c0]">
+                        {founder.name.charAt(0)}
                       </span>
                     </div>
                   )}
                 </div>
 
                 {/* Info */}
-                <div className="flex flex-col gap-1 px-6 py-5 text-center">
+                <div className="flex flex-col gap-0.5 text-center px-5 pt-5 pb-6">
                   <p
                     className="font-semibold text-[16px] md:text-[17px] lg:text-[18px] leading-6 text-[#141414]"
                     style={{ letterSpacing: "-0.01em" }}
@@ -150,6 +124,30 @@ export default function AboutContent() {
                 </div>
               </article>
             ))}
+          </div>
+
+          {/* CTA */}
+          <div className="flex justify-center">
+            <a
+              href="https://mbtn.com.ua/#team"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-dark"
+              style={{
+                display: "inline-block",
+                background: "#141414",
+                color: "#fff",
+                fontSize: 16,
+                fontWeight: 600,
+                lineHeight: "24px",
+                padding: "14px 32px",
+                borderRadius: 12,
+                textDecoration: "none",
+                cursor: "pointer",
+              }}
+            >
+              Про команду
+            </a>
           </div>
         </div>
       </section>

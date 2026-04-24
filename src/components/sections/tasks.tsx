@@ -54,13 +54,19 @@ const tasks = [
     ),
   },
   {
-    title: "Назва шостої проблеми",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
+    title: "Відсутність єдиного центру управління",
+    desc: "Фінанси, продажі, задачі — у різних вкладках. Цілісної картини бізнесу немає.",
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#34a853" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-        <line x1="12" y1="17" x2="12.01" y2="17" strokeWidth="2.5" />
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ec4899" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="2.5" strokeDasharray="3 2" />
+        <circle cx="12" cy="3.5" r="1.5" />
+        <circle cx="20.5" cy="12" r="1.5" />
+        <circle cx="12" cy="20.5" r="1.5" />
+        <circle cx="3.5" cy="12" r="1.5" />
+        <line x1="12" y1="5" x2="12" y2="9.5" strokeDasharray="2 2" />
+        <line x1="19" y1="12" x2="14.5" y2="12" strokeDasharray="2 2" />
+        <line x1="12" y1="19" x2="12" y2="14.5" strokeDasharray="2 2" />
+        <line x1="5" y1="12" x2="9.5" y2="12" strokeDasharray="2 2" />
       </svg>
     ),
   },

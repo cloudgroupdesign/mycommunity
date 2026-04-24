@@ -49,13 +49,13 @@ export default function Why() {
                     className="font-semibold text-[22px] md:text-[26px] lg:text-[32px] leading-[30px] md:leading-[34px] lg:leading-[40px]"
                     style={{ color: "#1a3a7a", letterSpacing: "-0.01em" }}
                   >
-                    Створена підприємцями<br className="hidden lg:block" /> для підприємців
+                    Створена підприємцями<br className="hidden lg:block" /> на реальному досвіді
                   </h3>
                   <p
                     className="text-[14px] md:text-[15px] lg:text-[16px] mt-4 mb-5 lg:mb-7"
                     style={{ color: "#1a3a7a", opacity: 0.7, lineHeight: "22px" }}
                   >
-                    Ми самі будували бізнес — тому кожна функція вирішує реальну задачу.
+                    Ми працювали з <span style={{ fontWeight: 700, opacity: 1, color: "#1a3a7a" }}>200+</span> бізнесами в консалтингу, тестували десятки CRM та інтеграцій і створили систему, яка реально закриває потреби компаній.
                   </p>
                 </div>
               </div>
