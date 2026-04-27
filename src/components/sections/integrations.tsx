@@ -17,8 +17,8 @@ const ROW_2: IntegrationItem[] = [
   { id: "rozetka",   name: "Rozetka",   desc: "Обробляйте замовлення з найбільшого українського маркетплейсу.",           logo: "/rozetka-new.png",  category: "marketplaces" },
   { id: "ringostat",  name: "Ringostat",  desc: "Відстежуйте дзвінки та автоматично прив'язуйте їх до клієнтів і угод.",   logo: "/ringostat-v2.png", category: "telephony" },
   { id: "unitalk",    name: "Unitalk",    desc: "IP-телефонія з автоматичною фіксацією дзвінків у картці клієнта.",         logo: "/unitalk-v2.png",   category: "telephony" },
-  { id: "monobank",   name: "Монобанк",   desc: "Автоматична звірка платежів та відображення транзакцій у угодах.",                                    category: "banks"     },
-  { id: "privatbank", name: "ПриватБанк", desc: "Синхронізація банківських виписок та контроль розрахунків з клієнтами.",                              category: "banks"     },
+  { id: "monobank",   name: "Монобанк",   desc: "Автоматична звірка платежів та відображення транзакцій у угодах.",         logo: "/mono.png",    category: "banks"     },
+  { id: "privatbank", name: "ПриватБанк", desc: "Синхронізація банківських виписок та контроль розрахунків з клієнтами.",  logo: "/privat.png",  category: "banks"     },
 ];
 
 // 3× duplication — row1: 3×1930=5790px, row2: 3×2702=8106px — within GPU texture limits.
