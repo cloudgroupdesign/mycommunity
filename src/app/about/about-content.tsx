@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 const founders = [
-  { name: "Анна Буркацька",      role: "COO", photo: "/anna-burkackaya.jpg"      },
-  { name: "Денис Купраш",        role: "CMO", photo: "/denis-kuprash.jpg"        },
-  { name: "Владислава Пилипенко",role: "CEO", photo: "/vladyslava-pylypenko.jpg" },
-  { name: "Сергій Кулик",        role: "CTO", photo: null                        },
+  { name: "Анна Буркацька",      role: "COO", photo: "/anna-about.jpg"   },
+  { name: "Денис Купраш",        role: "CMO", photo: "/denis-about.jpg"  },
+  { name: "Владислава Пилипенко",role: "CEO", photo: "/vlada-ablou.jpg"  },
+  { name: "Сергій Кулик",        role: "CTO", photo: "/sergey-about.png" },
 ];
 
 export default function AboutContent() {
@@ -102,10 +102,17 @@ export default function AboutContent() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                   ) : (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-5xl font-semibold text-[#c0c0c0]">
-                        {founder.name.charAt(0)}
-                      </span>
+                    <div className="absolute inset-0 flex flex-col items-center justify-end bg-[#f0f0f0]">
+                      <svg
+                        viewBox="0 0 120 140"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4/5"
+                        aria-hidden
+                      >
+                        <ellipse cx="60" cy="42" rx="28" ry="28" fill="#d4d4d4" />
+                        <path d="M6 140c0-29.823 24.177-54 54-54h0c29.823 0 54 24.177 54 54" fill="#d4d4d4" />
+                      </svg>
                     </div>
                   )}
                 </div>

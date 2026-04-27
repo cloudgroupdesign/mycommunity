@@ -15,27 +15,28 @@ export default function Navbar() {
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => {
-      const current = window.scrollY;
-      setScrolled(current > 4);
+    let rafId: number | null = null;
 
-      // Auto-hide only on mobile/tablet (< 1024px)
-      if (window.innerWidth < 1024) {
-        if (current > lastScrollY.current && current > 64) {
-          // Scrolling down — hide
-          setHidden(true);
-        } else if (current < lastScrollY.current) {
-          if (current < 100) {
-            // Near top — always show
-            setHidden(false);
-          } else if (current > 200) {
-            // Scrolling up, past hero zone — show with animation
-            setHidden(false);
+    const onScroll = () => {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        const current = window.scrollY;
+        setScrolled(current > 4);
+
+        if (window.innerWidth < 1024) {
+          if (current > lastScrollY.current && current > 64) {
+            setHidden(true);
+          } else if (current < lastScrollY.current) {
+            if (current < 100) {
+              setHidden(false);
+            } else if (current > 200) {
+              setHidden(false);
+            }
           }
-          // Between 100–200px: maintain state to avoid confusion near hero
         }
-      }
-      lastScrollY.current = current;
+        lastScrollY.current = current;
+      });
     };
 
     const onResize = () => {
@@ -47,6 +48,7 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
+      if (rafId !== null) cancelAnimationFrame(rafId);
     };
   }, []);
 

@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 import { useDemoModal } from "@/components/shared/modal-context";
 
 const founders = [
-  { src: "/denys.webp", alt: "Денис" },
-  { src: "/vlada.webp", alt: "Влада" },
-  { src: "/anna.webp", alt: "Анна" },
+  { src: "/denis-block.png",  alt: "Денис"  },
+  { src: "/anna-block.png",   alt: "Анна"   },
+  { src: "/sergey-block.png", alt: "Сергій" },
+  { src: "/vlada-block.png",  alt: "Влада"  },
 ];
 
 export default function Why() {
@@ -68,10 +69,7 @@ export default function Why() {
                     fill
                     className="object-cover object-top"
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    style={{
-                      opacity: i === activeFounder ? 1 : 0,
-                      transition: "opacity 1s ease-in-out",
-                    }}
+                    style={{ opacity: i === activeFounder ? 1 : 0, transition: "opacity 1s ease-in-out" }}
                     priority={i === 0}
                   />
                 ))}

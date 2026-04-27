@@ -15,6 +15,8 @@ const ALL: IntegrationItem[] = [
   { id: "rozetka",         name: "Rozetka",         desc: "Обробляйте замовлення з найбільшого українського маркетплейсу.",     logo: "/rozetka-new.png" },
   { id: "ringostat",       name: "Ringostat",       desc: "Відстежуйте дзвінки та автоматично прив'язуйте їх до клієнтів і угод.", logo: "/ringostat-v2.png" },
   { id: "unitalk",         name: "Unitalk",         desc: "IP-телефонія з автоматичною фіксацією дзвінків у картці клієнта.",   logo: "/unitalk-v2.png" },
+  { id: "monobank",        name: "Монобанк",        desc: "Автоматична звірка платежів та відображення транзакцій у угодах.",        logo: "/mono.png" },
+  { id: "privatbank",      name: "ПриватБанк",      desc: "Синхронізація банківських виписок та контроль розрахунків з клієнтами.",  logo: "/privat.png" },
 ];
 
 const by = (...ids: string[]) => ALL.filter((i) => ids.includes(i.id));
@@ -26,6 +28,7 @@ const categories = [
   { id: "telephony",    label: "Телефонія",      integrations: by("ringostat", "unitalk") },
   { id: "video",        label: "Відеозв'язок",   integrations: by("zoom") },
   { id: "productivity", label: "Продуктивність", integrations: by("google-calendar") },
+  { id: "banks",        label: "Банки",          integrations: by("monobank", "privatbank") },
 ];
 
 export default function IntegrationsContent() {
@@ -159,6 +162,10 @@ export default function IntegrationsContent() {
           </div>
         </div>
       </section>
+
+      <p className="text-center text-[12px] text-[#b0b0b0] px-6 pb-10 -mt-4 mx-auto" style={{ maxWidth: 680 }}>
+        Усі логотипи та назви продуктів, представлені на цій сторінці, є власністю відповідних компаній та використовуються виключно в інформаційних цілях.
+      </p>
     </>
   );
 }

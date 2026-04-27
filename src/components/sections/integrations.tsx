@@ -1,7 +1,8 @@
 import IntegrationCard, { type IntegrationItem } from "@/components/shared/integration-card";
 
 // One card slot: 370px width + 8px margin each side = 386px
-// One set (5 cards): 5 × 386 = 1930px — used in CSS keyframes
+// ROW_1 (5 cards): 5 × 386 = 1930px — used in CSS marquee-ltr keyframe
+// ROW_2 (7 cards): 7 × 386 = 2702px — used in CSS marquee-rtl keyframe
 const ROW_1: IntegrationItem[] = [
   { id: "google-calendar", name: "Google Calendar", desc: "Синхронізуйте зустрічі та події команди в реальному часі.",       logo: "/google-calendar-v2.png", category: "productivity" },
   { id: "zoom",            name: "Zoom",            desc: "Запускайте відеодзвінки прямо з картки клієнта або угоди.",        logo: "/zoom-v2.png",            category: "video"        },
@@ -14,12 +15,13 @@ const ROW_2: IntegrationItem[] = [
   { id: "amazon",    name: "Amazon",    desc: "Управляйте замовленнями Amazon Marketplace з єдиного кабінету.",           logo: "/amazon-v2.png",    category: "marketplaces" },
   { id: "ebay",      name: "eBay",      desc: "Синхронізуйте товари та замовлення з міжнародним маркетплейсом.",          logo: "/ebay-v2.png",      category: "marketplaces" },
   { id: "rozetka",   name: "Rozetka",   desc: "Обробляйте замовлення з найбільшого українського маркетплейсу.",           logo: "/rozetka-new.png",  category: "marketplaces" },
-  { id: "ringostat", name: "Ringostat", desc: "Відстежуйте дзвінки та автоматично прив'язуйте їх до клієнтів і угод.",   logo: "/ringostat-v2.png", category: "telephony"    },
-  { id: "unitalk",   name: "Unitalk",   desc: "IP-телефонія з автоматичною фіксацією дзвінків у картці клієнта.",         logo: "/unitalk-v2.png",   category: "telephony"    },
+  { id: "ringostat",  name: "Ringostat",  desc: "Відстежуйте дзвінки та автоматично прив'язуйте їх до клієнтів і угод.",   logo: "/ringostat-v2.png", category: "telephony" },
+  { id: "unitalk",    name: "Unitalk",    desc: "IP-телефонія з автоматичною фіксацією дзвінків у картці клієнта.",         logo: "/unitalk-v2.png",   category: "telephony" },
+  { id: "monobank",   name: "Монобанк",   desc: "Автоматична звірка платежів та відображення транзакцій у угодах.",                                    category: "banks"     },
+  { id: "privatbank", name: "ПриватБанк", desc: "Синхронізація банківських виписок та контроль розрахунків з клієнтами.",                              category: "banks"     },
 ];
 
-// 3× duplication — 3 × 1930px = 5790px, within GPU texture limits on Windows.
-// Covers up to ~3860px viewport (2×one-set) which exceeds our 3024px cap.
+// 3× duplication — row1: 3×1930=5790px, row2: 3×2702=8106px — within GPU texture limits.
 const track1 = Array(3).fill(ROW_1).flat();
 const track2 = Array(3).fill(ROW_2).flat();
 

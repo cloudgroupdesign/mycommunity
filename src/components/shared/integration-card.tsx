@@ -4,7 +4,7 @@ export type IntegrationItem = {
   id: string;
   name: string;
   desc: string;
-  logo: string;
+  logo?: string;
   category?: string;
 };
 
@@ -24,14 +24,20 @@ export default function IntegrationCard({ item, className = "", style }: Props) 
         className="flex-shrink-0 flex items-center justify-center overflow-hidden"
         style={{ width: 48, height: 48 }}
       >
-        <Image
-          src={item.logo}
-          alt={item.name}
-          width={96}
-          height={96}
-          quality={85}
-          style={{ objectFit: "contain", width: 48, height: 48 }}
-        />
+        {item.logo ? (
+          <Image
+            src={item.logo}
+            alt={item.name}
+            width={96}
+            height={96}
+            quality={85}
+            style={{ objectFit: "contain", width: 48, height: 48 }}
+          />
+        ) : (
+          <span className="text-[15px] font-semibold text-[#9ca3af]">
+            {item.name.slice(0, 2).toUpperCase()}
+          </span>
+        )}
       </div>
       <div className="min-w-0">
         <p className="font-semibold text-[15px] leading-6 text-[#141414] mb-1">{item.name}</p>
