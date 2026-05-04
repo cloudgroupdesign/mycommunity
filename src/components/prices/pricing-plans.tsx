@@ -476,69 +476,17 @@ export default function PricingPlans() {
         </div>
       </section>
 
-      {/* Bundle + Setup cards */}
+      {/* Setup card */}
       <section className="w-full px-4 md:px-6 pb-14 md:pb-20">
         <div
-          className="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4"
+          className="w-full mx-auto flex justify-center"
           style={{ maxWidth: 960 }}
         >
-          {/* All modules bundle */}
-          <div
-            style={{
-              background: "#ffffff",
-              borderRadius: 20,
-              border: "1.5px solid #e5e7eb",
-              boxShadow: "0 1px 6px rgba(0,0,0,0.04)",
-              display: "flex",
-              flexDirection: "column",
-              padding: "32px 24px 32px",
-            }}
-          >
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <p style={{ fontSize: 22, fontWeight: 600, color: "#141414", lineHeight: "30px" }}>
-                Всі модулі разом
-              </p>
-              <p style={{ fontSize: 13, color: "#6b7280", lineHeight: "21px" }}>
-                Підключіть всі 6 модулів і отримайте повний контроль над бізнесом.
-                Знижка 30% при підключенні всіх модулів одразу.
-              </p>
-            </div>
-            <div style={{ flex: 1 }} />
-            <div style={{ paddingTop: 20 }}>
-              <span style={{ fontSize: 14, color: "#b0b7c3", textDecoration: "line-through", display: "block", marginBottom: 2 }}>
-                $314/міс
-              </span>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 3, marginBottom: 4 }}>
-                <span style={{ fontSize: 34, fontWeight: 600, color: "#141414", lineHeight: 1, letterSpacing: "-0.02em" }}>
-                  $219
-                </span>
-                <span style={{ fontSize: 13, color: "#9ca3af", marginLeft: 2 }}> / міс</span>
-              </div>
-              <p style={{ fontSize: 12, color: "#b0b7c3", marginBottom: 20 }}>
-                до 20 користувачів включно
-              </p>
-            </div>
-            <DemoCTAButton
-              style={{
-                width: "100%",
-                padding: "13px 0",
-                borderRadius: 12,
-                fontSize: 15,
-                fontWeight: 600,
-                cursor: "pointer",
-                border: "none",
-                background: "#29abe2",
-                color: "#ffffff",
-                transition: "opacity 0.18s",
-              }}
-            >
-              Записатися на демо
-            </DemoCTAButton>
-          </div>
-
           {/* Setup card */}
           <div
             style={{
+              width: "100%",
+              maxWidth: 472,
               background: "#ffffff",
               borderRadius: 20,
               border: "1.5px solid #e5e7eb",
