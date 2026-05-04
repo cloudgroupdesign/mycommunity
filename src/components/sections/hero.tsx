@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import HeroMockup from "./hero-mockup";
 import { useDemoModal } from "@/components/shared/modal-context";
 
@@ -83,61 +84,78 @@ export default function Hero() {
 
         {/* Buttons */}
         <div
-          className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center w-full sm:w-auto"
           style={{
             opacity: stage >= 3 ? 1 : 0,
             transform: stage >= 3 ? "translateY(0)" : "translateY(16px)",
             transition: "opacity 0.7s ease, transform 0.7s ease",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <button
-            className="btn-primary w-full sm:w-auto"
-            onClick={openModal}
-            style={{
-              background: "#29abe2",
-              color: "#fff",
-              fontSize: 17,
-              fontWeight: 600,
-              lineHeight: "28px",
-              padding: "13px 28px",
-              borderRadius: 12,
-              border: "none",
-              cursor: "pointer",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Записатися на демо-перегляд
-          </button>
-          <button
-            className="btn-secondary w-full sm:w-auto"
-            onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
-            style={{
-              background: "#fff",
-              color: "#141414",
-              fontSize: 17,
-              fontWeight: 600,
-              lineHeight: "28px",
-              padding: "13px 28px",
-              borderRadius: 12,
-              border: "1px solid #e5e6ea",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 8,
-            }}
-          >
-            Переглянути можливості
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7.5 5l5 5-5 5" stroke="#141414" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
+          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center w-full sm:w-auto">
+            <button
+              className="btn-primary w-full sm:w-auto"
+              onClick={openModal}
+              style={{
+                background: "#29abe2",
+                color: "#fff",
+                fontSize: 17,
+                fontWeight: 600,
+                lineHeight: "28px",
+                padding: "13px 28px",
+                borderRadius: 12,
+                border: "none",
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Записатися на демо-перегляд
+            </button>
+            <button
+              className="btn-secondary w-full sm:w-auto"
+              onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
+              style={{
+                background: "#fff",
+                color: "#141414",
+                fontSize: 17,
+                fontWeight: 600,
+                lineHeight: "28px",
+                padding: "13px 28px",
+                borderRadius: 12,
+                border: "1px solid #e5e6ea",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 8,
+              }}
+            >
+              Переглянути можливості
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.5 5l5 5-5 5" stroke="#141414" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
+
+          {/* Price annotation image — tablet/desktop only */}
+          <div className="hidden md:block" style={{ alignSelf: "flex-start", marginTop: 18, marginLeft: -56 }}>
+            <Image
+              src="/message.webp"
+              alt="Ціна від 5.6$"
+              width={202}
+              height={52}
+              style={{ objectFit: "contain" }}
+              priority
+            />
+          </div>
+
         </div>
       </div>
 
       {/* Mockup */}
       <div
-        className="w-full"
+        className="w-full md:-mt-4"
         style={{
           maxWidth: 1080,
           isolation: "isolate",
