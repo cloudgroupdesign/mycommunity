@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useDemoModal } from "@/components/shared/modal-context";
 
 const founders = [
   { name: "Анна Буркацька",      role: "COO", photo: "/anna-about.jpg"   },
@@ -8,6 +11,7 @@ const founders = [
 ];
 
 export default function AboutContent() {
+  const { open: openModal } = useDemoModal();
   return (
     <>
       {/* Hero */}
@@ -45,7 +49,7 @@ export default function AboutContent() {
             className="flex flex-col gap-6 items-center text-center"
             style={{ maxWidth: 680 }}
           >
-            <p className="text-[16px] md:text-[17px] lg:text-[18px] leading-[26px] md:leading-[28px] lg:leading-[30px] font-normal text-[#4b5563]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-[26px] md:leading-[28px] lg:leading-[32px] font-normal text-[#4b5563]">
               Ми команда засновників консалтингової компанії{" "}
               <a
                 href="https://mbtn.com.ua/"
@@ -55,11 +59,11 @@ export default function AboutContent() {
               >MAYBUTNE Consulting</a>{" "}
               з понад 10-річним досвідом роботи з бізнесами.
             </p>
-            <p className="text-[16px] md:text-[17px] lg:text-[18px] leading-[26px] md:leading-[28px] lg:leading-[30px] font-normal text-[#4b5563]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-[26px] md:leading-[28px] lg:leading-[32px] font-normal text-[#4b5563]">
               Працюючи з різними організаціями, ми глибоко зрозуміли їхні реальні виклики.
               Цей досвід сформував наше бачення простого та ефективного управління.
             </p>
-            <p className="text-[16px] md:text-[17px] lg:text-[18px] leading-[26px] md:leading-[28px] lg:leading-[30px] font-normal text-[#4b5563]">
+            <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-[26px] md:leading-[28px] lg:leading-[32px] font-normal text-[#4b5563]">
               Тому ми створили My Community.
             </p>
           </div>
@@ -155,6 +159,69 @@ export default function AboutContent() {
             >
               Про команду
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Slogan CTA */}
+      <section className="w-full px-4 md:px-8 pb-14 md:pb-20 lg:pb-24">
+        <div
+          style={{
+            borderRadius: 24,
+            overflow: "hidden",
+            position: "relative",
+            background: "#ffffff",
+          }}
+        >
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              pointerEvents: "none",
+              background: `
+                radial-gradient(ellipse 58% 62% at   0%  95%, rgba(41,171,226,0.28)  0%, transparent 70%),
+                radial-gradient(ellipse 52% 52% at  25% 102%, rgba(32,169,157,0.22)  0%, transparent 68%),
+                radial-gradient(ellipse 52% 48% at  50% 118%, rgba(141,198,63,0.18)  0%, transparent 68%),
+                radial-gradient(ellipse 52% 52% at  75% 102%, rgba(247,148,29,0.22)  0%, transparent 68%),
+                radial-gradient(ellipse 58% 62% at 100%  95%, rgba(232,76,61,0.25)   0%, transparent 70%)
+              `,
+            }}
+          />
+          <div
+            className="relative flex flex-col items-center text-center px-4 md:px-6"
+            style={{ paddingTop: 64, paddingBottom: 80, gap: 20, zIndex: 1 }}
+          >
+            <h2 className="cta-h2">
+              Система поважає вашу
+              <br className="hidden md:block" />
+              {" "}специфіку бізнесу
+            </h2>
+            <p
+              className="text-[16px] md:text-[18px] lg:text-[20px] leading-[26px] md:leading-[28px] lg:leading-[32px] font-normal text-[#4b5563]"
+              style={{ maxWidth: 480 }}
+            >
+              Налаштуйте систему під свої процеси — без зайвих компромісів і шаблонних рішень.
+            </p>
+            <button
+              className="btn-primary"
+              onClick={openModal}
+              style={{
+                marginTop: 4,
+                background: "#29abe2",
+                color: "#fff",
+                fontSize: 16,
+                fontWeight: 600,
+                lineHeight: "24px",
+                padding: "14px 36px",
+                borderRadius: 12,
+                border: "none",
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Замовити демо
+            </button>
           </div>
         </div>
       </section>
