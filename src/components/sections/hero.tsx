@@ -6,9 +6,9 @@ import HeroMockup from "./hero-mockup";
 import { useDemoModal } from "@/components/shared/modal-context";
 
 const H1_LINES = [
-  ["Єдина", "система"],
-  ["управління", "бізнесом"],
-  ["для", "підприємців"],
+  ["Єдина", "CRM", "та", "ERP"],
+  ["система", "управління"],
+  ["бізнесом"],
 ];
 const WORD_COUNT = H1_LINES.flat().length;
 const H1_ANIM_DURATION = WORD_COUNT * 120 + 800;
